@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Waybound",
+    "slug": "waybound-travel",
+    "version": "1.0.0",
+    "sdkVersion": "48.0.18",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#ffffff"
+    },
+    "android": {
+      "package": "com.waybound.travel"
+    },
+    "ios": {
+      "bundleIdentifier": "com.waybound.travel"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aef26386-f5b8-4774-92c7-abb3eee84894"
+      }
+    }
+  }
+}

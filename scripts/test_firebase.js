@@ -1,0 +1,1 @@
+const { firebaseApp } = require("../src/services/firebase.ts"); console.log("test");

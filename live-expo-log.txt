@@ -1,0 +1,992 @@
+--------- beginning of main
+07-14 16:46:24.132  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30688 temperature_average = 30831 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:46:24.269  9764 13188 D JavaheapMonitor: Java heap used=22M max=256M, proc: com.xiaomi.xmsf:services
+07-14 16:46:24.270  9764 13188 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:24.274  4324 15158 D JavaheapMonitor: Java heap used=21M max=256M, proc: com.xiaomi.hypercomm
+07-14 16:46:24.274  4324 15158 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:24.638  4436 15203 D JavaheapMonitor: Java heap used=2M max=256M, proc: vendor.qti.bluetooth.xpan
+07-14 16:46:24.639  4436 15203 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:24.690  9605 10047 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.powerkeeper
+07-14 16:46:24.690  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:24.724  1339  1339 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+07-14 16:46:24.727  1339  1339 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired 
+07-14 16:46:24.727  1339  1339 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Writing IBS_WAKE_IND
+07-14 16:46:24.730  1339 30210 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_ACK: 0xFC
+07-14 16:46:24.730  1339 30210 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Signal wack_cond_
+07-14 16:46:24.731  1339  1339 D vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Unblocked from waiting for FC, pthread_cond_timedwait ret = 0
+07-14 16:46:24.731 30103 30194 I bluetooth: system/gd/hci/le_address_manager.cc:576 GetNextPrivateAddressIntervalRange: client=LeAddressManager, nonwake=7m24s, wake=13m57s
+07-14 16:46:24.732  1339 30210 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+07-14 16:46:24.732  1339 30210 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+07-14 16:46:24.735 30103 30194 I bluetooth: system/gd/hci/le_address_manager.cc:777 OnCommandComplete: Received command complete with op_code LE_SET_RANDOM_ADDRESS(0x2005)
+07-14 16:46:24.736 30103 30194 I bluetooth: system/gd/hci/le_address_manager.cc:797 OnCommandComplete: update random address : xx:xx:xx:xx:fa:ec
+07-14 16:46:24.736 30103 30194 I bluetooth: system/gd/hci/le_address_manager.cc:392 resume_registered_clients: Resuming registered clients
+07-14 16:46:24.820  1339 30210 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+07-14 16:46:25.016  4180 15119 D JavaheapMonitor: Java heap used=5M max=256M, proc: .dataservices
+07-14 16:46:25.016  4180 15119 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:25.235  6839 11578 D JavaheapMonitor: Java heap used=22M max=256M, proc: com.xiaomi.xmsf
+07-14 16:46:25.235  6839 11578 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:25.290  2895  4907 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:25.291 30045 31813 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:25.292 30045 31813 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=1984957ms
+07-14 16:46:25.292 30045 31813 D MemorySizeMonitor: Skip report due to report interval (39999ms < 60000ms)
+07-14 16:46:25.496  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:25.496  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+--------- beginning of system
+07-14 16:46:25.497  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:25.500  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:25.500  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:25.500  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:25.505  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:46:25.509  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:25.509  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:25.509  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.510  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:25.512  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:25.513  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:25.513  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:25.513  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:25.514  4202  5699 W IWlanNetworkService: 25957 > Response Processed
+07-14 16:46:25.514  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.515  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:25.516  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.523  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.525  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.526  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:25.527  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.528  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:25.529  4202  5699 W IWlanNetworkService: 25958 > Response Processed
+07-14 16:46:25.529  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:25.542  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:46:25.543  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:46:25.543  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:46:25.543  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:25.543  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:25.543  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:46:25.554 18749 18910 D JavaheapMonitor: Java heap used=4M max=256M, proc: com.xiaomi.xmsf:kit7
+07-14 16:46:25.555 18749 18910 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:25.686  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:25.715  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:46:25.717  2895  4930 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:46:25.739  1339 30213 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceSleep: TX Awake, Sending SLEEP_IND
+07-14 16:46:25.739  1339 30213 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+07-14 16:46:25.876  4409  4878 D JavaheapMonitor: Java heap used=11M max=256M, proc: com.android.phone
+07-14 16:46:25.876  4409  4878 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:25.890  1339 30202 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released 
+07-14 16:46:26.130  6193 11094 D JavaheapMonitor: Java heap used=8M max=256M, proc: com.miui.analytics
+07-14 16:46:26.130  6193 11094 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:26.827  6405 15333 D JavaheapMonitor: Java heap used=2M max=256M, proc: com.tencent.soter.soterserver
+07-14 16:46:26.828  6405 15333 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:27.017 30954 31376 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.xiaomi.mi_connect_service
+07-14 16:46:27.018 30954 31376 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:27.108  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:27.110  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s30ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:27.111  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:27.112  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:27.112  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:27.122  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:27.122  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:27.125  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:27.126  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:27.613  2895  3258 D AurogonBandwidthController: skinTemperature:30.646
+07-14 16:46:27.614  2895  3258 D AurogonBandwidthController: skinTemperature:30.646
+07-14 16:46:28.692  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:29.027 20926 20988 D JavaheapMonitor: Java heap used=13M max=256M, proc: com.baidu.input_mi
+07-14 16:46:29.028 20926 20988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:29.611 30103 30183 D JavaheapMonitor: Java heap used=7M max=256M, proc: com.android.bluetooth
+07-14 16:46:29.611 30103 30183 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:29.704  9605 12739 D powerkeeper.dfsobserve: board ready to handle temperature change
+07-14 16:46:29.705  9605 16577 D powerkeeper.dfscpucol: handleTemperatureChange: temp=30646
+07-14 16:46:30.290  2895  4930 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:30.293 30045 31835 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:30.293 30045 31835 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=1989959ms
+07-14 16:46:30.293 30045 31835 D MemorySizeMonitor: Skip report due to report interval (45001ms < 60000ms)
+07-14 16:46:30.536  5837 15548 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.xiaomi.registration
+07-14 16:46:30.537  5837 15548 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:30.892  6968  8988 D JavaheapMonitor: Java heap used=15M max=256M, proc: com.miui.securitycenter.remote
+07-14 16:46:30.892  6968  8988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:30.993  6468 15539 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.qualcomm.location
+07-14 16:46:30.994  6468 15539 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:30.999  6315 15522 D JavaheapMonitor: Java heap used=2M max=256M, proc: system
+07-14 16:46:30.999  6315 15522 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:31.138  4232  4396 D JavaheapMonitor: Java heap used=24M max=256M, proc: com.android.networkstack.process
+07-14 16:46:31.138  4232  4396 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:31.554 24476 24545 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.google.android.gms
+07-14 16:46:31.554 24476 24545 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:31.686 24408 24467 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.google.android.gms:snet
+07-14 16:46:31.687 24408 24467 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:31.698  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:32.150  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:32.151  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s28ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:32.152  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:32.153  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:32.154  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:32.163  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:32.163  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:32.166  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:32.167  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:32.176  2895  3167 D HeapUsage Monitor: HeapAllocSize : 173MB; monitorSize : 500MB
+07-14 16:46:32.517  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:32.517  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:32.518  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:32.519  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:32.519  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:32.519  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:32.522  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:46:32.525  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:32.525  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:32.525  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.526  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:32.528  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:32.528  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:32.528  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:32.528  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:32.529  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.529  4202  5699 W IWlanNetworkService: 25959 > Response Processed
+07-14 16:46:32.530  2895  5487 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:32.531  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.535  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.537  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.538  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.538  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:32.540  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:32.541  4202  5699 W IWlanNetworkService: 25960 > Response Processed
+07-14 16:46:32.541  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:32.550  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:46:32.551  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:46:32.551  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:46:32.551  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:32.551  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:32.551  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:46:32.730  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:46:32.733  2895  5487 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:46:32.796 24612 24657 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.google.android.gms.persistent
+07-14 16:46:32.796 24612 24657 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:33.008 11070 15619 D JavaheapMonitor: Java heap used=2M max=256M, proc: com.xiaomi.trustservice
+07-14 16:46:33.008 11070 15619 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:33.695  6365 15618 D JavaheapMonitor: Java heap used=2M max=256M, proc: org.ifaa.aidl.manager
+07-14 16:46:33.695  6365 15618 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:34.147  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30646 temperature_average = 30768 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:46:34.703  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:35.291  2895  5487 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:35.294 30045 31834 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:35.294 30045 31834 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=1994960ms
+07-14 16:46:35.294 30045 31834 D MemorySizeMonitor: Skip report due to report interval (50002ms < 60000ms)
+07-14 16:46:35.379  2895  3815 I NetworkBoostStatusManager: handle: 107
+07-14 16:46:36.265  7093 11626 D JavaheapMonitor: Java heap used=9M max=256M, proc: android.process.media
+07-14 16:46:36.265  7093 11626 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:36.634  9605 10047 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.powerkeeper
+07-14 16:46:36.634  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:37.007 11918 12050 D JavaheapMonitor: Java heap used=4M max=256M, proc: com.miui.misightservice
+07-14 16:46:37.007 11918 12050 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:37.192  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:37.194  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s30ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:37.195  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:37.196  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:37.197  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:37.206  2895  5487 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:37.207  2895  5487 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:37.209  2895  5487 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:37.210  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:37.356 12269 15971 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.miui.core
+07-14 16:46:37.357 12269 15971 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:37.438 30954 31376 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.xiaomi.mi_connect_service
+07-14 16:46:37.438 30954 31376 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:37.615  2895  3258 D AurogonBandwidthController: skinTemperature:30.602
+07-14 16:46:37.616  2895  3258 D AurogonBandwidthController: skinTemperature:30.602
+07-14 16:46:37.710  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:37.972  3808  3851 D JavaheapMonitor: Java heap used=1M max=512M, proc: com.xiaomi.aicr:clipAlgo
+07-14 16:46:37.972  3808  3851 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:38.138  8957 15962 D JavaheapMonitor: Java heap used=2M max=256M, proc: com.milink.service.persistent
+07-14 16:46:38.138  8957 15962 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:38.366  1937  1937 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat '-d'
+07-14 16:46:39.579  2895  3190 D JavaheapMonitor: Java heap used=174M max=512M, proc: system_server
+07-14 16:46:39.579  2895  3190 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+07-14 16:46:39.696  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:39.696  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:39.696  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:39.698  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:39.699  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:39.699  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:39.702  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:46:39.705  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.706  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:39.706  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:39.706  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:39.707  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:39.707  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:39.707  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:39.708  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.709  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:39.709  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.709  4202  5699 W IWlanNetworkService: 25961 > Response Processed
+07-14 16:46:39.711  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:39.714  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.716  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.716  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:39.717  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.718  4202  5699 W IWlanNetworkService: 25962 > Response Processed
+07-14 16:46:39.718  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:39.719  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:39.730  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:46:39.732  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:46:39.732  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:46:39.732  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:39.732  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:39.732  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:46:39.909  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:46:39.911  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:46:40.150  6193 11094 D JavaheapMonitor: Java heap used=8M max=256M, proc: com.miui.analytics
+07-14 16:46:40.150  6193 11094 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:40.291  2895  4084 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:40.293 30045 31857 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:40.293 30045 31857 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=1999959ms
+07-14 16:46:40.293 30045 31857 D MemorySizeMonitor: Skip report due to report interval (55001ms < 60000ms)
+07-14 16:46:40.450  2895  3605 D HyperStabilitySdkService: checkDmabufStatus done, exceedLimitsList:[], totalDmabufSize:0
+07-14 16:46:40.627 23690 24248 D JavaheapMonitor: Java heap used=21M max=512M, proc: com.xiaomi.market
+07-14 16:46:40.628 23690 24248 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:40.716  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:41.511  9764 13188 D JavaheapMonitor: Java heap used=22M max=256M, proc: com.xiaomi.xmsf:services
+07-14 16:46:41.511  9764 13188 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:42.028  4409  4878 D JavaheapMonitor: Java heap used=12M max=256M, proc: com.android.phone
+07-14 16:46:42.028  4409  4878 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:42.235  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:42.236  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s29ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:42.238  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:42.239  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:42.239  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:42.248  2895  4084 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:42.249  2895  4084 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:42.252  2895  4084 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:42.253  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:42.662  3874  4879 D JavaheapMonitor: Java heap used=23M max=512M, proc: com.miui.home
+07-14 16:46:42.662  3874  4879 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:42.972  6968  8988 D JavaheapMonitor: Java heap used=15M max=256M, proc: com.miui.securitycenter.remote
+07-14 16:46:42.973  6968  8988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:43.719  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:44.152  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30602 temperature_average = 30716 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:46:45.287  2895  4907 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:45.289 30045 31599 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:45.289 30045 31599 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2004955ms
+07-14 16:46:45.289 30045 31599 D MemorySizeMonitor: Skip report due to report interval (59997ms < 60000ms)
+07-14 16:46:45.354  2895  4907 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:45.377  2895  5487 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:46.004  5547 16283 D JavaheapMonitor: Java heap used=4M max=256M, proc: com.miui.dmregservice
+07-14 16:46:46.004  5547 16283 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:46.622  6839 11578 D JavaheapMonitor: Java heap used=22M max=256M, proc: com.xiaomi.xmsf
+07-14 16:46:46.622  6839 11578 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:46.726  2895  3506 I MiuiNetworkPolicy: bandwidth: 1 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:46.791  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:46.791  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:46.793  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:46.794  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:46.794  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:46.794  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:46.798  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:46:46.801  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.802  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.802  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:46.803  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:46.804  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:46.805  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.807  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:46.808  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:46.808  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:46.808  4202  5699 W IWlanNetworkService: 25963 > Response Processed
+07-14 16:46:46.808  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:46.809  2895  5487 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:46.817  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.819  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.820  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:46.821  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.822  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:46.824  4202  5699 W IWlanNetworkService: 25964 > Response Processed
+07-14 16:46:46.825  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:46.833  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:46:46.836  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:46:46.836  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:46:46.836  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:46.836  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:46.836  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:46:47.011  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:46:47.012  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:46:47.190  4466  4921 D JavaheapMonitor: Java heap used=76M max=256M, proc: com.android.systemui
+07-14 16:46:47.190  4466  4921 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+07-14 16:46:47.276  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:47.278  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s29ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:47.279  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:47.280  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:47.280  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:47.288  2895  4145 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:47.288  2895  4145 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:47.291  2895  4145 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:47.292  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:47.618  2895  3258 D AurogonBandwidthController: skinTemperature:30.552
+07-14 16:46:47.619  2895  3258 D AurogonBandwidthController: skinTemperature:30.552
+07-14 16:46:48.886  1609  1609 I vendor.rmt_storage: rmt_storage_connect_cb: clnt_h=0x49d conn_h=0xb400007e2c82c290
+07-14 16:46:48.886  1609  1609 I vendor.rmt_storage: rmt_storage_rw_iovec_cb: /boot/modem_fs1: req_h=0x49d msg_id=3: R/W request received (wr_count 1175)
+07-14 16:46:48.887  1609  1609 I vendor.rmt_storage: wakelock acquired: 1, error no: 11
+07-14 16:46:48.887  1609  2775 I vendor.rmt_storage: rmt_storage_client_thread: /boot/modem_fs1: Unblock worker thread (th_id: 534930300080)
+07-14 16:46:48.951  1609  2775 I vendor.rmt_storage: rmt_storage_client_thread: /boot/modem_fs1: req_h=0x49d msg_id=3: Bytes written = 2621440, wr_count 1175
+07-14 16:46:48.951  1609  2775 I vendor.rmt_storage: rmt_storage_client_thread: /boot/modem_fs1: req_h=0x49d msg_id=3: Send response: res=0 err=0, wr_count 1175
+07-14 16:46:48.951  1609  2775 I vendor.rmt_storage: rmt_storage_client_thread: /boot/modem_fs1: About to block rmt_storage client thread (th_id: 534930300080) wakelock released: 1, error no: 22
+07-14 16:46:48.951  1609  2775 I vendor.rmt_storage: 
+07-14 16:46:48.953  1319  1385 E minksocket: MinkIPC_QRTR_Service: client with node 0 port 1735 went down
+07-14 16:46:48.954  1609  1609 I vendor.rmt_storage: rmt_storage_disconnect_cb: clnt_h=0x49d conn_h=0xb400007e2c82c290
+07-14 16:46:49.732  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:50.062  9605 10047 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.powerkeeper
+07-14 16:46:50.063  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:50.291  2895  4145 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:50.293 30045 31567 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:50.294 30045 31567 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2009960ms
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: Error handling memory exceed
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.ref.Reference.get()' on a null object reference
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at ed.j.t(Unknown Source:60)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at ed.j.m(Unknown Source:304)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at ed.j.F(Unknown Source:5)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at ed.j.c(Unknown Source:0)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at ed.g.run(Unknown Source:6)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at com.thread.tool.MonitorTrackTool$MonitoredRunnable.run(Unknown Source:115)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1302)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:677)
+07-14 16:46:50.295 30045 31567 E MemorySizeMonitor: 	at java.lang.Thread.run(Thread.java:1119)
+07-14 16:46:50.695 14444 16307 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.miui.tsmclient:daemon
+07-14 16:46:50.695 14444 16307 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:51.524  4282 14550 D JavaheapMonitor: Java heap used=13M max=256M, proc: org.codeaurora.ims
+07-14 16:46:51.524  4282 14550 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:51.612  4202 14860 D JavaheapMonitor: Java heap used=13M max=256M, proc: .qtidataservices
+07-14 16:46:51.612  4202 14860 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:51.747  6601 11418 D JavaheapMonitor: Java heap used=7M max=256M, proc: com.lbe.security.miui
+07-14 16:46:51.748  6601 11418 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:52.316  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:52.317  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s28ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:52.319  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:52.320  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:52.320  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:52.331  2895  4084 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:52.332  2895  4084 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:52.335  2895  4084 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:52.336  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:52.738  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:52.932 14876 16313 D JavaheapMonitor: Java heap used=2M max=256M, proc: com.miui.wmsvc
+07-14 16:46:52.932 14876 16313 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:53.611 16785 16865 D JavaheapMonitor: Java heap used=6M max=256M, proc: com.miui.systemAdSolution
+07-14 16:46:53.612 16785 16865 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:53.730  4232  4396 D JavaheapMonitor: Java heap used=24M max=256M, proc: com.android.networkstack.process
+07-14 16:46:53.730  4232  4396 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:54.008 30954 31184 I lyra-msg-act: ActuatorControl::ActuatorControlProcess:310 monitor queueMap :0
+07-14 16:46:54.166 30103 30236 I ScanManager: msg.what = MSG_CHECK_SCAN_STATUS, msg.arg1 = CHECK_BACKGROUND_TIMEOUT
+07-14 16:46:54.168  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30552 temperature_average = 30666 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:46:54.296  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:54.297  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:54.297  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:54.300  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:54.300  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:54.300  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:54.304  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:46:54.308  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.309  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:46:54.309  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:46:54.309  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:54.311  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:46:54.311  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:46:54.312  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.313  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:46:54.313  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:46:54.314  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.315  4202  5699 W IWlanNetworkService: 25965 > Response Processed
+07-14 16:46:54.316  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.317  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:54.319  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.320  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:46:54.321  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.323  4202  5699 W IWlanNetworkService: 25966 > Response Processed
+07-14 16:46:54.324  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:46:54.326  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:46:54.335  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:46:54.336  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:46:54.336  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:46:54.336  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:54.336  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:46:54.336  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:46:54.513  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:46:54.515  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:46:55.288  2895  4084 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:46:55.291 30045 31818 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:46:55.291 30045 31818 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2014957ms
+07-14 16:46:55.291 30045 31818 D MemorySizeMonitor: Skip report due to report interval (4997ms < 60000ms)
+07-14 16:46:55.744  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:57.361  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:46:57.363  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s30ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:46:57.364  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:46:57.365  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:46:57.365  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:46:57.375  2895  4084 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:46:57.375  2895  4084 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:46:57.378  2895  4084 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:46:57.380  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:46:57.617  2895  3258 D AurogonBandwidthController: skinTemperature:30.513
+07-14 16:46:57.618  2895  3258 D AurogonBandwidthController: skinTemperature:30.513
+07-14 16:46:57.627  6193 11094 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.analytics
+07-14 16:46:57.627  6193 11094 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:58.750  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:46:59.051  3874  4879 D JavaheapMonitor: Java heap used=23M max=512M, proc: com.miui.home
+07-14 16:46:59.051  3874  4879 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:59.582 24612 24657 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.google.android.gms.persistent
+07-14 16:46:59.582 24612 24657 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:46:59.738  9605 12739 D powerkeeper.dfsobserve: board ready to handle temperature change
+07-14 16:46:59.738  9605 16675 D powerkeeper.dfscpucol: handleTemperatureChange: temp=30513
+07-14 16:47:00.262  6968  8988 D JavaheapMonitor: Java heap used=15M max=256M, proc: com.miui.securitycenter.remote
+07-14 16:47:00.263  6968  8988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:00.287  2895  4930 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:00.290 30045 31813 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:00.290 30045 31813 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2019956ms
+07-14 16:47:00.290 30045 31813 D MemorySizeMonitor: Skip report due to report interval (9996ms < 60000ms)
+07-14 16:47:00.564  4466  4921 D JavaheapMonitor: Java heap used=76M max=256M, proc: com.android.systemui
+07-14 16:47:00.564  4466  4921 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+07-14 16:47:01.236 23708 24238 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.xiaomi.finddevice
+07-14 16:47:01.237 23708 24238 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:01.757  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:02.180  2895  3167 D HeapUsage Monitor: HeapAllocSize : 187MB; monitorSize : 500MB
+07-14 16:47:02.404  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:02.406  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s30ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:02.407  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:02.408  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:02.409  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:02.418  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:02.419  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:02.421  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:02.423  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:02.773  4409  4878 D JavaheapMonitor: Java heap used=12M max=256M, proc: com.android.phone
+07-14 16:47:02.773  4409  4878 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:02.922 31443 31741 D JavaheapMonitor: Java heap used=4M max=256M, proc: com.android.updater
+07-14 16:47:02.923 31443 31741 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:04.184  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30513 temperature_average = 30619 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:47:04.695 23690 24248 D JavaheapMonitor: Java heap used=21M max=512M, proc: com.xiaomi.market
+07-14 16:47:04.695 23690 24248 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:04.762  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:04.805 24056 24247 D JavaheapMonitor: Java heap used=5M max=512M, proc: com.android.thememanager
+07-14 16:47:04.805 24056 24247 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:04.974  9605 10047 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.powerkeeper
+07-14 16:47:04.974  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:05.290  2895  4930 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:05.292 30045 31835 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:05.292 30045 31835 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2024958ms
+07-14 16:47:05.292 30045 31835 D MemorySizeMonitor: Skip report due to report interval (14998ms < 60000ms)
+07-14 16:47:05.406  2895  3815 I NetworkBoostStatusManager: handle: 107
+07-14 16:47:05.900  4202 14860 D JavaheapMonitor: Java heap used=13M max=256M, proc: .qtidataservices
+07-14 16:47:05.900  4202 14860 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:07.138 20926 20988 D JavaheapMonitor: Java heap used=13M max=256M, proc: com.baidu.input_mi
+07-14 16:47:07.139 20926 20988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:07.447  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:07.448  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s30ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:07.450  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:07.451  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:07.451  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:07.462  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:07.462  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:07.466  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:07.467  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:07.619  2895  3258 D AurogonBandwidthController: skinTemperature:30.457
+07-14 16:47:07.620  2895  3258 D AurogonBandwidthController: skinTemperature:30.457
+07-14 16:47:07.769  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:08.464  6839 11578 D JavaheapMonitor: Java heap used=22M max=256M, proc: com.xiaomi.xmsf
+07-14 16:47:08.464  6839 11578 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:09.171  4386 12517 D JavaheapMonitor: Java heap used=3M max=256M, proc: vendor.qti.frameworks.utils
+07-14 16:47:09.172  4386 12517 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:10.287  2895  4930 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:10.290 30045 31834 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:10.290 30045 31834 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2029956ms
+07-14 16:47:10.290 30045 31834 D MemorySizeMonitor: Skip report due to report interval (19996ms < 60000ms)
+07-14 16:47:10.295  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:10.296  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:10.296  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:10.298  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:10.299  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:10.299  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:10.303  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:47:10.307  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.308  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:10.308  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:10.308  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:10.310  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.311  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:10.311  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:10.312  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.313  4202  5699 W IWlanNetworkService: 25967 > Response Processed
+07-14 16:47:10.314  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.315  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:10.315  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:10.315  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:10.316  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.317  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:10.318  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.320  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:10.320  4202  5699 W IWlanNetworkService: 25968 > Response Processed
+07-14 16:47:10.321  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:10.330  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:47:10.332  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:47:10.332  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:47:10.332  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:10.332  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:10.332  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:47:10.513  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:47:10.515  2895  4930 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:47:10.775  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:12.074 27746 27799 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.google.android.gms.unstable
+07-14 16:47:12.074 27746 27799 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:12.491  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:12.492  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s29ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:12.493  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:12.494  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:12.494  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:12.503  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:12.504  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:12.506  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:12.508  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:13.130  6193 11094 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.analytics
+07-14 16:47:13.130  6193 11094 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:13.780  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:14.198  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30457 temperature_average = 30576 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:47:14.311  2895  3190 D JavaheapMonitor: Java heap used=188M max=512M, proc: system_server
+07-14 16:47:14.311  2895  3190 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+07-14 16:47:15.102 30954 31376 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.xiaomi.mi_connect_service
+07-14 16:47:15.102 30954 31376 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:15.114 24612 24657 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.google.android.gms.persistent
+07-14 16:47:15.114 24612 24657 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:15.195  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=209735233, flags=0x1, tag="NetworkStats", ws=null, uid=1000, pid=2895
+07-14 16:47:15.212  2895  4930 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=209735233 [NetworkStats], flags=0x0
+07-14 16:47:15.287  2895  4930 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:15.289 30045 31857 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:15.289 30045 31857 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2034955ms
+07-14 16:47:15.289 30045 31857 D MemorySizeMonitor: Skip report due to report interval (24995ms < 60000ms)
+07-14 16:47:15.314  2895  2916 I system_server: This is sticky GC, maxfree is 33554432 minfree is 8388608
+07-14 16:47:15.535  4409  4878 D JavaheapMonitor: Java heap used=13M max=256M, proc: com.android.phone
+07-14 16:47:15.536  4409  4878 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:16.580  4202 14860 D JavaheapMonitor: Java heap used=13M max=256M, proc: .qtidataservices
+07-14 16:47:16.580  4202 14860 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:16.786  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:17.456  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:17.456  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:17.456  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:17.459  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:17.459  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:17.459  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:17.463  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:47:17.465  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:17.465  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:17.466  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:17.467  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.467  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:17.467  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:17.468  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:17.469  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:17.470  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.471  4202  5699 W IWlanNetworkService: 25969 > Response Processed
+07-14 16:47:17.471  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:17.473  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.479  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.482  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.482  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:17.484  2895  4930 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.485  4202  5699 W IWlanNetworkService: 25970 > Response Processed
+07-14 16:47:17.486  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:17.487  2895  4930 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:17.497  2895  4930 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:47:17.499  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:47:17.499  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:47:17.499  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:17.499  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:17.499  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:47:17.525  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:17.527  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s23ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:17.527  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:17.529  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:17.529  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:17.537  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:17.537  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:17.538  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:17.539  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:17.620  2895  3258 D AurogonBandwidthController: skinTemperature:30.447
+07-14 16:47:17.622  2895  3258 D AurogonBandwidthController: skinTemperature:30.447
+07-14 16:47:17.668  2895  4930 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:47:17.671  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:47:17.917  6968  8988 D JavaheapMonitor: Java heap used=15M max=256M, proc: com.miui.securitycenter.remote
+07-14 16:47:17.917  6968  8988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:18.470  9605 10047 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.miui.powerkeeper
+07-14 16:47:18.470  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:18.564 31568 31855 D JavaheapMonitor: Java heap used=2M max=512M, proc: com.miui.securitycore.remote
+07-14 16:47:18.564 31568 31855 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:19.138 24116 24265 D JavaheapMonitor: Java heap used=5M max=256M, proc: com.xiaomi.account
+07-14 16:47:19.138 24116 24265 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:19.198 24897 25043 D JavaheapMonitor: Java heap used=8M max=256M, proc: com.android.mms
+07-14 16:47:19.198 24897 25043 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:19.790  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:20.290  2895  4907 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:20.293 30045 31599 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:20.293 30045 31599 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2039959ms
+07-14 16:47:20.293 30045 31599 D MemorySizeMonitor: Skip report due to report interval (29999ms < 60000ms)
+07-14 16:47:21.586 23952 24269 D JavaheapMonitor: Java heap used=2M max=256M, proc: com.android.providers.calendar
+07-14 16:47:21.586 23952 24269 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:22.562  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:22.564  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s26ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:22.565  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:22.566  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:22.566  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:22.575  2895  4930 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:22.576  2895  4930 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:22.578  2895  4930 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:22.579  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:22.795  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:22.931  2895  3385 D AlarmManager: [xiaomi_power]sending alarm Alarm{e9438bb type 3 origWhen 112117072 whenElapsed 112117072 android} with listener tag TIME_TICK stats tag *alarm*:TIME_TICK package name android at 112200001 ms
+07-14 16:47:22.932  2895  3385 E AlarmManager: not align this alarm: Alarm{1ef590d type 3 origWhen 112237071 whenElapsed 112237071 android}, reason=1
+07-14 16:47:22.932  2895  3385 D AlarmManager: mBroadcastRefCount -> 1
+07-14 16:47:22.933  2895  3385 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=213415057, flags=0x1, tag="*alarm*", ws=WorkSource{1000 chains=WorkChain{(1000), (1000, JobScheduler)}}, uid=1000, pid=2895
+07-14 16:47:22.934  2895  3385 D AlarmManager: [xiaomi_power]sending alarm Alarm{4d03fbb type 2 origWhen 112200000 whenElapsed 112200000 com.xiaomi.xmsf} with listener tag null stats tag *walarm*:com.xiaomi.push.PING_TIMER package name com.xiaomi.xmsf at 112200001 ms
+07-14 16:47:22.941  2895  3385 D AlarmManager: mBroadcastRefCount -> 2
+07-14 16:47:22.941  2895  3385 I whetstone.activity: Power Event callback listener is empty for resId=128
+07-14 16:47:22.942  2895  3385 D BatteryStatsManagerStub: notifyEvent for resId=128 used 0ms
+07-14 16:47:22.943  2895  2895 D AlarmManager: mBroadcastRefCount -> 1
+07-14 16:47:22.943  2895  2895 D AlarmManager: mPendingIntent -> null
+07-14 16:47:22.947  6839  8377 D MyLog   : -->log(1): [Tid:378] [Alarm] heartbeat alarm has been triggered.
+07-14 16:47:22.948  6839  8377 D MyLog   : -->log(1): [Tid:378] [Alarm] Ping XMChannelService on timer
+07-14 16:47:22.957  6839  6839 W PushService: [Tid:2] [XMPushService] onStart() with intent.Action = com.xiaomi.push.timer, chid = null, pkg = null|null
+07-14 16:47:22.959  6839  8499 W PushService: [Tid:379] [Job] Handle intent action = com.xiaomi.push.timer
+07-14 16:47:22.959  6839  8499 W PushService: [Tid:379] [Alarm] Service called on timer
+07-14 16:47:22.959  6839  8499 W PushService: [Tid:379] [HwKaMgr] update fall down state: false
+07-14 16:47:22.959  6839  8499 W PushService: [Tid:379] [Alarm] register alarm. (false)
+07-14 16:47:22.959  6839  8499 W PushService: [Tid:379] [HwKaMgr] [Available] MdKa is Unavailable. reason: not supported
+07-14 16:47:22.959  6839  8499 D MyLog   : -->log(0): [Tid:379] [HB] long ping interval count: 2
+07-14 16:47:22.959  6839  8499 W PushService: [Tid:379] [HB] ping interval:600000
+07-14 16:47:22.960  6839  8499 W PushService: [Tid:379] registerPing, firstPing=false, interval=600000, nextTime=112800000
+07-14 16:47:22.963  6839  8499 D MyLog   : -->log(1): [Tid:379] [Alarm] register timer 112800000, delta=599966ms
+07-14 16:47:22.963  6839  8499 W PushService: [Tid:379] [HwKaMgr] [ping] start ping action
+07-14 16:47:22.965  6839  8499 W PushService: [Tid:379] [Slim] SND ping id=0
+07-14 16:47:22.966  6839  8499 D MyLog   : -->log(1): [Tid:379] [Slim] Wrote {cmd=PING;chid=0;len=12}
+07-14 16:47:22.966  6839  8499 W PushService: [Tid:379] [HwKaMgr] [socket] send message
+07-14 16:47:22.966  6839  8499 D MyLog   : -->log(1): [Tid:379] [Slim] 04:47:22 PM Sent  Blob [PING,0,0]
+07-14 16:47:22.966  6839  8499 W PushService: [Tid:379] [HwKaMgr] [Available] MdKa is Unavailable. reason: not supported
+07-14 16:47:22.967  6839  8377 W PushService: [Tid:378] [Alarm] heartbeat alarm finish in 20
+07-14 16:47:22.971  6839  7508 W PushService: [Tid:351] SleepModeMonitor check and upload.
+07-14 16:47:22.973  2895  2895 D AlarmManager: mBroadcastRefCount -> 0
+07-14 16:47:22.974  4466  4466 E VRI[StatusBar]: performDraw: Not drawing due to screen off
+07-14 16:47:22.974  2895  2895 D AlarmManager: mPendingIntent -> PendingIntent{4eb770e: PendingIntentRecord{2f79eea com.xiaomi.xmsf broadcastIntent}}
+07-14 16:47:22.974  2895  2895 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=213415057 [*alarm*], flags=0x0
+07-14 16:47:22.975  4466  4466 D MiuiClockController: fixed clock timezone, oldCurrentTimezone is America/New_York, clockTimezone is null mCurrentTimezone is America/New_York shouldUpdateTimeZoomOnTimeUpdate: false
+07-14 16:47:22.975  4466  4466 I MiuiDualClock: update local timeZone:America/New_York
+07-14 16:47:22.975  4466  4466 D MiuiDualClock: miui dual clock time update: 4:47
+07-14 16:47:22.976  4466  4466 D MiuiDualClock: miui dual clock time update: 4:47
+07-14 16:47:22.977  4466  4466 D MiuiClockController: Listener updateTime
+07-14 16:47:22.977  4466  4466 D MiuiDualClock: miui dual clock time update: 4:47
+07-14 16:47:22.977  4466  4466 D MiuiDualClock: miui dual clock time update: 4:47
+07-14 16:47:22.977  4466  4466 E AnimationHelper: updateTime sToAod:true mHasNotification: false, mClockType: dual
+07-14 16:47:22.987  4466  6021 I MiuiDualClock: get city name: New York, from: content://com.android.settings.provider.MiuiSettingsDataProvider/zone_info
+07-14 16:47:23.038  6839  7600 I libc    : kill: send 15 to pid 9703
+07-14 16:47:23.039  6839  7600 I libc    : debug pid reuse, real pid 9703
+07-14 16:47:23.243  6839 31517 D MyLog   : -->log(1): [Tid:1097] [Slim] Read {cmd=PING;chid=0;len=8}
+07-14 16:47:23.243  6839 31517 W PushService: [Tid:1097] [HwKaMgr] [socket] receive message
+07-14 16:47:23.243  6839 31517 W PushService: [Tid:1097] [Slim] RCV ping id=0
+07-14 16:47:23.244  6839 31517 D MyLog   : -->log(1): [Tid:1097] [Slim] 04:47:23 PM RCV  Blob [PING,0,0]
+07-14 16:47:23.244  6839  8499 E PushService: [Tid:379] stats key not found
+07-14 16:47:23.245  6839  8499 W PushService: [Tid:379] -->onPong()
+07-14 16:47:23.245  6839  8499 W PushService: [Tid:379] [HwKaMgr] [Available] MdKa is Unavailable. reason: not supported
+07-14 16:47:24.208  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30447 temperature_average = 30536 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:47:24.255  6193 11094 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.analytics
+07-14 16:47:24.255  6193 11094 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:24.397  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:24.397  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:24.398  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:24.400  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:24.401  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:24.401  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:24.406  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:47:24.407  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:24.407  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:24.408  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:24.410  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.411  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:24.411  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:24.411  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:24.412  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.413  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:24.414  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.415  4202  5699 W IWlanNetworkService: 25971 > Response Processed
+07-14 16:47:24.417  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:24.418  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.420  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.422  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:24.422  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.423  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:24.424  4202  5699 W IWlanNetworkService: 25972 > Response Processed
+07-14 16:47:24.425  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:24.434  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:47:24.435  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:47:24.435  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:47:24.435  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:24.435  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:24.435  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:47:24.613  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:47:24.615  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:47:25.290  2895  4145 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:25.293 30045 31567 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:25.293 30045 31567 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2044959ms
+07-14 16:47:25.293 30045 31567 D MemorySizeMonitor: Skip report due to report interval (34999ms < 60000ms)
+07-14 16:47:25.802  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:26.725  4409  4878 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.android.phone
+07-14 16:47:26.726  4409  4878 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:27.525  6839 11578 D JavaheapMonitor: Java heap used=22M max=256M, proc: com.xiaomi.xmsf
+07-14 16:47:27.525  6839 11578 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:27.605  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:27.607  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s31ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:27.608  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:27.609  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:27.610  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:27.620  2895  3258 D AurogonBandwidthController: skinTemperature:30.421
+07-14 16:47:27.620  2895  4145 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:27.621  2895  4145 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:27.621  2895  3258 D AurogonBandwidthController: skinTemperature:30.421
+07-14 16:47:27.625  2895  4145 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:27.627  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:27.860  6208  6852 D JavaheapMonitor: Java heap used=20M max=256M, proc: com.miui.daemon
+07-14 16:47:27.860  6208  6852 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:27.979 20926 20988 D JavaheapMonitor: Java heap used=13M max=256M, proc: com.baidu.input_mi
+07-14 16:47:27.980 20926 20988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:28.022  5279  9549 D JavaheapMonitor: Java heap used=6M max=256M, proc: com.xiaomi.bluetooth
+07-14 16:47:28.023  5279  9549 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:28.807  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:28.826 12269 15971 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.miui.core
+07-14 16:47:28.827 12269 15971 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:29.362  3874  4879 D JavaheapMonitor: Java heap used=23M max=512M, proc: com.miui.home
+07-14 16:47:29.362  3874  4879 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:29.600 30045 32289 D JavaheapMonitor: Java heap used=14M max=512M, proc: com.android.browser
+07-14 16:47:29.600 30045 32289 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:29.612 30103 30183 D JavaheapMonitor: Java heap used=7M max=256M, proc: com.android.bluetooth
+07-14 16:47:29.612 30103 30183 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:29.770  9605 12739 D powerkeeper.dfsobserve: board ready to handle temperature change
+07-14 16:47:29.771  9605 16739 D powerkeeper.dfscpucol: handleTemperatureChange: temp=30421
+07-14 16:47:29.787  9605 10047 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.miui.powerkeeper
+07-14 16:47:29.787  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:29.868  6968  8988 D JavaheapMonitor: Java heap used=15M max=256M, proc: com.miui.securitycenter.remote
+07-14 16:47:29.868  6968  8988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:30.290  2895  4145 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:30.293 30045 31818 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:30.293 30045 31818 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2049959ms
+07-14 16:47:30.294 30045 31818 D MemorySizeMonitor: Skip report due to report interval (39999ms < 60000ms)
+07-14 16:47:31.029  2895  3190 D JavaheapMonitor: Java heap used=109M max=512M, proc: system_server
+07-14 16:47:31.030  2895  3190 V JavaheapMonitor: Check java heap usage finished! Next check delay: 180000
+07-14 16:47:31.076  1937  1937 I adbd    : in ShellService: export ANDROID_LOG_TAGS=''; exec logcat
+07-14 16:47:31.475  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:31.475  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:31.476  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:31.478  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:31.478  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:31.479  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:31.481  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:47:31.483  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:31.483  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:31.484  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:31.486  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:31.487  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:31.487  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:31.487  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.488  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:31.489  4202  5699 W IWlanNetworkService: 25973 > Response Processed
+07-14 16:47:31.489  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.490  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:31.491  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.496  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.498  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.498  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:31.499  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.502  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:31.502  4202  5699 W IWlanNetworkService: 25974 > Response Processed
+07-14 16:47:31.503  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:31.515  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:47:31.516  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:47:31.516  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:47:31.516  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:31.516  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:31.516  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:47:31.689  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:47:31.692  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:47:31.724 24408 24467 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.google.android.gms:snet
+07-14 16:47:31.724 24408 24467 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:31.812  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:32.113 24476 24545 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.google.android.gms
+07-14 16:47:32.114 24476 24545 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:32.183  2895  3167 D HeapUsage Monitor: HeapAllocSize : 109MB; monitorSize : 500MB
+07-14 16:47:32.221  6150  7149 D JavaheapMonitor: Java heap used=9M max=512M, proc: com.android.providers.media.module
+07-14 16:47:32.222  6150  7149 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:32.363 24612 24657 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.google.android.gms.persistent
+07-14 16:47:32.364 24612 24657 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:32.647  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:32.648  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s25ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:32.650  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:32.651  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:32.651  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:32.661  2895  4907 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:32.662  2895  4907 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:32.664  2895  4907 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:32.666  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:32.926  7093 11626 D JavaheapMonitor: Java heap used=9M max=256M, proc: android.process.media
+07-14 16:47:32.926  7093 11626 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:32.968  6839  8499 W PushService: [Tid:379] [Job] check the ping-pong.1784062042965
+07-14 16:47:34.214  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30421 temperature_average = 30498 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:47:34.819  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:35.290  2895  4907 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:35.293 30045 31813 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:35.294 30045 31813 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2054959ms
+07-14 16:47:35.294 30045 31813 D MemorySizeMonitor: Skip report due to report interval (44999ms < 60000ms)
+07-14 16:47:35.438  2895  3815 I NetworkBoostStatusManager: handle: 107
+07-14 16:47:37.415 24960 25058 D JavaheapMonitor: Java heap used=2M max=256M, proc: com.xiaomi.simactivate.service
+07-14 16:47:37.415 24960 25058 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:37.567  4409  4878 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.android.phone
+07-14 16:47:37.568  4409  4878 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:37.622  2895  3258 D AurogonBandwidthController: skinTemperature:30.35
+07-14 16:47:37.624  2895  3258 D AurogonBandwidthController: skinTemperature:30.35
+07-14 16:47:37.689  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:37.690  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s29ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:37.693  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:37.694  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:37.694  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:37.704  2895  4907 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:37.704  2895  4907 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:37.707  2895  4907 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:37.708  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:37.825  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:38.516  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:38.517  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:38.518  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:38.521  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:38.522  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:38.522  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:38.526  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:38.526  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:38.526  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:47:38.527  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:38.530  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:38.531  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:38.531  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:38.531  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.533  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.534  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:38.536  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.538  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.538  4202  5699 W IWlanNetworkService: 25975 > Response Processed
+07-14 16:47:38.539  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.540  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.543  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:38.543  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:38.546  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:38.548  4202  5699 W IWlanNetworkService: 25976 > Response Processed
+07-14 16:47:38.549  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:38.552  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:47:38.557  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:47:38.557  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:47:38.557  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:38.557  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:38.557  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:47:38.731  2895  4145 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:47:38.732  2895  4084 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:47:40.288  2895  4084 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:40.290 30045 31835 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:40.291 30045 31835 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2059957ms
+07-14 16:47:40.291 30045 31835 D MemorySizeMonitor: Skip report due to report interval (49997ms < 60000ms)
+07-14 16:47:40.470  2895  3605 D HyperStabilitySdkService: checkDmabufStatus done, exceedLimitsList:[], totalDmabufSize:0
+07-14 16:47:40.526  5064 11195 D JavaheapMonitor: Java heap used=7M max=256M, proc: com.xiaomi.mirror
+07-14 16:47:40.526  5064 11195 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:40.735  9605 10047 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.miui.powerkeeper
+07-14 16:47:40.735  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:40.832  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:40.915  3874  4879 D JavaheapMonitor: Java heap used=23M max=512M, proc: com.miui.home
+07-14 16:47:40.916  3874  4879 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:42.114  5279  9549 D JavaheapMonitor: Java heap used=6M max=256M, proc: com.xiaomi.bluetooth
+07-14 16:47:42.115  5279  9549 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:42.734  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:42.736  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s31ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:42.737  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:42.739  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:42.739  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:42.750  2895  4084 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:42.750  2895  4084 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:42.753  2895  4084 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:42.755  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:42.900 27746 27799 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.google.android.gms.unstable
+07-14 16:47:42.900 27746 27799 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:43.839  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:43.847  6193 11094 D JavaheapMonitor: Java heap used=9M max=256M, proc: com.miui.analytics
+07-14 16:47:43.847  6193 11094 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:44.228  2895  5015 D SLM-SRV-SLAService: checktemp temperature = 30350 temperature_average = 30456 isPerformanceMode = false thermal_enable_slm = true
+07-14 16:47:45.012  7093 11626 D JavaheapMonitor: Java heap used=9M max=256M, proc: android.process.media
+07-14 16:47:45.012  7093 11626 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:45.290  2895  4084 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:45.292 30045 31834 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:45.292 30045 31834 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2064958ms
+07-14 16:47:45.292 30045 31834 D MemorySizeMonitor: Skip report due to report interval (54998ms < 60000ms)
+07-14 16:47:45.356  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:45.356  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:45.357  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:45.359  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:45.360  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:45.360  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:45.364  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=null, uid=1001, pid=4409
+07-14 16:47:45.368  4282  5749 I QImsService: ImsRadioIndicationAidl : onServiceDomainChanged()[SUB0]
+07-14 16:47:45.368  2895  4084 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.369  4282  5749 I QImsService: ImsSenderRxr : [UNSL]< UNSOL_SERVICE_DOMAIN_CHANGED 0[SUB0]
+07-14 16:47:45.369  2895  4145 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=220231302, flags=0x1, tag="NotifyRegistrantLock", ws=null, uid=10193, pid=4282
+07-14 16:47:45.370  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:45.371  4282  4282 I QImsService: ImsRegistrationController : Message received: what = 5
+07-14 16:47:45.371  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.371  4282  4282 I QImsService: ImsRegistrationController : handleSrvDomainChanged
+07-14 16:47:45.372  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.373  4202  5699 W IWlanNetworkService: 25977 > Response Processed
+07-14 16:47:45.373  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=210991943, flags=0x1, tag="RILJ_ACK_WL", ws=null, uid=1001, pid=4409
+07-14 16:47:45.374  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:45.376  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.378  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.379  2895  4907 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=91249821, flags=0x1, tag="IWLAN_PROXY_WL", ws=null, uid=10098, pid=4202
+07-14 16:47:45.380  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.381  2895  5487 D PowerManagerService: [xiaomi_power]acquireWakeLockInternal: lock=172314484, flags=0x1, tag="*telephony-radio*", ws=WorkSource{1001 com.android.phone}, uid=1001, pid=4409
+07-14 16:47:45.382  4202  5699 W IWlanNetworkService: 25978 > Response Processed
+07-14 16:47:45.383  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=91249821 [IWLAN_PROXY_WL], flags=0x0
+07-14 16:47:45.395  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=172314484 [*telephony-radio*], flags=0x0
+07-14 16:47:45.397  4409  4409 D SatelliteController: Satellite for carrier is not supported.
+07-14 16:47:45.397  4409  4409 D SatelliteController: registerForSatelliteModemStateChanged: add Listeners for ModemState
+07-14 16:47:45.397  4409  4409 E SatelliteController: registerForSatelliteModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:45.397  4409  4409 E SatelliteController: unregisterForModemStateChanged: mSatelliteSessionController is not initialized yet
+07-14 16:47:45.397  4409  4409 D SatelliteController: unregisterForModemStateChanged: remove Listeners for ModemState
+07-14 16:47:45.571  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=220231302 [NotifyRegistrantLock], flags=0x10000
+07-14 16:47:45.576  2895  4907 D PowerManagerService: [xiaomi_power]releaseWakeLockInternal: lock=210991943 [RILJ_ACK_WL], flags=0x0
+07-14 16:47:45.612 24408 24467 D JavaheapMonitor: Java heap used=3M max=256M, proc: com.google.android.gms:snet
+07-14 16:47:45.612 24612 24657 D JavaheapMonitor: Java heap used=14M max=256M, proc: com.google.android.gms.persistent
+07-14 16:47:45.612 24612 24657 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:45.612 24408 24467 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:46.566 20926 20988 D JavaheapMonitor: Java heap used=13M max=256M, proc: com.baidu.input_mi
+07-14 16:47:46.567 20926 20988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:46.845  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:47.623  2895  3258 D AurogonBandwidthController: skinTemperature:30.339
+07-14 16:47:47.625  2895  3258 D AurogonBandwidthController: skinTemperature:30.339
+07-14 16:47:47.780  2895  3588 D GreezeManager: FZ uid = 10269 reason =check binder success !
+07-14 16:47:47.782  2895  3588 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' ACQ=-5s31ms (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: true, procState: 10, reason: greeze
+07-14 16:47:47.784  2895  3588 D ActionExecute: frozen uid = 10269 reason=check binder
+07-14 16:47:47.785  2895  3588 D ActionExecute: setPkgData uid = 10269 time=0
+07-14 16:47:47.785  2895  3588 D ExternalInterface: setUidState, uid = 10269 allow = false
+07-14 16:47:47.795  2895  4907 D GreezeManager: THAW uid = 10269 pid = [ 14336 31322 ]  reason : Check Binder caller : 1
+07-14 16:47:47.795  2895  4907 I PowerManagerServiceImpl: Partial wakeLock:[PARTIAL_WAKE_LOCK                 'VFS:Maintenance' DISABLED (uid=10269 pid=31322 pkg=com.tencent.mm)], disabled: false, procState: 10, reason: greeze
+07-14 16:47:47.798  2895  4907 D ExternalInterface: setUidState, uid = 10269 allow = true
+07-14 16:47:47.799  2895  3588 D ActionExecute: setPkgData uid = 10269 time=3000
+07-14 16:47:48.114  6968  8988 D JavaheapMonitor: Java heap used=15M max=256M, proc: com.miui.securitycenter.remote
+07-14 16:47:48.115  6968  8988 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:48.219 24476 24545 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.google.android.gms
+07-14 16:47:48.219 24476 24545 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:48.784  4232  4396 D JavaheapMonitor: Java heap used=25M max=256M, proc: com.android.networkstack.process
+07-14 16:47:48.785  4232  4396 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:49.784  6601 11418 D JavaheapMonitor: Java heap used=7M max=256M, proc: com.lbe.security.miui
+07-14 16:47:49.785  6601 11418 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
+07-14 16:47:49.850  2895  3506 I MiuiNetworkPolicy: bandwidth: 0 KB/s, Max bandwidth: 3256 KB/s
+07-14 16:47:50.287  2895  4907 D FileUtils: Rounded bytes from 11827486720 to 16000000000
+07-14 16:47:50.290 30045 31857 D MemorySizeMonitor: Current memory: 310700KB, ratio: 2%, total: 11550280KB
+07-14 16:47:50.290 30045 31857 W MemorySizeMonitor: Memory threshold exceeded continuously! duration=2069956ms
+07-14 16:47:50.290 30045 31857 D MemorySizeMonitor: Skip report due to report interval (59996ms < 60000ms)
+07-14 16:47:50.345 30045 31888 W chromium: [WARNING:cookie_manager.cc(548)] SetCanonicalCookie for incognitoMojoCookieManager
+07-14 16:47:50.808  9605 10047 D JavaheapMonitor: Java heap used=10M max=256M, proc: com.miui.powerkeeper
+07-14 16:47:50.809  9605 10047 V JavaheapMonitor: Check java heap usage finished! Next check delay: 300000
