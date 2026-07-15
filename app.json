@@ -3,7 +3,6 @@
     "name": "Waybound",
     "slug": "waybound-travel",
     "version": "1.0.0",
-    "sdkVersion": "48.0.18",
     "platforms": [
       "ios",
       "android",
