@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,12 @@ import {
   TouchableOpacity,
   StatusBar,
   ScrollView,
+  Switch,
+  ActivityIndicator,
+  TextInput,
+  Image,
+  Modal,
+  Alert,
 } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
@@ -13,19 +19,61 @@ import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Icon } from '../components/Icon';
+import { communityService } from '../services/communityService';
+import storageService from '../services/storageService';
 
 const ProfileScreen: React.FC = () => {
-  const { user, signOut } = useContext(AuthContext);
+  const { user, signOut, setItineraryFeatured } = useContext(AuthContext);
   const theme = useContext(ThemeContext);
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+  const isAdmin = user?.isAdmin === true;
+
+  const [adminItineraries, setAdminItineraries] = useState<any[]>([]);
+  const [adminLoading, setAdminLoading] = useState(false);
+  const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState(user?.avatarUrl || '');
+  const [isPublic, setIsPublic] = useState((user as any)?.isPublic ?? true);
+
+  useEffect(() => {
+    if (isAdmin) {
+      loadItineraries();
+    }
+  }, [isAdmin]);
+
+  const loadItineraries = async () => {
+    setAdminLoading(true);
+    const all = await communityService.getItineraries('newest');
+    setAdminItineraries(all);
+    setAdminLoading(false);
+  };
+
+  const toggleFeatured = async (id: string, currentlyFeatured: boolean) => {
+    await setItineraryFeatured(id, !currentlyFeatured);
+    loadItineraries();
+  };
+
+  const saveAvatar = async (url: string) => {
+    const current = await storageService.load(storageService.STORAGE_KEYS.USER);
+    if (current) {
+      current.avatarUrl = url;
+      await storageService.save(storageService.STORAGE_KEYS.USER, current);
+    }
+    setShowAvatarModal(false);
+  };
 
   const menuItems = [
+    {
+      key: 'avatar',
+      label: 'Upload Profile Picture',
+      icon: 'image',
+      onPress: () => setShowAvatarModal(true),
+    },
     {
       key: 'edit',
       label: 'Edit Profile',
       icon: 'edit',
-      onPress: () => {},
+      onPress: () => Alert.alert('Coming Soon', 'Profile editing will be available in the next update!'),
     },
     {
       key: 'theme',
@@ -34,10 +82,16 @@ const ProfileScreen: React.FC = () => {
       onPress: () => theme.toggle(),
     },
     {
+      key: 'recaps',
+      label: 'Trip Recaps',
+      icon: 'camera',
+      onPress: () => (navigation as any).navigate('TripRecaps'),
+    },
+    {
       key: 'demo',
       label: 'Run Demo',
       icon: 'demo',
-      onPress: () => navigation.navigate('Demo' as any),
+      onPress: () => (navigation as any).navigate('Demo'),
     },
   ];
 
@@ -47,14 +101,24 @@ const ProfileScreen: React.FC = () => {
       <ScrollView contentContainerStyle={{ paddingBottom: 120 }} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={[styles.title, { color: theme.colors.text }]}>Profile</Text>
+          {isAdmin && (
+            <View style={styles.adminBadge}>
+              <Icon name="check" size={14} color={colors.white} />
+              <Text style={styles.adminBadgeText}>ADMIN</Text>
+            </View>
+          )}
         </View>
 
         <View style={[styles.profileCard, { backgroundColor: theme.colors.card }]}>
           <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.avatar}>
-            <Text style={styles.avatarText}>{user?.name?.[0]?.toUpperCase() || 'U'}</Text>
+            <Text style={styles.avatarText}>
+              {(isAdmin ? 'A' : user?.name?.[0] || 'U').toUpperCase()}
+            </Text>
           </LinearGradient>
           <View style={styles.profileInfo}>
-            <Text style={[styles.name, { color: theme.colors.text }]}>{user?.name || 'Guest'}</Text>
+            <Text style={[styles.name, { color: theme.colors.text }]}>
+              {isAdmin ? 'Administrator' : user?.name || 'Guest'}
+            </Text>
             <Text style={[styles.email, { color: theme.colors.muted }]}>{user?.email || 'Not signed in'}</Text>
             <View style={styles.badge}>
               <Icon name="plane" size={12} color={colors.primary} />
@@ -63,7 +127,7 @@ const ProfileScreen: React.FC = () => {
           </View>
         </View>
 
-        <View style={[styles.statsRow, { backgroundColor: theme.colors.card }]}>
+         <View style={[styles.statsRow, { backgroundColor: theme.colors.card }]}>
           <View style={styles.statItem}>
             <Text style={[styles.statValue, { color: theme.colors.text }]}>12</Text>
             <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Trips</Text>
@@ -80,6 +144,97 @@ const ProfileScreen: React.FC = () => {
           </View>
         </View>
 
+        {/* Admin Panel - Moved above stats */}
+        {isAdmin && (
+          <View style={styles.adminSection}>
+            <View style={styles.adminSectionHeader}>
+              <LinearGradient colors={['#FFE0E0', '#FFF0F0']} style={styles.adminIcon}>
+                <Icon name="check" size={16} color="#EF4444" />
+              </LinearGradient>
+              <Text style={styles.adminSectionTitle}>Admin Panel</Text>
+            </View>
+            <Text style={styles.adminSectionSub}>
+              Toggle itineraries as featured on the Community page
+            </Text>
+
+            {adminLoading ? (
+              <ActivityIndicator color={colors.primary} style={{ marginTop: 20 }} />
+            ) : adminItineraries.length === 0 ? (
+              <Text style={styles.emptyAdmin}>
+                No community itineraries yet. Publish some from the community tab first.
+              </Text>
+            ) : (
+              adminItineraries.map((item) => (
+                <View key={item.id} style={[styles.adminRow, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+                  <View style={styles.adminRowInfo}>
+                    <Text style={[styles.adminRowTitle, { color: theme.colors.text }]} numberOfLines={1}>
+                      {item.title}
+                    </Text>
+                    <Text style={[styles.adminRowMeta, { color: theme.colors.muted }]}>
+                      by {item.authorName || 'Unknown'}
+                    </Text>
+                  </View>
+                  <View style={styles.adminToggle}>
+                    <Text style={styles.adminToggleLabel}>
+                      {item.featured ? 'Featured' : 'Set Featured'}
+                    </Text>
+                    <Switch
+                      value={!!item.featured}
+                      onValueChange={() => toggleFeatured(item.id, !!item.featured)}
+                      trackColor={{ false: colors.border, true: colors.success }}
+                      thumbColor={item.featured ? colors.white : '#f4f3f4'}
+                    />
+                  </View>
+                </View>
+              ))
+            )}
+          </View>
+        )}
+
+         <View style={[styles.statsRow, { backgroundColor: theme.colors.card }]}>
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: theme.colors.text }]}>12</Text>
+            <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Trips</Text>
+          </View>
+          <View style={styles.statDivider} />
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: theme.colors.text }]}>48</Text>
+            <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Spots</Text>
+          </View>
+          <View style={styles.statDivider} />
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: theme.colors.text }]}>7</Text>
+            <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Countries</Text>
+          </View>
+        </View>
+
+        {/* Privacy Settings */}
+        <View style={[styles.privacySection, { backgroundColor: theme.colors.card }]}>
+          <View style={styles.privacyHeader}>
+            <LinearGradient colors={[colors.primarySoft, '#E0E4FF']} style={styles.privacyIcon}>
+              <Icon name="lock" size={18} color={colors.primary} />
+            </LinearGradient>
+            <View style={styles.privacyInfo}>
+              <Text style={[styles.privacyTitle, { color: theme.colors.text }]}>Profile Privacy</Text>
+              <Text style={[styles.privacySubtitle, { color: theme.colors.muted }]}>
+                {isPublic ? 'Public - Anyone can view your recaps' : 'Private - Only friends can view'}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.privacyToggle}>
+            <Text style={[styles.privacyLabel, { color: isPublic ? colors.success : theme.colors.muted }]}>
+              {isPublic ? 'Public' : 'Private'}
+            </Text>
+            <Switch
+              value={isPublic}
+              onValueChange={setIsPublic}
+              trackColor={{ false: colors.border, true: colors.success }}
+              thumbColor={isPublic ? colors.white : '#f4f3f4'}
+            />
+          </View>
+        </View>
+
+        {/* Trip Recaps - Moved here */}
         <View style={styles.menu}>
           {menuItems.map((item) => (
             <TouchableOpacity
@@ -111,6 +266,49 @@ const ProfileScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
         </View>
+
+        {/* Avatar URL Modal */}
+        <Modal visible={showAvatarModal} animationType="slide" transparent>
+          <View style={styles.modalOverlay}>
+            <View style={[styles.modalContent, { backgroundColor: theme.colors.card }]}>
+              <Text style={[styles.modalTitle, { color: theme.colors.text }]}>Set Profile Picture</Text>
+              <Text style={[styles.modalHint, { color: theme.colors.muted }]}>
+                Paste a URL to your profile image
+              </Text>
+              <View style={[styles.avatarInputWrap, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}>
+                <Icon name="image" size={18} color={theme.colors.muted} />
+                <TextInput
+                  style={[styles.avatarInput, { color: theme.colors.text }]}
+                  value={avatarUrl}
+                  onChangeText={setAvatarUrl}
+                  placeholder="https://example.com/my-photo.jpg"
+                  placeholderTextColor={theme.colors.muted}
+                  autoCapitalize="none"
+                />
+              </View>
+              <View style={styles.modalActions}>
+                <TouchableOpacity
+                  style={[styles.modalBtn, { backgroundColor: theme.colors.background }]}
+                  onPress={() => setShowAvatarModal(false)}
+                >
+                  <Text style={[styles.modalBtnText, { color: theme.colors.text }]}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.modalBtn, styles.modalBtnPrimary]}
+                  onPress={() => saveAvatar(avatarUrl)}
+                >
+                  <LinearGradient
+                    colors={[colors.primary, '#7985FF']}
+                    style={StyleSheet.absoluteFill}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                  />
+                  <Text style={styles.modalBtnTextPrimary}>Save</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </ScrollView>
     </View>
   );
@@ -124,11 +322,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.lg,
     paddingBottom: spacing.md,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: 28,
     fontWeight: '800',
     letterSpacing: -0.5,
+  },
+  adminBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: '#EF4444',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: radius.full,
+  },
+  adminBadgeText: {
+    color: colors.white,
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 1,
   },
   profileCard: {
     marginHorizontal: spacing.xl,
@@ -206,6 +422,71 @@ const styles = StyleSheet.create({
     height: 28,
     backgroundColor: colors.border,
   },
+  adminSection: {
+    marginTop: spacing.xl,
+    marginHorizontal: spacing.xl,
+  },
+  adminSectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 4,
+  },
+  adminIcon: {
+    width: 34,
+    height: 34,
+    borderRadius: radius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  adminSectionTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#B91C1C',
+  },
+  adminSectionSub: {
+    fontSize: 13,
+    color: colors.muted,
+    marginBottom: spacing.md,
+    marginLeft: 44,
+  },
+  emptyAdmin: {
+    textAlign: 'center',
+    color: colors.muted,
+    fontSize: 13,
+    paddingVertical: 20,
+    lineHeight: 20,
+  },
+  adminRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: spacing.md,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    marginBottom: 8,
+  },
+  adminRowInfo: {
+    flex: 1,
+    marginRight: 10,
+  },
+  adminRowTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
+  adminRowMeta: {
+    fontSize: 11,
+    marginTop: 2,
+  },
+  adminToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  adminToggleLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: colors.muted,
+  },
   menu: {
     marginTop: spacing.xxl,
     paddingHorizontal: spacing.xl,
@@ -241,6 +522,106 @@ const styles = StyleSheet.create({
   },
   signOutIcon: {
     backgroundColor: '#FFE0E0',
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: spacing.xl,
+  },
+  modalContent: {
+    width: '100%',
+    borderRadius: radius.xxl,
+    padding: spacing.xxl,
+    ...shadows.deep,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    marginBottom: 4,
+  },
+  modalHint: {
+    fontSize: 13,
+    marginBottom: spacing.lg,
+  },
+  avatarInputWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    borderWidth: 1,
+    borderRadius: radius.md,
+    paddingHorizontal: 14,
+    marginBottom: spacing.lg,
+  },
+  avatarInput: {
+    flex: 1,
+    paddingVertical: 14,
+    fontSize: 15,
+  },
+  modalActions: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  modalBtn: {
+    flex: 1,
+    paddingVertical: 14,
+    borderRadius: radius.full,
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  modalBtnPrimary: {
+    overflow: 'hidden',
+  },
+  modalBtnText: {
+    fontWeight: '700',
+    fontSize: 15,
+  },
+  modalBtnTextPrimary: {
+    color: colors.white,
+    fontWeight: '700',
+    fontSize: 15,
+  },
+  privacySection: {
+    marginTop: spacing.lg,
+    marginHorizontal: spacing.xl,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+    ...shadows.soft,
+  },
+  privacyHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    marginBottom: spacing.md,
+  },
+  privacyIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  privacyInfo: {
+    flex: 1,
+  },
+  privacyTitle: {
+    fontSize: 16,
+    fontWeight: '800',
+    marginBottom: 2,
+  },
+  privacySubtitle: {
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  privacyToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  privacyLabel: {
+    fontSize: 14,
+    fontWeight: '700',
   },
 });
 

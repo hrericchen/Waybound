@@ -6,6 +6,5 @@
  *
  * 
  */
-
 import Easing from '../../vendor/react-native/Animated/Easing';
 export default Easing;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MaterialIcons, Ionicons, Feather } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../theme/theme';
 
 type IconProps = {
@@ -26,6 +26,7 @@ const materialMap: Record<string, keyof typeof MaterialIcons.glyphMap> = {
   back: 'arrow-back',
   chevronLeft: 'chevron-left',
   chevronRight: 'chevron-right',
+  chevronDown: 'expand-more',
   close: 'close',
   delete: 'delete-outline',
   edit: 'edit',
@@ -38,16 +39,30 @@ const materialMap: Record<string, keyof typeof MaterialIcons.glyphMap> = {
   map: 'map',
   save: 'bookmark',
   check: 'check',
+  image: 'image',
+  camera: 'camera',
+  upload: 'cloud-upload',
+  link: 'link',
+  currency: 'attach-money',
+  checklist: 'check-circle',
+  document: 'description',
+  compass: 'explore',
+  globe: 'public',
+  heart: 'favorite-border',
+  swap: 'swap-horiz',
+  refresh: 'refresh',
+  trash: 'delete',
+  lock: 'lock',
+  plane: 'flight',
+  chevronUp: 'expand-less',
 };
 
 export const Icon: React.FC<IconProps> = ({ name, size = 22, color = colors.primary }) => {
-  if (name === 'plane') {
-    return <Ionicons name="airplane" size={size} color={color} />;
+  const iconName = materialMap[name];
+  if (!iconName) {
+    console.warn(`Icon "${name}" not found`);
+    return <MaterialIcons name="help-outline" size={size} color={color} />;
   }
-  if (name === 'globe') {
-    return <Feather name="globe" size={size} color={color} />;
-  }
-  const iconName = materialMap[name] || 'help-outline';
   return <MaterialIcons name={iconName} size={size} color={color} />;
 };
 

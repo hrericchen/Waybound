@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   Image,
   StatusBar,
+  Alert,
+  TextInput,
 } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import tripService from '../services/tripService';
@@ -17,13 +19,25 @@ import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 
 const LibraryScreen: React.FC = () => {
   const [list, setList] = useState<any[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const insets = useSafeAreaInsets();
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   const loadList = async () => {
     const itineraries = await tripService.getItineraries();
     setList(itineraries);
   };
+
+  const filteredList = list.filter((item) => {
+    if (!searchQuery) return true;
+    const query = searchQuery.toLowerCase();
+    return (
+      item.title?.toLowerCase().includes(query) ||
+      item.destinations?.some((d: string) => d.toLowerCase().includes(query))
+    );
+  });
 
   useEffect(() => {
     loadList();
@@ -35,6 +49,33 @@ const LibraryScreen: React.FC = () => {
     }, [])
   );
 
+  const handleLongPress = (item: any) => {
+    setSelectedId(item.id);
+    Alert.alert(
+      item.title,
+      'What would you like to do?',
+      [
+        { text: 'Cancel', style: 'cancel', onPress: () => setSelectedId(null) },
+        {
+          text: 'Edit',
+          onPress: () => {
+            (navigation as any).navigate('Create', { editId: item.id });
+            setSelectedId(null);
+          },
+        },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            await tripService.deleteItinerary(item.id);
+            loadList();
+            setSelectedId(null);
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background, paddingTop: insets.top }]}>
       <StatusBar barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'} />
@@ -44,9 +85,25 @@ const LibraryScreen: React.FC = () => {
           <Text style={[styles.kicker, { color: theme.colors.muted }]}>Saved plans</Text>
           <Text style={[styles.title, { color: theme.colors.text }]}>Your Itinerary</Text>
         </View>
-        <TouchableOpacity style={styles.filterChip}>
-          <Icon name="search" size={16} color={colors.primary} />
-        </TouchableOpacity>
+      </View>
+
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
+        <View style={[styles.searchBar, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+          <Icon name="search" size={18} color={theme.colors.muted} />
+          <TextInput
+            style={[styles.searchInput, { color: theme.colors.text }]}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            placeholder="Search itineraries..."
+            placeholderTextColor={theme.colors.muted}
+          />
+          {searchQuery.length > 0 && (
+            <TouchableOpacity onPress={() => setSearchQuery('')}>
+              <Icon name="close" size={18} color={theme.colors.muted} />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
 
       {list.length === 0 ? (
@@ -61,14 +118,18 @@ const LibraryScreen: React.FC = () => {
         </View>
       ) : (
         <FlatList
-          data={list}
+          data={filteredList}
           keyExtractor={(i) => i.id}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: spacing.lg, paddingBottom: 120 }}
           columnWrapperStyle={{ gap: spacing.md }}
           renderItem={({ item }) => (
-            <TouchableOpacity style={[styles.card, { backgroundColor: theme.colors.card }]} activeOpacity={0.9}>
+            <TouchableOpacity 
+              style={[styles.card, { backgroundColor: theme.colors.card }, selectedId === item.id && styles.cardSelected]} 
+              activeOpacity={0.9}
+              onLongPress={() => handleLongPress(item)}
+            >
               {item.coverImage ? (
                 <Image source={{ uri: item.coverImage }} style={styles.cover} />
               ) : (
@@ -123,14 +184,23 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: -0.5,
   },
-  filterChip: {
-    width: 42,
-    height: 42,
-    borderRadius: radius.md,
-    backgroundColor: colors.primarySoft,
+  searchContainer: {
+    paddingHorizontal: spacing.xl,
+    marginBottom: spacing.md,
+  },
+  searchBar: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 4,
+    gap: 10,
+    borderWidth: 1,
+    borderRadius: radius.full,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 15,
+    paddingVertical: spacing.xs,
   },
   card: {
     flex: 1,
@@ -138,6 +208,10 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     overflow: 'hidden',
     ...shadows.card,
+  },
+  cardSelected: {
+    borderWidth: 2,
+    borderColor: colors.primary,
   },
   cover: {
     width: '100%',

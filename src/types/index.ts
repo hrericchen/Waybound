@@ -27,5 +27,40 @@ export type Itinerary = {
   endDate?: string;
   color?: string;
   coverImage?: string;
-  activities: any[];
+  activities: Activity[];
+};
+
+export type Activity = {
+  id: string;
+  day: number;
+  title: string;
+  emoji?: string;
+  notes?: string;
+  lat?: number;
+  lng?: number;
+  links?: ActivityLink[];
+  photos?: ActivityPhoto[];
+  completed?: boolean;
+};
+
+export type ActivityLink = {
+  id: string;
+  title: string;
+  url: string;
+};
+
+export type ActivityPhoto = {
+  id: string;
+  uri: string;
+  base64?: string;
+  timestamp: string;
+};
+
+export type UserProfile = {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl?: string;
+  isPublic: boolean;
+  isAdmin?: boolean;
 };

@@ -14,10 +14,21 @@
       "backgroundColor": "#ffffff"
     },
     "android": {
-      "package": "com.waybound.travel"
+      "package": "com.waybound.travel",
+      "googleServicesFile": "./android/app/google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAbbkPp5J5glJ4GXlhkttS-bEtdwFykz9c"
+        }
+      }
     },
     "ios": {
-      "bundleIdentifier": "com.waybound.travel"
+      "bundleIdentifier": "com.waybound.travel",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAbbkPp5J5glJ4GXlhkttS-bEtdwFykz9c"
+        }
+      }
     },
     "extra": {
       "eas": {

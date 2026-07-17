@@ -13,9 +13,6 @@ function emptyFunction() {}
 const BackHandler = {
   exitApp: emptyFunction,
   addEventListener(): {| remove: () => void |} {
-    console.error(
-      'BackHandler is not supported on web and should not be used.'
-    );
     return {
       remove: emptyFunction
     };

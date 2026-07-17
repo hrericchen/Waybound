@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, StyleSheet, Platform, TouchableOpacity, Text, Animated } from 'react-native';
+import { View, StyleSheet, Platform, TouchableOpacity, Text, Animated, Alert } from 'react-native';
 import { Linking } from 'react-native';
 
 const openMaps = (lat: number, lng: number, label?: string) => {
@@ -18,12 +18,16 @@ let Marker: any = null;
 let Polyline: any = null;
 
 if (!isWeb) {
-  // Dynamically require react-native-maps only on native platforms.
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const maps = require('react-native-maps');
-  MapView = maps.default || maps;
-  Marker = maps.Marker;
-  Polyline = maps.Polyline;
+  try {
+    // Dynamically require react-native-maps only on native platforms.
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const maps = require('react-native-maps');
+    MapView = maps.default || maps;
+    Marker = maps.Marker;
+    Polyline = maps.Polyline;
+  } catch (e) {
+    console.warn('react-native-maps not available:', e);
+  }
 }
 
 const TripMap: React.FC<{ points: { lat: number; lng: number; title?: string }[]; highlightIndex?: number; onMarkerPress?: (index: number) => void }> = ({ points, highlightIndex, onMarkerPress }) => {
@@ -47,12 +51,19 @@ const TripMap: React.FC<{ points: { lat: number; lng: number; title?: string }[]
     });
   }, [points, highlightIndex]);
 
-  if (isWeb) {
+  if (isWeb || !MapView) {
     return (
       <View style={styles.container}>
         <View style={styles.webPlaceholder}>
-          <Text style={styles.webText}>Map preview is unavailable on web.</Text>
+          <Text style={styles.webText}>
+            {isWeb ? 'Map preview is unavailable on web.' : 'Map component is loading...'}
+          </Text>
           {points.length > 0 && <Text style={styles.webText}>Saved {points.length} location(s).</Text>}
+          {points.length > 0 && (
+            <TouchableOpacity style={styles.navigate} onPress={() => openMaps(points[0].lat, points[0].lng, points[0].title)}>
+              <Text style={{ color: '#fff', fontWeight: '700' }}>Open in Maps</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     );
@@ -60,9 +71,18 @@ const TripMap: React.FC<{ points: { lat: number; lng: number; title?: string }[]
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} initialRegion={region}>
+      <MapView 
+        style={styles.map} 
+        initialRegion={region}
+        provider="google"
+      >
         {points.map((p, i) => (
-          <Marker key={i} coordinate={{ latitude: p.lat, longitude: p.lng }} title={`${i + 1}. ${p.title || ''}`} onPress={() => onMarkerPress && onMarkerPress(i)}>
+          <Marker 
+            key={i} 
+            coordinate={{ latitude: p.lat, longitude: p.lng }} 
+            title={`${i + 1}. ${p.title || ''}`} 
+            onPress={() => onMarkerPress && onMarkerPress(i)}
+          >
             <Animated.View style={[styles.marker, highlightIndex === i && styles.markerHighlight, { transform: [{ scale: scalesRef.current[i] || new Animated.Value(1) }] }]}>
               <Text style={[styles.markerText, highlightIndex === i && { color: '#fff' }]}>{i + 1}</Text>
             </Animated.View>

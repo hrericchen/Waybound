@@ -9,26 +9,42 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   Platform,
+  Image,
+  Alert,
+  Animated,
+  ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+// import * as ImagePicker from 'expo-image-picker';
 import DraggableFlatList, { RenderItemParams } from 'react-native-draggable-flatlist';
 import tripService from '../services/tripService';
 import PlaceSearch from '../components/PlaceSearch';
 import TripMap from '../components/TripMap';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
+import { Activity, ActivityLink, ActivityPhoto } from '../types';
 
 const CreateItineraryScreen: React.FC = () => {
   const [title, setTitle] = useState('Japan 2026');
   const [destinations, setDestinations] = useState('Tokyo, Kyoto');
-  const [activities, setActivities] = useState<any[]>([
-    { id: 'a1', day: 1, title: 'Arrive Tokyo', notes: '' },
+  const [tags, setTags] = useState('');
+  const [coverImageUrl, setCoverImageUrl] = useState('');
+  const [coverImageBase64, setCoverImageBase64] = useState('');
+  const [activities, setActivities] = useState<Activity[]>([
+    { id: 'a1', day: 1, title: 'Arrive Tokyo', notes: '', links: [], photos: [], completed: false },
   ]);
+  const [days, setDays] = useState<number[]>([1]);
+  const [selectedDay, setSelectedDay] = useState<number>(1);
   const [draftId] = useState(() => `it-${Date.now()}`);
   const theme = useContext(ThemeContext);
   const insets = useSafeAreaInsets();
+
+  // Animation for drag
+  const scaleAnim = useCallback((isActive: boolean) => {
+    return isActive ? 1.05 : 1;
+  }, []);
 
   useEffect(() => {
     const save = async () => {
@@ -36,6 +52,8 @@ const CreateItineraryScreen: React.FC = () => {
         id: draftId,
         title,
         destinations: destinations.split(',').map((s) => s.trim()),
+        coverImage: coverImageBase64 || coverImageUrl,
+        tags: tags.split(',').map((s) => s.trim()).filter(Boolean),
         activities,
       };
       try {
@@ -45,20 +63,29 @@ const CreateItineraryScreen: React.FC = () => {
       }
     };
     save();
-  }, [title, destinations, activities, draftId]);
+  }, [title, destinations, tags, coverImageUrl, coverImageBase64, activities, draftId]);
 
   const navigation = useNavigation();
 
   const addActivity = () => {
     setActivities((a) => [
       ...a,
-      { id: `${Date.now()}`, day: a.length + 1, title: 'New Activity', notes: '' },
+      { id: `${Date.now()}`, day: selectedDay, title: 'New Activity', notes: '', links: [], photos: [], completed: false },
     ]);
+  };
+
+  const addDay = () => {
+    const newDay = days.length + 1;
+    setDays([...days, newDay]);
+    setSelectedDay(newDay);
   };
 
   const [searchVisible, setSearchVisible] = useState(false);
   const [mapVisible, setMapVisible] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState<number | undefined>(undefined);
+  const [expandedActivity, setExpandedActivity] = useState<string | null>(null);
+  const [emojiInputId, setEmojiInputId] = useState<string | null>(null);
+  const [emojiText, setEmojiText] = useState('');
 
   const handleSelectPlace = (place: { name: string; lat: number; lng: number }) => {
     const item = {
@@ -68,6 +95,9 @@ const CreateItineraryScreen: React.FC = () => {
       lat: place.lat,
       lng: place.lng,
       notes: '',
+      links: [],
+      photos: [],
+      completed: false,
     };
     setActivities((a) => [...a, item]);
     setSearchVisible(false);
@@ -75,43 +105,268 @@ const CreateItineraryScreen: React.FC = () => {
 
   const removeActivity = (id: string) => setActivities((a) => a.filter((x) => x.id !== id));
 
+  const pickImage = async () => {
+    Alert.alert(
+      'Upload Photo',
+      'To enable photo uploads, install expo-image-picker:\n\nnpm install expo-image-picker\n\nFor now, you can use an image URL or add a sample image.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Add Sample',
+          onPress: () => {
+            // Add a sample base64 image (placeholder)
+            const sampleBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+            setCoverImageBase64(sampleBase64);
+            setCoverImageUrl('');
+            Alert.alert('Success', 'Sample image added! Install expo-image-picker to upload real photos.');
+          },
+        },
+      ]
+    );
+  };
+
+  const toggleActivityComplete = (id: string) => {
+    setActivities((a) => a.map((x) => x.id === id ? { ...x, completed: !x.completed } : x));
+  };
+
+  const updateActivity = (id: string, updates: Partial<Activity>) => {
+    setActivities((a) => a.map((x) => x.id === id ? { ...x, ...updates } : x));
+  };
+
+  const addLink = (activityId: string) => {
+    const link: ActivityLink = {
+      id: `link-${Date.now()}`,
+      title: 'New Link',
+      url: 'https://',
+    };
+    updateActivity(activityId, { links: [...(activities.find(a => a.id === activityId)?.links || []), link] });
+  };
+
+  const updateLink = (activityId: string, linkId: string, updates: Partial<ActivityLink>) => {
+    const activity = activities.find(a => a.id === activityId);
+    if (activity && activity.links) {
+      const updatedLinks = activity.links.map(l => l.id === linkId ? { ...l, ...updates } : l);
+      updateActivity(activityId, { links: updatedLinks });
+    }
+  };
+
+  const removeLink = (activityId: string, linkId: string) => {
+    const activity = activities.find(a => a.id === activityId);
+    if (activity && activity.links) {
+      const updatedLinks = activity.links.filter(l => l.id !== linkId);
+      updateActivity(activityId, { links: updatedLinks });
+    }
+  };
+
+  const addPhoto = async (activityId: string) => {
+    Alert.alert(
+      'Add Photo',
+      'Photo picker will be available after installing expo-image-picker. Add a sample photo for now.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Add Sample',
+          onPress: () => {
+            const photo: ActivityPhoto = {
+              id: `photo-${Date.now()}`,
+              uri: 'sample',
+              base64: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
+              timestamp: new Date().toISOString(),
+            };
+            const activity = activities.find(a => a.id === activityId);
+            if (activity) {
+              updateActivity(activityId, { photos: [...(activity.photos || []), photo] });
+            }
+          },
+        },
+      ]
+    );
+  };
+
+  const removePhoto = (activityId: string, photoId: string) => {
+    const activity = activities.find(a => a.id === activityId);
+    if (activity && activity.photos) {
+      const updatedPhotos = activity.photos.filter(p => p.id !== photoId);
+      updateActivity(activityId, { photos: updatedPhotos });
+    }
+  };
+
+  const handleEmojiPress = (activityId: string) => {
+    setEmojiInputId(activityId);
+    setEmojiText('');
+  };
+
+  const handleEmojiSubmit = () => {
+    if (emojiInputId && emojiText.trim()) {
+      updateActivity(emojiInputId, { emoji: emojiText.trim() });
+      setEmojiInputId(null);
+      setEmojiText('');
+    }
+  };
+
   const renderItem = useCallback(
-    ({ item, drag, isActive, index }: RenderItemParams<any>) => {
+    ({ item, drag, isActive, index }: RenderItemParams<Activity>) => {
+      const isExpanded = expandedActivity === item.id;
+      
       return (
-        <TouchableOpacity
+        <Animated.View
           style={[
             styles.activity,
             isActive && styles.activityActive,
-            { backgroundColor: theme.colors.card, borderColor: theme.colors.border },
+            { 
+              backgroundColor: theme.colors.card, 
+              borderColor: theme.colors.border,
+              transform: [{ scale: scaleAnim(isActive) }],
+            },
           ]}
-          onLongPress={drag}
-          onPress={() => {
-            setHighlightIndex(index);
-            setMapVisible(true);
-          }}
-          activeOpacity={0.9}
         >
-          <LinearGradient colors={[colors.primarySoft, '#E0E4FF']} style={styles.dayBadge}>
-            <Text style={styles.dayBadgeText}>{item.day}</Text>
-          </LinearGradient>
-          <View style={styles.activityBody}>
-            <Text style={styles.activityLabel}>Activity</Text>
-            <TextInput
-              value={item.title}
-              onChangeText={(t) =>
-                setActivities((a) => a.map((x) => (x.id === item.id ? { ...x, title: t } : x)))
-              }
-              style={[styles.activityInput, { color: theme.colors.text }]}
-              placeholderTextColor={theme.colors.muted}
-            />
-          </View>
-          <TouchableOpacity style={styles.deleteBtn} onPress={() => removeActivity(item.id)}>
-            <Icon name="delete" size={18} color={colors.danger} />
+          <TouchableOpacity
+            onLongPress={drag}
+            activeOpacity={0.9}
+          >
+            <View style={styles.activityContent}>
+              {/* Emoji Button */}
+              <TouchableOpacity
+                style={styles.emojiBtn}
+                onPress={() => handleEmojiPress(item.id)}
+              >
+                <Text style={styles.emojiText}>{item.emoji || '😀'}</Text>
+              </TouchableOpacity>
+
+              {/* Hidden emoji input for system keyboard - auto-focuses when emoji button is pressed */}
+              {emojiInputId === item.id && (
+                <TextInput
+                  ref={(ref) => ref?.focus()}
+                  style={styles.hiddenEmojiInput}
+                  value={emojiText}
+                  onChangeText={setEmojiText}
+                  onSubmitEditing={handleEmojiSubmit}
+                  blurOnSubmit={true}
+                  autoFocus={true}
+                  keyboardType="default"
+                  placeholder="Type emoji..."
+                />
+              )}
+
+              {/* Complete Checkbox */}
+              <TouchableOpacity
+                style={[styles.checkbox, item.completed && styles.checkboxChecked]}
+                onPress={() => toggleActivityComplete(item.id)}
+              >
+                {item.completed && <Icon name="check" size={16} color={colors.white} />}
+              </TouchableOpacity>
+
+              {/* Activity Info */}
+              <View style={styles.activityBody}>
+                <TextInput
+                  value={item.title}
+                  onChangeText={(t) =>
+                    setActivities((a) => a.map((x) => (x.id === item.id ? { ...x, title: t } : x)))
+                  }
+                  style={[
+                    styles.activityInput, 
+                    { color: theme.colors.text },
+                    item.completed && styles.activityInputCompleted,
+                  ]}
+                  placeholderTextColor={theme.colors.muted}
+                />
+                
+                {/* Expand/Collapse Button */}
+                <TouchableOpacity
+                  style={styles.expandBtn}
+                  onPress={() => setExpandedActivity(isExpanded ? null : item.id)}
+                >
+                  <Icon 
+                    name={isExpanded ? 'chevron-up' : 'chevron-down'} 
+                    size={16} 
+                    color={theme.colors.muted} 
+                  />
+                </TouchableOpacity>
+              </View>
+
+              {/* Delete Button */}
+              <TouchableOpacity style={styles.deleteBtn} onPress={() => removeActivity(item.id)}>
+                <Icon name="delete" size={18} color={colors.danger} />
+              </TouchableOpacity>
+            </View>
+
+            {/* Expanded Content */}
+            {isExpanded && (
+              <View style={styles.expandedContent}>
+                {/* Notes */}
+                <TextInput
+                  value={item.notes}
+                  onChangeText={(t) => updateActivity(item.id, { notes: t })}
+                  placeholder="Add notes..."
+                  placeholderTextColor={theme.colors.muted}
+                  style={[styles.notesInput, { color: theme.colors.text, backgroundColor: theme.colors.background }]}
+                />
+
+                {/* Links Section */}
+                <View style={styles.linksSection}>
+                  <View style={styles.sectionHeader}>
+                    <Text style={[styles.sectionLabel, { color: theme.colors.text }]}>Links</Text>
+                    <TouchableOpacity onPress={() => addLink(item.id)}>
+                      <Icon name="plus" size={18} color={colors.primary} />
+                    </TouchableOpacity>
+                  </View>
+                  {item.links?.map((link) => (
+                    <View key={link.id} style={[styles.linkItem, { backgroundColor: theme.colors.background }]}>
+                      <TextInput
+                        value={link.title}
+                        onChangeText={(t) => updateLink(item.id, link.id, { title: t })}
+                        placeholder="Link title"
+                        placeholderTextColor={theme.colors.muted}
+                        style={[styles.linkInput, { color: theme.colors.text }]}
+                      />
+                      <TextInput
+                        value={link.url}
+                        onChangeText={(t) => updateLink(item.id, link.id, { url: t })}
+                        placeholder="URL"
+                        placeholderTextColor={theme.colors.muted}
+                        style={[styles.linkInput, { color: theme.colors.text }]}
+                      />
+                      <TouchableOpacity onPress={() => removeLink(item.id, link.id)}>
+                        <Icon name="close" size={16} color={colors.danger} />
+                      </TouchableOpacity>
+                    </View>
+                  ))}
+                </View>
+
+                {/* Photos Section (for completed activities) */}
+                {item.completed && (
+                  <View style={styles.photosSection}>
+                    <View style={styles.sectionHeader}>
+                      <Text style={[styles.sectionLabel, { color: theme.colors.text }]}>Photos</Text>
+                      <TouchableOpacity onPress={() => addPhoto(item.id)}>
+                        <Icon name="camera" size={18} color={colors.primary} />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.photosGrid}>
+                      {item.photos?.map((photo) => (
+                        <View key={photo.id} style={styles.photoItem}>
+                          <Image
+                            source={{ uri: photo.base64 ? `data:image/jpeg;base64,${photo.base64}` : photo.uri }}
+                            style={styles.photo}
+                          />
+                          <TouchableOpacity
+                            style={styles.removePhotoBtn}
+                            onPress={() => removePhoto(item.id, photo.id)}
+                          >
+                            <Icon name="close" size={14} color={colors.white} />
+                          </TouchableOpacity>
+                        </View>
+                      ))}
+                    </View>
+                  </View>
+                )}
+              </View>
+            )}
           </TouchableOpacity>
-        </TouchableOpacity>
+        </Animated.View>
       );
     },
-    [theme.colors.card, theme.colors.border, theme.colors.text, theme.colors.muted]
+    [expandedActivity, theme.colors, scaleAnim]
   );
 
   return (
@@ -152,6 +407,103 @@ const CreateItineraryScreen: React.FC = () => {
               placeholderTextColor={theme.colors.muted}
             />
           </View>
+
+          <Text style={[styles.label, { color: theme.colors.text }]}>Tags</Text>
+          <View style={[styles.input, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}>
+            <Icon name="bookmark" size={16} color={theme.colors.muted} />
+            <TextInput
+              style={[styles.inputField, { color: theme.colors.text }]}
+              value={tags}
+              onChangeText={setTags}
+              placeholder="Tags (comma separated, e.g. beach, food, adventure)"
+              placeholderTextColor={theme.colors.muted}
+            />
+          </View>
+
+          <Text style={[styles.label, { color: theme.colors.text }]}>Cover Image</Text>
+          
+          {/* Image Preview */}
+          {(coverImageBase64 || coverImageUrl) && (
+            <View style={styles.imagePreviewContainer}>
+              <Image
+                source={{ uri: coverImageBase64 ? `data:image/jpeg;base64,${coverImageBase64}` : coverImageUrl }}
+                style={styles.imagePreview}
+                resizeMode="cover"
+              />
+              <TouchableOpacity
+                style={styles.removeImageBtn}
+                onPress={() => {
+                  setCoverImageBase64('');
+                  setCoverImageUrl('');
+                }}
+              >
+                <Icon name="close" size={20} color={colors.white} />
+              </TouchableOpacity>
+            </View>
+          )}
+
+          {/* Upload Button */}
+          <TouchableOpacity
+            style={[styles.uploadButton, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}
+            onPress={pickImage}
+            activeOpacity={0.9}
+          >
+            <LinearGradient
+              colors={[colors.primary + '20', '#7985FF20']}
+              style={styles.uploadButtonGradient}
+            >
+              <Icon name="upload" size={24} color={colors.primary} />
+              <View style={styles.uploadButtonText}>
+                <Text style={[styles.uploadTitle, { color: theme.colors.text }]}>
+                  {coverImageBase64 || coverImageUrl ? 'Change Photo' : 'Upload Photo'}
+                </Text>
+                <Text style={[styles.uploadSubtitle, { color: theme.colors.muted }]}>
+                  Tap to select from gallery
+                </Text>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+
+          {/* URL Input (Optional) */}
+          <View style={[styles.input, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}>
+            <Icon name="link" size={16} color={theme.colors.muted} />
+            <TextInput
+              style={[styles.inputField, { color: theme.colors.text }]}
+              value={coverImageUrl}
+              onChangeText={setCoverImageUrl}
+              placeholder="Or paste image URL (optional)"
+              placeholderTextColor={theme.colors.muted}
+            />
+          </View>
+        </View>
+
+        {/* Day Selector */}
+        <View style={styles.daySelector}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: spacing.sm }}>
+            {days.map((day) => (
+              <TouchableOpacity
+                key={day}
+                style={[
+                  styles.dayChip,
+                  { 
+                    backgroundColor: selectedDay === day ? colors.primary : theme.colors.card,
+                    borderColor: selectedDay === day ? colors.primary : theme.colors.border,
+                  }
+                ]}
+                onPress={() => setSelectedDay(day)}
+              >
+                <Text style={[
+                  styles.dayChipText,
+                  { color: selectedDay === day ? colors.white : theme.colors.text }
+                ]}>
+                  Day {day}
+                </Text>
+              </TouchableOpacity>
+            ))}
+            <TouchableOpacity style={[styles.dayChip, styles.addDayChip, { borderColor: theme.colors.border }]} onPress={addDay}>
+              <Icon name="plus" size={18} color={colors.primary} />
+            </TouchableOpacity>
+          </ScrollView>
         </View>
 
         <View style={styles.sectionHeader}>
@@ -215,7 +567,7 @@ const CreateItineraryScreen: React.FC = () => {
                     activities,
                   };
                   await tripService.saveTrip(itinerary);
-                  navigation.navigate('Main' as any, { screen: 'Library' });
+                  (navigation as any).navigate('Main', { screen: 'Library' });
                 }}
                 activeOpacity={0.9}
               >
@@ -232,6 +584,7 @@ const CreateItineraryScreen: React.FC = () => {
           }
         />
       </KeyboardAvoidingView>
+
 
       <Modal visible={searchVisible} animationType="slide">
         <View style={[styles.modal, { paddingTop: insets.top + 8 }]}>
@@ -313,9 +666,32 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 15,
   },
+  daySelector: {
+    paddingHorizontal: spacing.xl,
+    marginTop: spacing.lg,
+    marginBottom: spacing.md,
+  },
+  dayChip: {
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.sm,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    minWidth: 80,
+    alignItems: 'center',
+  },
+  dayChipText: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
+  addDayChip: {
+    backgroundColor: 'transparent',
+    minWidth: 44,
+    width: 44,
+    paddingHorizontal: 0,
+  },
   sectionHeader: {
     paddingHorizontal: spacing.xl,
-    marginTop: spacing.xl,
+    marginTop: spacing.md,
     marginBottom: spacing.md,
     flexDirection: 'row',
     alignItems: 'center',
@@ -330,44 +706,61 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   activity: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: spacing.md,
-    borderWidth: 1,
+    marginBottom: 12,
     borderRadius: radius.lg,
-    marginBottom: 10,
+    borderWidth: 1,
+    overflow: 'hidden',
     ...shadows.soft,
   },
   activityActive: {
     backgroundColor: colors.primarySoft,
     borderColor: colors.primary,
+    ...shadows.deep,
   },
-  dayBadge: {
+  activityContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: spacing.md,
+    gap: 10,
+  },
+  emojiBtn: {
     width: 36,
     height: 36,
     borderRadius: radius.md,
+    backgroundColor: colors.primarySoft,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
   },
-  dayBadgeText: {
-    color: colors.primary,
-    fontWeight: '800',
-    fontSize: 14,
+  emojiText: {
+    fontSize: 20,
+  },
+  checkbox: {
+    width: 24,
+    height: 24,
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxChecked: {
+    backgroundColor: colors.success,
+    borderColor: colors.success,
   },
   activityBody: {
     flex: 1,
-  },
-  activityLabel: {
-    fontSize: 11,
-    color: colors.muted,
-    fontWeight: '700',
-    marginBottom: 2,
   },
   activityInput: {
     fontSize: 15,
     fontWeight: '700',
     padding: 0,
+  },
+  activityInputCompleted: {
+    textDecorationLine: 'line-through',
+    opacity: 0.6,
+  },
+  expandBtn: {
+    marginTop: 4,
   },
   deleteBtn: {
     width: 36,
@@ -376,12 +769,76 @@ const styles = StyleSheet.create({
     backgroundColor: colors.dangerLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 8,
+  },
+  expandedContent: {
+    paddingHorizontal: spacing.md,
+    paddingBottom: spacing.md,
+    gap: spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+    paddingTop: spacing.md,
+  },
+  notesInput: {
+    borderRadius: radius.md,
+    padding: spacing.md,
+    fontSize: 14,
+    minHeight: 80,
+    textAlignVertical: 'top',
+  },
+  linksSection: {
+    gap: spacing.sm,
+  },
+  sectionLabel: {
+    fontSize: 14,
+    fontWeight: '700',
+    marginBottom: spacing.xs,
+  },
+  linkItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    padding: spacing.sm,
+    borderRadius: radius.md,
+  },
+  linkInput: {
+    flex: 1,
+    fontSize: 13,
+    paddingVertical: 4,
+  },
+  photosSection: {
+    gap: spacing.sm,
+  },
+  photosGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+  },
+  photoItem: {
+    width: 100,
+    height: 100,
+    borderRadius: radius.md,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  photo: {
+    width: '100%',
+    height: '100%',
+  },
+  removePhotoBtn: {
+    position: 'absolute',
+    top: 4,
+    right: 4,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   actions: {
     marginTop: 8,
     gap: 10,
-    paddingBottom: 120,
+    paddingBottom: 140,
   },
   actionRow: {
     flexDirection: 'row',
@@ -451,6 +908,58 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     ...shadows.soft,
+  },
+  imagePreviewContainer: {
+    position: 'relative',
+    marginBottom: spacing.md,
+    borderRadius: radius.lg,
+    overflow: 'hidden',
+  },
+  imagePreview: {
+    width: '100%',
+    height: 200,
+    borderRadius: radius.lg,
+  },
+  removeImageBtn: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  uploadButton: {
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    overflow: 'hidden',
+    marginBottom: spacing.md,
+  },
+  uploadButtonGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: spacing.lg,
+    gap: spacing.md,
+  },
+  uploadButtonText: {
+    flex: 1,
+  },
+  uploadTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    marginBottom: 2,
+  },
+  uploadSubtitle: {
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  hiddenEmojiInput: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    opacity: 0,
   },
 });
 

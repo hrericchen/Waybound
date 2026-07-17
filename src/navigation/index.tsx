@@ -15,6 +15,12 @@ import ProfileScreen from '../screens/ProfileScreen';
 import DemoScreen from '../screens/DemoScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
+import PackingChecklistScreen from '../screens/PackingChecklistScreen';
+import DocumentsVaultScreen from '../screens/DocumentsVaultScreen';
+import ExchangeRatesScreen from '../screens/ExchangeRatesScreen';
+import BrowseScreen from '../screens/BrowseScreen';
+import NotificationsScreen from '../screens/NotificationsScreen';
+import TripRecapsScreen from '../screens/TripRecapsScreen';
 import { Icon } from '../components/Icon';
 import { AuthContext } from '../context/AuthContext';
 import { colors, radius, shadows, spacing } from '../theme/theme';
@@ -119,9 +125,9 @@ function MainTabs() {
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }} />
-      <Tab.Screen name="Community" component={CommunityScreen} options={{ title: 'Community' }} />
       <Tab.Screen name="Library" component={LibraryScreen} options={{ title: 'Itinerary' }} />
       <Tab.Screen name="Create" component={CreateItineraryScreen} options={{ title: 'Create' }} />
+      <Tab.Screen name="Community" component={CommunityScreen} options={{ title: 'Community' }} />
       <Tab.Screen name="Profile" component={ProfileScreen} options={{ title: 'Profile' }} />
     </Tab.Navigator>
   );
@@ -141,6 +147,12 @@ const AppStack = () => (
     <Stack.Screen name="Demo" component={DemoScreen} />
     <Stack.Screen name="TripDetail" component={TripDetailScreen} />
     <Stack.Screen name="UserProfile" component={UserProfileScreen} />
+    <Stack.Screen name="PackingChecklist" component={PackingChecklistScreen} />
+    <Stack.Screen name="DocumentsVault" component={DocumentsVaultScreen} />
+    <Stack.Screen name="ExchangeRates" component={ExchangeRatesScreen} />
+    <Stack.Screen name="Browse" component={BrowseScreen} />
+    <Stack.Screen name="Notifications" component={NotificationsScreen} />
+    <Stack.Screen name="TripRecaps" component={TripRecapsScreen} />
   </Stack.Navigator>
 );
 
@@ -188,21 +200,24 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 6,
-    gap: 2,
+    paddingVertical: 8,
+    gap: 4,
+    borderRadius: radius.md,
+    marginHorizontal: 2,
   },
   tabIconWrap: {
-    width: 36,
-    height: 36,
-    borderRadius: 12,
+    width: 40,
+    height: 40,
+    borderRadius: radius.md,
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabIconActive: {
     backgroundColor: colors.primary,
+    ...shadows.soft,
   },
   tabLabel: {
-    fontSize: 10,
+    fontSize: 11,
     color: colors.muted,
     fontWeight: '600',
   },
