@@ -40,15 +40,18 @@ export const UserProfileScreen = () => {
       <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
         <Icon name="back" size={22} color={colors.text} />
       </TouchableOpacity>
-      <View style={styles.header}>
-        <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.avatar}>
-          <Text style={styles.avatarText}>
-            {(profile?.name || 'U').charAt(0).toUpperCase()}
-          </Text>
-        </LinearGradient>
-        <Text style={[styles.name, { color: colors.text }]}>{profile?.name || 'Unknown'}</Text>
-        <Text style={[styles.email, { color: colors.muted }]}>{profile?.email || ''}</Text>
-      </View>
+       <View style={styles.header}>
+         <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.avatar}>
+           <Text style={styles.avatarText}>
+             {(profile?.name || 'U').charAt(0).toUpperCase()}
+           </Text>
+         </LinearGradient>
+         <Text style={[styles.name, { color: colors.text }]}>{profile?.name || 'Unknown'}</Text>
+         <TouchableOpacity style={styles.followBtn}>
+           <Icon name="plus" size={16} color={colors.white} />
+           <Text style={styles.followBtnText}>Follow</Text>
+         </TouchableOpacity>
+       </View>
       <Text style={[styles.sectionTitle, { color: colors.text }]}>
         Published Itineraries ({itineraries.length})
       </Text>
@@ -127,6 +130,21 @@ const styles = StyleSheet.create({
     color: colors.muted,
     textAlign: 'center',
     marginTop: 40,
+  },
+  followBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: radius.full,
+    backgroundColor: colors.primary,
+    marginTop: spacing.md,
+  },
+  followBtnText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: colors.white,
   },
 });
 

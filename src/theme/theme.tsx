@@ -85,6 +85,7 @@ export const shadows = {
   },
 };
 
+// Always light mode - removed dark mode toggle
 export const ThemeContext = createContext({
   mode: 'light',
   colors: {
@@ -100,38 +101,21 @@ export const ThemeContext = createContext({
 } as any);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [mode, setMode] = useState(colorScheme || 'light');
-
-  useEffect(() => {
-    const sub = Appearance.addChangeListener(({ colorScheme }) => setMode(colorScheme || 'light'));
-    return () => sub.remove();
-  }, []);
-
-  const toggle = () => setMode((m: string) => (m === 'light' ? 'dark' : 'light'));
+  // Always use light mode - dark mode removed
+  const mode = 'light';
 
   const theme = {
     mode,
-    colors:
-      mode === 'light'
-        ? {
-            primary: colors.primary,
-            background: colors.background,
-            card: colors.card,
-            text: colors.text,
-            muted: colors.muted,
-            border: colors.border,
-            primarySoft: colors.primarySoft,
-          }
-        : {
-            primary: '#7985FF',
-            background: colors.backgroundDark,
-            card: colors.cardDark,
-            text: colors.textDark,
-            muted: colors.mutedDark,
-            border: colors.borderDark,
-            primarySoft: '#1F2440',
-          },
-    toggle,
+    colors: {
+      primary: colors.primary,
+      background: colors.background,
+      card: colors.card,
+      text: colors.text,
+      muted: colors.muted,
+      border: colors.border,
+      primarySoft: colors.primarySoft,
+    },
+    toggle: () => {}, // no-op
   };
 
   return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;

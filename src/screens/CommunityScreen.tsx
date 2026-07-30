@@ -10,11 +10,15 @@ import {
   TextInput,
   ScrollView,
   Image,
+  Alert,
+  RefreshControl,
+  GestureResponderEvent,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { communityService } from '../services/communityService';
 import { AuthContext } from '../context/AuthContext';
+import { ThemeContext } from '../theme/theme';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Icon } from '../components/Icon';
 import { colors, radius, shadows, spacing } from '../theme/theme';
@@ -22,38 +26,51 @@ import { colors, radius, shadows, spacing } from '../theme/theme';
 type TabType = 'users' | 'itineraries';
 
 const CommunityScreen = () => {
-  const { getFeaturedItineraries } = useContext(AuthContext);
-  const [users, setUsers] = useState<any[]>([]);
-  const [itineraries, setItineraries] = useState<any[]>([]);
-  const [featured, setFeatured] = useState<any[]>([]);
-  const [filteredData, setFilteredData] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState('');
-  const [activeTab, setActiveTab] = useState<TabType>('users');
-  const [selectedTag, setSelectedTag] = useState('');
-  const [availableTags, setAvailableTags] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState('newest');
+   const { getFeaturedItineraries } = useContext(AuthContext);
+   const { user } = useContext(AuthContext);
+   const theme = useContext(ThemeContext);
+   const [users, setUsers] = useState<any[]>([]);
+   const [itineraries, setItineraries] = useState<any[]>([]);
+   const [featured, setFeatured] = useState<any[]>([]);
+   const [filteredData, setFilteredData] = useState<any[]>([]);
+   const [loading, setLoading] = useState(true);
+   const [query, setQuery] = useState('');
+   const [activeTab, setActiveTab] = useState<TabType>('users');
+   const [selectedTag, setSelectedTag] = useState('');
+   const [availableTags, setAvailableTags] = useState<string[]>([]);
+   const [sortBy, setSortBy] = useState('newest');
   const [showSort, setShowSort] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
+  const loadData = useCallback(async () => {
+    try {
+      const [u, i, t, f] = await Promise.all([
+        communityService.getUsers(),
+        communityService.getItineraries('newest'),
+        communityService.getAllTags(),
+        getFeaturedItineraries(),
+      ]);
+      setUsers(u);
+      setItineraries(i);
+      setAvailableTags(t);
+      setFeatured(f || []);
+      setFilteredData(activeTab === 'users' ? u : i);
+    } catch (e) {
+      console.warn(e);
+    }
+  }, [getFeaturedItineraries, activeTab]);
+
   useEffect(() => {
-    Promise.all([
-      communityService.getUsers(),
-      communityService.getItineraries('newest'),
-      communityService.getAllTags(),
-      getFeaturedItineraries(),
-    ])
-      .then(([u, i, t, f]) => {
-        setUsers(u);
-        setItineraries(i);
-        setAvailableTags(t);
-        setFeatured(f || []);
-        setFilteredData(u);
-      })
-      .catch(console.warn)
-      .finally(() => setLoading(false));
+    loadData().finally(() => setLoading(false));
   }, []);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await loadData();
+    setRefreshing(false);
+  }, [loadData]);
 
   useEffect(() => {
     if (activeTab === 'users') {
@@ -81,6 +98,35 @@ const CommunityScreen = () => {
     }
   }, [query, activeTab, users, itineraries, selectedTag]);
 
+  const [followedUsers, setFollowedUsers] = useState<Set<string>>(new Set());
+
+  // Load followed users from storage on mount
+  useEffect(() => {
+    if (user?.id) {
+      communityService.getFollowedUsers(user.id).then((ids) => {
+        setFollowedUsers(new Set(ids));
+      });
+    }
+  }, [user?.id]);
+
+  const handleFollowUser = async (targetUserId: string) => {
+    try {
+      if (followedUsers.has(targetUserId)) {
+        setFollowedUsers(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(targetUserId);
+          return newSet;
+        });
+        if (user?.id) await communityService.unfollowUser(user.id, targetUserId);
+      } else {
+        setFollowedUsers(prev => new Set(prev).add(targetUserId));
+        if (user?.id) await communityService.followUser(user.id, targetUserId);
+      }
+    } catch (e) {
+      console.warn('Failed to follow user', e);
+    }
+  };
+
   const renderUserItem = ({ item }: any) => (
     <TouchableOpacity
       style={[styles.userCard, { backgroundColor: colors.card, borderColor: colors.border }]}
@@ -94,41 +140,98 @@ const CommunityScreen = () => {
       </LinearGradient>
       <View style={styles.userInfo}>
         <Text style={[styles.name, { color: colors.text }]}>{item.name}</Text>
-        <Text style={[styles.email, { color: colors.muted }]}>{item.email}</Text>
       </View>
-      <Icon name="chevronRight" size={18} color={colors.muted} />
+      <TouchableOpacity
+        style={[
+          styles.followBtn,
+          followedUsers.has(item.id) && styles.followBtnActive
+        ]}
+        onPress={() => handleFollowUser(item.id)}
+      >
+        <Icon 
+          name={followedUsers.has(item.id) ? 'check' : 'plus'} 
+          size={16} 
+          color={followedUsers.has(item.id) ? colors.white : colors.primary} 
+        />
+        <Text style={[
+          styles.followBtnText,
+          followedUsers.has(item.id) && styles.followBtnTextActive
+        ]}>
+          {followedUsers.has(item.id) ? 'Following' : 'Follow'}
+        </Text>
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 
-  const renderItineraryItem = ({ item }: any) => (
-    <TouchableOpacity
-      style={[styles.userCard, { backgroundColor: colors.card, borderColor: colors.border }]}
-      activeOpacity={0.85}
-      onPress={() => (navigation as any).navigate('TripDetail', { id: item.id })}
-    >
-      <LinearGradient colors={[colors.primarySoft, '#E0E4FF']} style={styles.itinAvatar}>
-        <Icon name="itinerary" size={22} color={colors.primary} />
-      </LinearGradient>
-      <View style={styles.userInfo}>
-        <Text style={[styles.name, { color: colors.text }]} numberOfLines={1}>
-          {item.title}
-        </Text>
-        <Text style={[styles.email, { color: colors.muted }]} numberOfLines={1}>
-          {item.destinations?.join(', ') || 'Custom trip'} · {item.authorName || 'Unknown'}
-        </Text>
-        {item.tags && item.tags.length > 0 && (
-          <View style={styles.tagRow}>
-            {item.tags.slice(0, 3).map((tag: string, i: number) => (
-              <View key={i} style={styles.miniTag}>
-                <Text style={styles.miniTagText}>{tag}</Text>
-              </View>
-            ))}
-          </View>
+  const renderItineraryItem = ({ item }: any) => {
+    const isAdmin = user?.email?.includes('admin') || user?.id === 'admin-001';
+    
+    const handleLongPress = () => {
+      if (!isAdmin) return;
+      
+      Alert.alert(
+        'Delete Itinerary',
+        `Are you sure you want to delete "${item.title}"?`,
+        [
+          { text: 'Cancel', style: 'cancel' },
+          {
+            text: 'Delete',
+            style: 'destructive',
+            onPress: async () => {
+              try {
+                await communityService.updateItinerary(item.id, { deleted: true });
+                setItineraries(prev => prev.filter(i => i.id !== item.id));
+                setFilteredData(prev => prev.filter(i => i.id !== item.id));
+                Alert.alert('Success', 'Itinerary deleted');
+              } catch (e) {
+                console.error('Failed to delete itinerary:', e);
+                Alert.alert('Error', 'Failed to delete itinerary');
+              }
+            },
+          },
+        ]
+      );
+    };
+
+    return (
+      <TouchableOpacity
+        style={[styles.userCard, { backgroundColor: colors.card, borderColor: colors.border }]}
+        activeOpacity={0.85}
+        onPress={() => (navigation as any).navigate('TripDetail', { id: item.id })}
+        onLongPress={handleLongPress}
+        delayLongPress={500}
+      >
+        {item.authorAvatar ? (
+          <Image source={{ uri: item.authorAvatar }} style={styles.itinAvatar} />
+        ) : (
+          <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.itinAvatar}>
+            <Text style={styles.avatarText}>
+              {(item.authorName || 'U').charAt(0).toUpperCase()}
+            </Text>
+          </LinearGradient>
         )}
-      </View>
-      <Icon name="chevronRight" size={18} color={colors.muted} />
-    </TouchableOpacity>
-  );
+
+        <View style={styles.userInfo}>
+          <Text style={[styles.name, { color: colors.text }]} numberOfLines={1}>
+            {item.title}
+          </Text>
+          <Text style={[styles.email, { color: colors.muted }]} numberOfLines={1}>
+            {item.destinations?.join(', ') || 'Custom trip'} · {item.authorName || 'Unknown'}
+          </Text>
+          {item.tags && item.tags.length > 0 && (
+            <View style={styles.tagRow}>
+              {item.tags.slice(0, 3).map((tag: string, i: number) => (
+                <View key={i} style={styles.miniTag}>
+                  <Text style={styles.miniTagText}>{tag}</Text>
+                </View>
+              ))}
+            </View>
+          )}
+        </View>
+        <Icon name="chevronRight" size={18} color={colors.muted} />
+      </TouchableOpacity>
+    );
+  };
 
   const renderEmpty = () => (
     <View style={styles.empty}>
@@ -150,7 +253,7 @@ const CommunityScreen = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background, paddingTop: insets.top }]}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle={theme.mode === 'dark' ? 'light-content' : 'dark-content'} />
       <View style={styles.header}>
         <View>
           <Text style={styles.kicker}>EXPLORE</Text>
@@ -278,6 +381,7 @@ const CommunityScreen = () => {
           keyExtractor={(item: any) => item.id}
           contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: 120 }}
           renderItem={activeTab === 'users' ? renderUserItem : renderItineraryItem}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.primary} colors={[colors.primary]} />}
           ListHeaderComponent={
             activeTab === 'itineraries' && featured.length > 0 && !query && !selectedTag ? (
               <View style={styles.featuredSection}>
@@ -593,6 +697,29 @@ const styles = StyleSheet.create({
   sortOptionText: {
     fontSize: 14,
     fontWeight: '600',
+  },
+  followBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: radius.full,
+    backgroundColor: colors.primarySoft,
+    borderWidth: 1,
+    borderColor: colors.primary,
+  },
+  followBtnActive: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  followBtnText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: colors.primary,
+  },
+  followBtnTextActive: {
+    color: colors.white,
   },
 });
 

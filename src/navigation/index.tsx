@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Platform, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -84,34 +84,34 @@ function CustomTabBar({ state, descriptors, navigation }: any) {
             );
           }
 
-          const iconName =
-            route.name === 'Home'
-              ? 'home'
-              : route.name === 'Community'
-              ? 'globe'
-              : route.name === 'Library'
-              ? 'itinerary'
-              : 'profile';
+           const iconName =
+             route.name === 'Home'
+               ? 'home'
+               : route.name === 'Community'
+               ? 'globe'
+               : route.name === 'Library'
+               ? 'itinerary'
+               : 'profile';
 
-          return (
-            <TouchableOpacity
-              key={route.key}
-              accessibilityRole="button"
-              accessibilityState={isFocused ? { selected: true } : {}}
-              onPress={onPress}
-              style={styles.tabItem}
-              activeOpacity={0.8}
-            >
-              <View style={[styles.tabIconWrap, isFocused && styles.tabIconActive]}>
-                <Icon
-                  name={iconName}
-                  size={20}
-                  color={isFocused ? colors.white : colors.muted}
-                />
-              </View>
-              <Text style={[styles.tabLabel, isFocused && styles.tabLabelActive]}>{label}</Text>
-            </TouchableOpacity>
-          );
+           return (
+             <TouchableOpacity
+               key={route.key}
+               accessibilityRole="button"
+               accessibilityState={isFocused ? { selected: true } : {}}
+               onPress={onPress}
+               style={styles.tabItem}
+               activeOpacity={0.8}
+             >
+               <View style={[styles.tabIconWrap, isFocused && styles.tabIconActive, route.name === 'Home' && isFocused && styles.tabIconCircle]}>
+                 <Icon
+                   name={iconName}
+                   size={20}
+                   color={isFocused ? colors.white : colors.muted}
+                 />
+               </View>
+               <Text style={[styles.tabLabel, isFocused && styles.tabLabelActive]}>{label}</Text>
+             </TouchableOpacity>
+           );
         })}
       </LinearGradient>
     </View>
@@ -163,7 +163,7 @@ export function RootNavigator() {
     return (
       <View style={styles.loading}>
         <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.logoBadge}>
-          <Icon name="plane" size={28} color={colors.white} />
+          <Image source={require('../../assets/icon.png')} style={{ width: 36, height: 36 }} resizeMode="contain" />
         </LinearGradient>
         <Text style={styles.loadingBrand}>Waybound</Text>
         <Text style={styles.loadingSub}>Plan your next adventure</Text>
@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
     ...shadows.card,
     borderWidth: 1,
     borderColor: colors.border,
+    backgroundColor: 'rgba(255,255,255,0.95)',
   },
   tabItem: {
     flex: 1,
@@ -208,13 +209,17 @@ const styles = StyleSheet.create({
   tabIconWrap: {
     width: 40,
     height: 40,
-    borderRadius: radius.md,
+    borderRadius: radius.full,
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabIconActive: {
     backgroundColor: colors.primary,
+    borderRadius: radius.full,
     ...shadows.soft,
+  },
+  tabIconCircle: {
+    borderRadius: radius.full,
   },
   tabLabel: {
     fontSize: 11,
@@ -224,6 +229,9 @@ const styles = StyleSheet.create({
   tabLabelActive: {
     color: colors.primary,
     fontWeight: '700',
+  },
+  tabIconInactive: {
+    color: colors.muted,
   },
   fabWrap: {
     width: 72,

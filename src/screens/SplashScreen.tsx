@@ -7,18 +7,20 @@ import {
   TouchableOpacity,
   StatusBar,
   Dimensions,
+  Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon } from '../components/Icon';
-import { colors, radius, shadows, spacing } from '../theme/theme';
+import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 
 const { height } = Dimensions.get('window');
 
 const SplashScreen: React.FC = () => {
   const nav = useNavigation();
   const insets = useSafeAreaInsets();
+  const theme = React.useContext(ThemeContext);
 
   return (
     <View style={styles.container}>
@@ -36,9 +38,9 @@ const SplashScreen: React.FC = () => {
         >
           <View style={[styles.top, { paddingTop: insets.top + 16 }]}>
             <View style={styles.brandRow}>
-              <LinearGradient colors={['#5B67F5', '#7985FF']} style={styles.logoBadge}>
-                <Icon name="plane" size={18} color={colors.white} />
-              </LinearGradient>
+              <View style={styles.logoBadge}>
+                <Image source={require('../../assets/icon.png')} style={styles.logoImage} resizeMode="contain" />
+              </View>
               <Text style={styles.brand}>Waybound</Text>
             </View>
             <View style={styles.locationPill}>
@@ -59,7 +61,7 @@ const SplashScreen: React.FC = () => {
             <TouchableOpacity
               style={styles.button}
               activeOpacity={0.9}
-              onPress={() => nav.navigate('SignIn' as any)}
+              onPress={() => (nav as any).navigate('SignIn')}
             >
               <LinearGradient
                 colors={[colors.primary, '#7985FF']}
@@ -108,6 +110,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.2)',
+  },
+  logoImage: {
+    width: 28,
+    height: 28,
   },
   brand: {
     color: colors.white,

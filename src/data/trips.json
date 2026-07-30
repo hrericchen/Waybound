@@ -22,6 +22,7 @@
     "highlights": ["Cherry blossoms at Ueno Park", "Senso-ji Temple", "Fushimi Inari gates", "Osaka street food", "Tea ceremony"],
     "packing": ["Light jacket for spring", "Comfortable walking shoes", "Camera", "Portable Wi-Fi router"],
     "tags": ["asia", "culture", "spring", "food"],
+    "category": "cultural",
     "coords": { "lat": 35.6762, "lng": 139.6503 }
   },
   {
@@ -69,6 +70,7 @@
     "highlights": ["Machu Picchu sunrise", "Inca Trail trek", "Rainbow Mountain", "Sacred Valley", "Cusco's colonial charm"],
     "packing": ["Hiking boots", "Layered clothes", "Rain jacket", "Altitude sickness pills", "Headlamp"],
     "tags": ["adventure", "hiking", "culture", "history"],
+    "category": "mountain",
     "coords": { "lat": -13.1631, "lng": -72.5450 }
   },
   {
@@ -94,6 +96,7 @@
     "highlights": ["Northern Lights (if winter)", "Jokulsarlon glacier lagoon", "Gullfoss waterfall", "Blue Lagoon", "Whale watching"],
     "packing": ["Windproof jacket", "Hiking gear", "Swimwear for thermal pools", "Waterproof pants", "Warm layers"],
     "tags": ["roadtrip", "nature", "adventure", "winter"],
+    "category": "mountain",
     "coords": { "lat": 64.9631, "lng": -19.0208 }
   },
   {
@@ -128,7 +131,7 @@
     "description": "Dive into Seoul's street food, traditional markets, Michelin-starred restaurants, and vibrant food culture.",
     "budget": "2500",
     "season": "April-June",
-    "image": "https://images.unsplash.com/photo-1520769669658-f07657f5a307?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1200&q=80",
     "days": [
       { "day": 1, "title": "Arrival in Seoul", "activities": ["Check into Myeongdong hotel", "Myeongdong street food tour", "N Seoul Tower night view"] },
       { "day": 2, "title": "Korean BBQ Experience", "activities": ["Gwangjang Market breakfast", "Korean BBQ cooking class", "Mapo-gu BBQ district dinner"] },
@@ -142,6 +145,7 @@
     "highlights": ["Korean BBQ", "Street food in Myeongdong", "Gwangjang Market", "Busan seafood", "Kimchi making"],
     "packing": ["Comfortable shoes", "Loose fitting clothes for eating", "Tums/Pepto", "Reusable chopsticks"],
     "tags": ["food", "asia", "culture"],
+    "category": "cultural",
     "coords": { "lat": 37.5665, "lng": 126.9780 }
   },
   {
@@ -237,6 +241,7 @@
     "highlights": ["Jungfraujoch Top of Europe", "Matterhorn views", "Interlaken paragliding", "Mount Pilatus", "Lake Lucerne"],
     "packing": ["Hiking boots", "Warm jacket", "Sunglasses", "Swiss adapter plug"],
     "tags": ["alps", "hiking", "luxury", "scenic", "europe"],
+    "category": "mountain",
     "coords": { "lat": 46.8182, "lng": 8.2275 }
   },
   {
@@ -387,7 +392,7 @@
     "description": "Remote landscapes, epic trails, massive glaciers, and some of the most breathtaking scenery on Earth.",
     "budget": "3800",
     "season": "November-March",
-    "image": "https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
     "days": [
       { "day": 1, "title": "Arrive Buenos Aires", "activities": ["San Telmo Market", "Recoleta Cemetery", "Tango show dinner"] },
       { "day": 2, "title": "Fly to El Calafate", "activities": ["Flight to Patagonia", "Lake Argentina view", "Calafate welcome dinner"] },
@@ -403,6 +408,7 @@
     "highlights": ["Perito Moreno Glacier", "Fitz Roy sunrise", "Torres del Paine", "W Trek", "Patagonian lamb"],
     "packing": ["Warm layers", "Waterproof jacket", "Trekking poles", "Windproof pants", "Sleeping bag"],
     "tags": ["adventure", "hiking", "nature", "glacier"],
+    "category": "mountain",
     "coords": { "lat": -49.3316, "lng": -72.8498 }
   },
   {
@@ -412,7 +418,7 @@
     "description": "Scenic drives, turquoise lakes, mountain towns, and incredible wildlife in the heart of the Canadian Rockies.",
     "budget": "3200",
     "season": "June-September",
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
     "days": [
       { "day": 1, "title": "Calgary to Banff", "activities": ["Rent car in Calgary", "Banff Avenue stroll", "Banff Upper Hot Springs"] },
       { "day": 2, "title": "Lake Louise", "activities": ["Lake Louise canoe", "Lake Agnes Tea House hike", "Moraine Lake sunrise"] },
@@ -435,7 +441,7 @@
     "description": "Big five safaris, Maasai cultural experiences, and the breathtaking landscapes of the Rift Valley.",
     "budget": "4800",
     "season": "July-October",
-    "image": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=80",
     "days": [
       { "day": 1, "title": "Arrive Nairobi", "activities": ["David Sheldrick Elephant Orphanage", "Giraffe Centre", "Nairobi National Park game drive"] },
       { "day": 2, "title": "Amboseli National Park", "activities": ["Drive to Amboseli", "Elephant herds at Kilimanjaro", "Lodge sunset views"] },
@@ -450,54 +456,6 @@
     "packing": ["Binoculars", "Neutral colored clothes", "Safari hat", "Camera with zoom lens"],
     "tags": ["safari", "wildlife", "nature", "africa"],
     "coords": { "lat": -0.0236, "lng": 37.9062 }
-  },
-  {
-    "id": "nz-roadtrip",
-    "title": "New Zealand South Island Road Trip",
-    "country": "New Zealand",
-    "description": "Epic scenery, dramatic fjords, glaciers, coastal drives, and Lord of the Rings filming locations.",
-    "budget": "4600",
-    "season": "December-March",
-    "image": "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=1200&q=80",
-    "days": [
-      { "day": 1, "title": "Christchurch Arrival", "activities": ["Punting on Avon River", "Christchurch Botanic Gardens", "New Regent Street dinner"] },
-      { "day": 2, "title": "Tekapo & Mt Cook", "activities": ["Lake Tekapo & Church of the Good Shepherd", "Hooker Valley Track", "Dark Sky Reserve stargazing"] },
-      { "day": 3, "title": "Wanaka", "activities": ["Roys Peak hike", "That Wanaka Tree", "Puzzling World"] },
-      { "day": 4, "title": "Queenstown Adventures", "activities": ["Milford Sound cruise", "Bungee jumping at Kawarau Bridge", "Fergburger dinner"] },
-      { "day": 5, "title": "Queenstown Thrills", "activities": ["Shotover Jet", "Glenorchy LOTR tour", "Skyline Gondola & luge"] },
-      { "day": 6, "title": "West Coast Glaciers", "activities": ["Drive via Haast Pass", "Franz Josef glacier walk", "Glacier hot pools"] },
-      { "day": 7, "title": "Fox Glacier & Hokitika", "activities": ["Lake Matheson Mirror Lake", "Hokitika Gorge", "Pounamu greenstone shopping"] },
-      { "day": 8, "title": "Abel Tasman", "activities": ["Kayaking in Abel Tasman", "Marahau beach walk", "Seal colony viewing"] },
-      { "day": 9, "title": "Marlborough Wines", "activities": ["Marlborough wine tour", "Cloudy Bay vineyard", "Omaka Aviation Museum"] },
-      { "day": 10, "title": "Return to Christchurch", "activities": ["Whale watching in Kaikoura", "Return to Christchurch", "Departure"] }
-    ],
-    "highlights": ["Milford Sound cruise", "Queenstown bungee", "Hooker Valley Track", "Abel Tasman kayaking", "Marlborough wine"],
-    "packing": ["Camera", "Hiking boots", "Rain jacket", "Swimwear", "Sunscreen"],
-    "tags": ["roadtrip", "nature", "adventure", "scenic"],
-    "coords": { "lat": -45.0312, "lng": 168.6626 }
-  },
-  {
-    "id": "costa-rica",
-    "title": "Costa Rica Rainforest Escape",
-    "country": "Costa Rica",
-    "description": "Rainforests, zip lines, volcano hikes, and stunning beaches — pure pura vida.",
-    "budget": "2500",
-    "season": "December-April",
-    "image": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
-    "days": [
-      { "day": 1, "title": "Arrive San José", "activities": ["La Sabana Park", "National Museum", "Dinner in Barrio Escalante"] },
-      { "day": 2, "title": "Arenal Volcano", "activities": ["Transfer to La Fortuna", "Arenal Volcano hike", "Tabacón Hot Springs"] },
-      { "day": 3, "title": "Arenal Adventures", "activities": ["Zip lining canopy tour", "Hanging bridges walk", "Sloth sanctuary visit"] },
-      { "day": 4, "title": "Monteverde Cloud Forest", "activities": ["Boat & bus to Monteverde", "Night walk wildlife tour", "Reserva Santa Elena hike"] },
-      { "day": 5, "title": "Monteverde Adventure", "activities": ["Selvatura park zip line", "Hummingbird garden", "Coffee & chocolate tour"] },
-      { "day": 6, "title": "Manuel Antonio", "activities": ["Transfer to Pacific coast", "Manuel Antonio beach", "Sunset catamaran cruise"] },
-      { "day": 7, "title": "Manuel Antonio Park", "activities": ["National Park guided tour", "Monkey & sloth spotting", "Quepos market"] },
-      { "day": 8, "title": "Departure", "activities": ["Last beach time", "Transfer to San José", "Departure"] }
-    ],
-    "highlights": ["Arenal Volcano", "Monteverde zip lining", "Sloth sanctuary", "Manuel Antonio wildlife", "Hot springs"],
-    "packing": ["Insect repellent", "Light rain jacket", "Hiking sandals", "Binoculars", "Swimwear"],
-    "tags": ["nature", "adventure", "rainforest", "wildlife", "central america"],
-    "coords": { "lat": 9.7489, "lng": -83.7534 }
   },
   {
     "id": "hawaii-adventure",
@@ -619,7 +577,7 @@
     "description": "Island hop through the Adriatic — crystal waters, historic towns, and incredible seafood.",
     "budget": "3500",
     "season": "June-September",
-    "image": "https://images.unsplash.com/photo-1534612899747-8be1f2dfbe1b?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1591389703635-e15a5b0b3a1a?auto=format&fit=crop&w=1200&q=80",
     "days": [
       { "day": 1, "title": "Split Embarkation", "activities": ["Board sailboat in Split", "Diocletian's Palace", "Welcome dinner at Riva"] },
       { "day": 2, "title": "Hvar Island", "activities": ["Sail to Hvar", "Hvar Fortress", "Carpe Diem beach club"] },
@@ -641,7 +599,7 @@
     "description": "Beaches, ancient Mayan ruins, cenotes, and vibrant coastal towns along the Riviera Maya.",
     "budget": "2000",
     "season": "November-April",
-    "image": "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=80",
     "days": [
       { "day": 1, "title": "Cancún Arrival", "activities": ["Hotel Zone beach", "La Isla shopping", "Cenote swimming"] },
       { "day": 2, "title": "Chichén Itzá", "activities": ["Chichén Itzá sunrise tour", "Cenote Ik Kil swim", "Valladolid colonial town"] },
@@ -706,5 +664,53 @@
     "packing": ["Comfortable shoes", "Light scarf for mosques", "Sunscreen", "Camera"],
     "tags": ["culture", "history", "adventure", "europe"],
     "coords": { "lat": 38.9637, "lng": 35.2433 }
+  },
+  {
+    "id": "nz-roadtrip",
+    "title": "New Zealand South Island Road Trip",
+    "country": "New Zealand",
+    "description": "Epic scenery, dramatic fjords, glaciers, coastal drives, and Lord of the Rings filming locations.",
+    "budget": "4600",
+    "season": "December-March",
+    "image": "https://images.unsplash.com/photo-1551288044-be4eaf4730e1?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Christchurch Arrival", "activities": ["Punting on Avon River", "Christchurch Botanic Gardens", "New Regent Street dinner"] },
+      { "day": 2, "title": "Tekapo & Mt Cook", "activities": ["Lake Tekapo & Church of the Good Shepherd", "Hooker Valley Track", "Dark Sky Reserve stargazing"] },
+      { "day": 3, "title": "Wanaka", "activities": ["Roys Peak hike", "That Wanaka Tree", "Puzzling World"] },
+      { "day": 4, "title": "Queenstown Adventures", "activities": ["Milford Sound cruise", "Bungee jumping at Kawarau Bridge", "Fergburger dinner"] },
+      { "day": 5, "title": "Queenstown Thrills", "activities": ["Shotover Jet", "Glenorchy LOTR tour", "Skyline Gondola & luge"] },
+      { "day": 6, "title": "West Coast Glaciers", "activities": ["Drive via Haast Pass", "Franz Josef glacier walk", "Glacier hot pools"] },
+      { "day": 7, "title": "Fox Glacier & Hokitika", "activities": ["Lake Matheson Mirror Lake", "Hokitika Gorge", "Pounamu greenstone shopping"] },
+      { "day": 8, "title": "Abel Tasman", "activities": ["Kayaking in Abel Tasman", "Marahau beach walk", "Seal colony viewing"] },
+      { "day": 9, "title": "Marlborough Wines", "activities": ["Marlborough wine tour", "Cloudy Bay vineyard", "Omaka Aviation Museum"] },
+      { "day": 10, "title": "Return to Christchurch", "activities": ["Whale watching in Kaikoura", "Return to Christchurch", "Departure"] }
+    ],
+    "highlights": ["Milford Sound cruise", "Queenstown bungee", "Hooker Valley Track", "Abel Tasman kayaking", "Marlborough wine"],
+    "packing": ["Camera", "Hiking boots", "Rain jacket", "Swimwear", "Sunscreen"],
+    "tags": ["roadtrip", "nature", "adventure", "scenic"],
+    "coords": { "lat": -45.0312, "lng": 168.6626 }
+  },
+  {
+    "id": "costa-rica",
+    "title": "Costa Rica Rainforest Escape",
+    "country": "Costa Rica",
+    "description": "Rainforests, zip lines, volcano hikes, and stunning beaches — pure pura vida.",
+    "budget": "2500",
+    "season": "December-April",
+    "image": "https://images.unsplash.com/photo-1574649420617-3fec4ca5774a?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Arrive San José", "activities": ["La Sabana Park", "National Museum", "Dinner in Barrio Escalante"] },
+      { "day": 2, "title": "Arenal Volcano", "activities": ["Transfer to La Fortuna", "Arenal Volcano hike", "Tabacón Hot Springs"] },
+      { "day": 3, "title": "Arenal Adventures", "activities": ["Zip lining canopy tour", "Hanging bridges walk", "Sloth sanctuary visit"] },
+      { "day": 4, "title": "Monteverde Cloud Forest", "activities": ["Boat & bus to Monteverde", "Night walk wildlife tour", "Reserva Santa Elena hike"] },
+      { "day": 5, "title": "Monteverde Adventure", "activities": ["Selvatura park zip line", "Hummingbird garden", "Coffee & chocolate tour"] },
+      { "day": 6, "title": "Manuel Antonio", "activities": ["Transfer to Pacific coast", "Manuel Antonio beach", "Sunset catamaran cruise"] },
+      { "day": 7, "title": "Manuel Antonio Park", "activities": ["National Park guided tour", "Monkey & sloth spotting", "Quepos market"] },
+      { "day": 8, "title": "Departure", "activities": ["Last beach time", "Transfer to San José", "Departure"] }
+    ],
+    "highlights": ["Arenal Volcano", "Monteverde zip lining", "Sloth sanctuary", "Manuel Antonio wildlife", "Hot springs"],
+    "packing": ["Insect repellent", "Light rain jacket", "Hiking sandals", "Binoculars", "Swimwear"],
+    "tags": ["nature", "adventure", "rainforest", "wildlife", "central america"],
+    "coords": { "lat": 9.7489, "lng": -83.7534 }
   }
 ]

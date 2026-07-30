@@ -28,6 +28,7 @@ export type Itinerary = {
   color?: string;
   coverImage?: string;
   activities: Activity[];
+  isActive?: boolean;
 };
 
 export type Activity = {

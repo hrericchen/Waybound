@@ -15,7 +15,7 @@
     },
     "android": {
       "package": "com.waybound.travel",
-      "googleServicesFile": "./android/app/google-services.json",
+      "googleServicesFile": "./google-services.json",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyAbbkPp5J5glJ4GXlhkttS-bEtdwFykz9c"

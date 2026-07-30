@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-// import * as DocumentPicker from 'expo-document-picker';
-// import * as FileSystem from 'expo-file-system';
+import * as DocumentPicker from 'expo-document-picker';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import storageService from '../services/storageService';
@@ -49,28 +48,32 @@ const DocumentsVaultScreen: React.FC = () => {
   };
 
   const pickDocument = async () => {
-    Alert.alert(
-      'Add Document',
-      'Document picker will be available after installing expo-document-picker. For now, you can manually add documents.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Add Sample',
-          onPress: () => {
-            const doc: Document = {
-              id: Date.now().toString(),
-              name: 'Sample Document.pdf',
-              type: 'application/pdf',
-              uri: 'sample',
-              size: 0,
-              addedAt: new Date().toISOString(),
-            };
-            const updated = [...documents, doc];
-            saveDocuments(updated);
-          },
-        },
-      ]
-    );
+    try {
+      const result = await DocumentPicker.getDocumentAsync({
+        type: ['application/pdf', 'image/*'],
+        copyToCacheDirectory: true,
+      });
+
+      const typedResult = result as any;
+      if (!typedResult.canceled && typedResult.assets && typedResult.assets.length > 0) {
+        const asset = typedResult.assets[0];
+        const newDoc: Document = {
+          id: Date.now().toString(),
+          name: asset.name,
+          type: asset.mimeType || 'application/pdf',
+          uri: asset.uri,
+          size: asset.size || 0,
+          addedAt: new Date().toISOString(),
+        };
+        
+        const updated = [newDoc, ...documents];
+        await saveDocuments(updated);
+        Alert.alert('Success', 'Document added successfully!');
+      }
+    } catch (error) {
+      console.error('Error picking document:', error);
+      Alert.alert('Error', 'Failed to add document. Please try again.');
+    }
   };
 
   const deleteDocument = (id: string) => {

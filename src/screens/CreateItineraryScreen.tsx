@@ -14,22 +14,28 @@ import {
   Animated,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 // import * as ImagePicker from 'expo-image-picker';
 import DraggableFlatList, { RenderItemParams } from 'react-native-draggable-flatlist';
 import tripService from '../services/tripService';
+import { communityService } from '../services/communityService';
 import PlaceSearch from '../components/PlaceSearch';
 import TripMap from '../components/TripMap';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import { Activity, ActivityLink, ActivityPhoto } from '../types';
+import { AuthContext } from '../context/AuthContext';
 
 const CreateItineraryScreen: React.FC = () => {
+  const route = useRoute();
+  const editId = (route.params as any)?.editId;
   const [title, setTitle] = useState('Japan 2026');
   const [destinations, setDestinations] = useState('Tokyo, Kyoto');
   const [tags, setTags] = useState('');
+  const [season, setSeason] = useState('');
+  const [budget, setBudget] = useState('');
   const [coverImageUrl, setCoverImageUrl] = useState('');
   const [coverImageBase64, setCoverImageBase64] = useState('');
   const [activities, setActivities] = useState<Activity[]>([
@@ -37,14 +43,45 @@ const CreateItineraryScreen: React.FC = () => {
   ]);
   const [days, setDays] = useState<number[]>([1]);
   const [selectedDay, setSelectedDay] = useState<number>(1);
-  const [draftId] = useState(() => `it-${Date.now()}`);
+  const [draftId, setDraftId] = useState(() => `it-${Date.now()}`);
   const theme = useContext(ThemeContext);
   const insets = useSafeAreaInsets();
+  const { user } = useContext(AuthContext);
 
   // Animation for drag
   const scaleAnim = useCallback((isActive: boolean) => {
     return isActive ? 1.05 : 1;
   }, []);
+
+  // Compute the cover image value (base64 data URI takes priority over URL)
+  const getCoverImageValue = () =>
+    coverImageBase64
+      ? `data:image/jpeg;base64,${coverImageBase64}`
+      : coverImageUrl || undefined;
+
+  // Load existing itinerary for editing
+  useEffect(() => {
+    const loadItinerary = async () => {
+      if (editId) {
+        const itinerary = await tripService.getTripById(editId);
+        if (itinerary) {
+          setDraftId(itinerary.id);
+          setTitle(itinerary.title);
+          setDestinations(itinerary.destinations?.join(', ') || '');
+          setTags(itinerary.tags?.join(', ') || '');
+          setSeason(itinerary.season || '');
+          setBudget(itinerary.budget || '');
+          setCoverImageUrl(itinerary.coverImage || '');
+          setCoverImageBase64('');
+          setActivities(itinerary.activities || []);
+          const dayNumbers = [...new Set((itinerary.activities || []).map((a: any) => a.day))].sort((a: number, b: number) => a - b);
+          setDays(dayNumbers.length > 0 ? dayNumbers as number[] : [1]);
+          setSelectedDay((dayNumbers[0] as number) || 1);
+        }
+      }
+    };
+    loadItinerary();
+  }, [editId]);
 
   useEffect(() => {
     const save = async () => {
@@ -52,9 +89,12 @@ const CreateItineraryScreen: React.FC = () => {
         id: draftId,
         title,
         destinations: destinations.split(',').map((s) => s.trim()),
-        coverImage: coverImageBase64 || coverImageUrl,
+        coverImage: getCoverImageValue(),
         tags: tags.split(',').map((s) => s.trim()).filter(Boolean),
+        season: season || undefined,
+        budget: budget || undefined,
         activities,
+        userId: user?.id,
       };
       try {
         await tripService.saveTrip(itinerary);
@@ -63,7 +103,7 @@ const CreateItineraryScreen: React.FC = () => {
       }
     };
     save();
-  }, [title, destinations, tags, coverImageUrl, coverImageBase64, activities, draftId]);
+  }, [title, destinations, tags, season, budget, coverImageUrl, coverImageBase64, activities, draftId, user]);
 
   const navigation = useNavigation();
 
@@ -108,17 +148,28 @@ const CreateItineraryScreen: React.FC = () => {
   const pickImage = async () => {
     Alert.alert(
       'Upload Photo',
-      'To enable photo uploads, install expo-image-picker:\n\nnpm install expo-image-picker\n\nFor now, you can use an image URL or add a sample image.',
+      'Choose an option',
       [
         { text: 'Cancel', style: 'cancel' },
         {
-          text: 'Add Sample',
+          text: 'Choose from Gallery',
           onPress: () => {
-            // Add a sample base64 image (placeholder)
+            Alert.alert('Gallery', 'Image picker would open here. Install expo-image-picker for full functionality.');
+          },
+        },
+        {
+          text: 'Choose File',
+          onPress: () => {
+            Alert.alert('File Browser', 'File browser would open here.');
+          },
+        },
+        {
+          text: 'Add Sample Image',
+          onPress: () => {
             const sampleBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
             setCoverImageBase64(sampleBase64);
             setCoverImageUrl('');
-            Alert.alert('Success', 'Sample image added! Install expo-image-picker to upload real photos.');
+            Alert.alert('Success', 'Sample image added!');
           },
         },
       ]
@@ -220,10 +271,16 @@ const CreateItineraryScreen: React.FC = () => {
             },
           ]}
         >
-          <TouchableOpacity
-            onLongPress={drag}
-            activeOpacity={0.9}
-          >
+           {/* The entire box (except inner interactive controls) can be
+               long-pressed to start reordering. Tapping the title text
+               field simply edits the text and does not trigger dragging,
+               because TextInput consumes touch events for editing while
+               the surrounding Pressable area handles the long-press drag. */}
+           <TouchableOpacity
+             onLongPress={drag}
+             delayLongPress={200}
+             activeOpacity={1}
+           >
             <View style={styles.activityContent}>
               {/* Emoji Button */}
               <TouchableOpacity
@@ -244,6 +301,8 @@ const CreateItineraryScreen: React.FC = () => {
                   blurOnSubmit={true}
                   autoFocus={true}
                   keyboardType="default"
+                  autoCorrect={false}
+                  autoCapitalize="none"
                   placeholder="Type emoji..."
                 />
               )}
@@ -258,18 +317,25 @@ const CreateItineraryScreen: React.FC = () => {
 
               {/* Activity Info */}
               <View style={styles.activityBody}>
-                <TextInput
-                  value={item.title}
-                  onChangeText={(t) =>
-                    setActivities((a) => a.map((x) => (x.id === item.id ? { ...x, title: t } : x)))
-                  }
-                  style={[
-                    styles.activityInput, 
-                    { color: theme.colors.text },
-                    item.completed && styles.activityInputCompleted,
-                  ]}
-                  placeholderTextColor={theme.colors.muted}
-                />
+                <View style={styles.activityTitleRow}>
+                  {item.lat && item.lng && (
+                    <View style={styles.locationPin}>
+                      <Text style={styles.locationPinText}>📍</Text>
+                    </View>
+                  )}
+                  <TextInput
+                    value={item.title}
+                    onChangeText={(t) =>
+                      setActivities((a) => a.map((x) => (x.id === item.id ? { ...x, title: t } : x)))
+                    }
+                    style={[
+                      styles.activityInput, 
+                      { color: theme.colors.text },
+                      item.completed && styles.activityInputCompleted,
+                    ]}
+                    placeholderTextColor={theme.colors.muted}
+                  />
+                </View>
                 
                 {/* Expand/Collapse Button */}
                 <TouchableOpacity
@@ -277,7 +343,7 @@ const CreateItineraryScreen: React.FC = () => {
                   onPress={() => setExpandedActivity(isExpanded ? null : item.id)}
                 >
                   <Icon 
-                    name={isExpanded ? 'chevron-up' : 'chevron-down'} 
+                    name={isExpanded ? 'chevronUp' : 'chevronDown'} 
                     size={16} 
                     color={theme.colors.muted} 
                   />
@@ -366,7 +432,7 @@ const CreateItineraryScreen: React.FC = () => {
         </Animated.View>
       );
     },
-    [expandedActivity, theme.colors, scaleAnim]
+    [expandedActivity, theme.colors, scaleAnim, emojiInputId, emojiText]
   );
 
   return (
@@ -376,14 +442,18 @@ const CreateItineraryScreen: React.FC = () => {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
-        <View style={styles.header}>
-          <View>
-            <Text style={[styles.kicker, { color: theme.colors.muted }]}>Build your trip</Text>
-            <Text style={[styles.title, { color: theme.colors.text }]}>Create Itinerary</Text>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 120 }}
+        >
+          <View style={styles.header}>
+            <View>
+              <Text style={[styles.kicker, { color: theme.colors.muted }]}>Build your trip</Text>
+              <Text style={[styles.title, { color: theme.colors.text }]}>Create Itinerary</Text>
+            </View>
           </View>
-        </View>
 
-        <View style={[styles.formCard, { backgroundColor: theme.colors.card }]}>
+          <View style={[styles.formCard, { backgroundColor: theme.colors.card }]}>
           <Text style={[styles.label, { color: theme.colors.text }]}>Trip title</Text>
           <View style={[styles.input, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}>
             <Icon name="itinerary" size={16} color={theme.colors.muted} />
@@ -408,15 +478,28 @@ const CreateItineraryScreen: React.FC = () => {
             />
           </View>
 
-          <Text style={[styles.label, { color: theme.colors.text }]}>Tags</Text>
+          <Text style={[styles.label, { color: theme.colors.text }]}>Season (Optional)</Text>
           <View style={[styles.input, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}>
-            <Icon name="bookmark" size={16} color={theme.colors.muted} />
+            <Icon name="calendar" size={16} color={theme.colors.muted} />
             <TextInput
               style={[styles.inputField, { color: theme.colors.text }]}
-              value={tags}
-              onChangeText={setTags}
-              placeholder="Tags (comma separated, e.g. beach, food, adventure)"
+              value={season}
+              onChangeText={setSeason}
+              placeholder="e.g. Summer, Winter, Spring, Fall"
               placeholderTextColor={theme.colors.muted}
+            />
+          </View>
+
+          <Text style={[styles.label, { color: theme.colors.text }]}>Budget (Optional)</Text>
+          <View style={[styles.input, { backgroundColor: theme.colors.background, borderColor: theme.colors.border }]}>
+            <Icon name="currency" size={16} color={theme.colors.muted} />
+            <TextInput
+              style={[styles.inputField, { color: theme.colors.text }]}
+              value={budget}
+              onChangeText={setBudget}
+              placeholder="e.g. 2000"
+              placeholderTextColor={theme.colors.muted}
+              keyboardType="numeric"
             />
           </View>
 
@@ -564,10 +647,38 @@ const CreateItineraryScreen: React.FC = () => {
                     id: draftId,
                     title,
                     destinations: destinations.split(',').map((s) => s.trim()),
+                    coverImage: getCoverImageValue(),
+                    tags: tags.split(',').map((s) => s.trim()).filter(Boolean),
+                    season: season || undefined,
+                    budget: budget || undefined,
                     activities,
+                    userId: user?.id,
                   };
                   await tripService.saveTrip(itinerary);
-                  (navigation as any).navigate('Main', { screen: 'Library' });
+                  Alert.alert(
+                    'Itinerary Saved!',
+                    'Would you like to publish this itinerary to the community for others to see?',
+                    [
+                      { text: 'No, keep private', onPress: () => (navigation as any).navigate('Main', { screen: 'Library' }) },
+                      {
+                        text: 'Publish to Community',
+                        onPress: () => {
+                          try {
+                            communityService.publishItinerary({
+                              ...itinerary,
+                              authorName: user?.name || 'Anonymous',
+                              authorId: user?.id,
+                              authorAvatar: (user as any)?.avatarUrl,
+                            });
+                            Alert.alert('Published!', 'Your itinerary is now visible in the community.');
+                          } catch (e) {
+                            console.warn('Failed to publish to community', e);
+                          }
+                          (navigation as any).navigate('Main', { screen: 'Library' });
+                        },
+                      },
+                    ]
+                  );
                 }}
                 activeOpacity={0.9}
               >
@@ -583,6 +694,7 @@ const CreateItineraryScreen: React.FC = () => {
             </View>
           }
         />
+        </ScrollView>
       </KeyboardAvoidingView>
 
 
@@ -750,7 +862,23 @@ const styles = StyleSheet.create({
   activityBody: {
     flex: 1,
   },
+  activityTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    flex: 1,
+  },
+  locationPin: {
+    width: 20,
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  locationPinText: {
+    fontSize: 16,
+  },
   activityInput: {
+    flex: 1,
     fontSize: 15,
     fontWeight: '700',
     padding: 0,

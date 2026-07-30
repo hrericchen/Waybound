@@ -14,14 +14,170 @@ import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import exchangeRateService, { ExchangeRates } from '../services/exchangeRateService';
 
-const CURRENCY_SYMBOLS: Record<string, string> = {
-  USD: '$',
-  EUR: '€',
-  GBP: '£',
-  JPY: '¥',
-  CAD: 'C$',
-  AUD: 'A$',
+const CURRENCY_NAMES: Record<string, string> = {
+  USD: 'US Dollar',
+  EUR: 'Euro',
+  GBP: 'British Pound',
+  JPY: 'Japanese Yen',
+  CAD: 'Canadian Dollar',
+  AUD: 'Australian Dollar',
+  CHF: 'Swiss Franc',
+  CNY: 'Chinese Yuan',
+  SEK: 'Swedish Krona',
+  NZD: 'New Zealand Dollar',
+  KRW: 'South Korean Won',
+  SGD: 'Singapore Dollar',
+  NOK: 'Norwegian Krone',
+  MXN: 'Mexican Peso',
+  INR: 'Indian Rupee',
+  BRL: 'Brazilian Real',
+  ZAR: 'South African Rand',
+  HKD: 'Hong Kong Dollar',
+  TRY: 'Turkish Lira',
+  RUB: 'Russian Ruble',
+  PLN: 'Polish Zloty',
+  THB: 'Thai Baht',
+  IDR: 'Indonesian Rupiah',
+  HUF: 'Hungarian Forint',
+  CZK: 'Czech Koruna',
+  ILS: 'Israeli Shekel',
+  CLP: 'Chilean Peso',
+  AED: 'UAE Dirham',
+  SAR: 'Saudi Riyal',
+  MYR: 'Malaysian Ringgit',
+  PHP: 'Philippine Peso',
+  VND: 'Vietnamese Dong',
+  COP: 'Colombian Peso',
+  EGP: 'Egyptian Pound',
+  ARS: 'Argentine Peso',
+  TWD: 'Taiwan Dollar',
+  NGN: 'Nigerian Naira',
+  KES: 'Kenyan Shilling',
+  PKR: 'Pakistani Rupee',
+  DZD: 'Algerian Dinar',
+  MAD: 'Moroccan Dirham',
+  QAR: 'Qatari Riyal',
+  BDT: 'Bangladeshi Taka',
+  PAB: 'Panamanian Balboa',
+  CRC: 'Costa Rican Colon',
+  CVE: 'Cape Verdean Escudo',
+  AFN: 'Afghan Afghani',
+  ALL: 'Albanian Lek',
+  AMD: 'Armenian Dram',
+  ANG: 'Netherlands Antillian Guilder',
+  AOA: 'Angolan Kwanza',
+  AWG: 'Aruban Florin',
+  AZN: 'Azerbaijani Manat',
+  BAM: 'Bosnia-Herzegovina Convertible Mark',
+  BBD: 'Barbadian Dollar',
+  BGN: 'Bulgarian Lev',
+  BHD: 'Bahraini Dinar',
+  BIF: 'Burundian Franc',
+  BMD: 'Bermudan Dollar',
+  BND: 'Brunei Dollar',
+  BOB: 'Bolivian Boliviano',
+  BSD: 'Bahamian Dollar',
+  BTN: 'Bhutanese Ngultrum',
+  BWP: 'Botswanan Pula',
+  BYN: 'Belarusian Ruble',
+  BZD: 'Belize Dollar',
+  CDF: 'Congolese Franc',
+  CUP: 'Cuban Peso',
+  DJF: 'Djiboutian Franc',
+  DKK: 'Danish Krone',
+  DOP: 'Dominican Peso',
+  ETB: 'Ethiopian Birr',
+  FJD: 'Fijian Dollar',
+  FKP: 'Falkland Islands Pound',
+  GEL: 'Georgian Lari',
+  GGP: 'Guernsey Pound',
+  GHS: 'Ghanaian Cedi',
+  GIP: 'Gibraltar Pound',
+  GMD: 'Gambian Dalasi',
+  GNF: 'Guinean Franc',
+  GTQ: 'Guatemalan Quetzal',
+  GYD: 'Guyanaese Dollar',
+  HNL: 'Honduran Lempira',
+  HRK: 'Croatian Kuna',
+  HTG: 'Haitian Gourde',
+  IMP: 'Manx Pound',
+  IQD: 'Iraqi Dinar',
+  IRR: 'Iranian Rial',
+  ISK: 'Icelandic Krona',
+  JEP: 'Jersey Pound',
+  JMD: 'Jamaican Dollar',
+  JOD: 'Jordanian Dinar',
+  KGS: 'Kyrgystani Som',
+  KHR: 'Cambodian Riel',
+  KMF: 'Comorian Franc',
+  KPW: 'North Korean Won',
+  KWD: 'Kuwaiti Dinar',
+  KYD: 'Cayman Islands Dollar',
+  KZT: 'Kazakhstani Tenge',
+  LAK: 'Laotian Kip',
+  LBP: 'Lebanese Pound',
+  LKR: 'Sri Lankan Rupee',
+  LRD: 'Liberian Dollar',
+  LSL: 'Lesotho Loti',
+  LYD: 'Libyan Dinar',
+  MDL: 'Moldovan Leu',
+  MGA: 'Malagasy Ariary',
+  MKD: 'Macedonian Denar',
+  MMK: 'Myanmar Kyat',
+  MNT: 'Mongolian Tugrik',
+  MOP: 'Macanese Pataca',
+  MRU: 'Mauritanian Ouguiya',
+  MUR: 'Mauritian Rupee',
+  MVR: 'Maldivian Rufiyaa',
+  MWK: 'Malawian Kwacha',
+  MZN: 'Mozambican Metical',
+  NAD: 'Namibian Dollar',
+  NIO: 'Nicaraguan Cordoba',
+  NPR: 'Nepalese Rupee',
+  OMR: 'Omani Rial',
+  PEN: 'Peruvian Sol',
+  PGK: 'Papua New Guinean Kina',
+  PYG: 'Paraguayan Guarani',
+  RON: 'Romanian Leu',
+  RSD: 'Serbian Dinar',
+  RWF: 'Rwandan Franc',
+  SBD: 'Solomon Islands Dollar',
+  SCR: 'Seychellois Rupee',
+  SDG: 'Sudanese Pound',
+  SHP: 'Saint Helena Pound',
+  SLL: 'Sierra Leonean Leone',
+  SOS: 'Somali Shilling',
+  SRD: 'Surinamese Dollar',
+  SSP: 'South Sudanese Pound',
+  STN: 'Sao Tome and Principe Dobra',
+  SVC: 'Salvadoran Colon',
+  SYP: 'Syrian Pound',
+  SZL: 'Swazi Lilangeni',
+  TJS: 'Tajikistani Somoni',
+  TMT: 'Turkmenistani Manat',
+  TND: 'Tunisian Dinar',
+  TOP: 'Tongan Pa\'anga',
+  TTD: 'Trinidad and Tobago Dollar',
+  TZS: 'Tanzanian Shilling',
+  UAH: 'Ukrainian Hryvnia',
+  UGX: 'Ugandan Shilling',
+  UYU: 'Uruguayan Peso',
+  UZS: 'Uzbekistani Som',
+  VES: 'Venezuelan Bolívar',
+  VUV: 'Vanuatu Vatu',
+  WST: 'Samoan Tala',
+  XAF: 'CFA Franc BEAC',
+  XCD: 'East Caribbean Dollar',
+  XOF: 'CFA Franc BCEAO',
+  XPF: 'CFP Franc',
+  YER: 'Yemeni Rial',
+  ZMW: 'Zambian Kwacha',
+  ZWL: 'Zimbabwean Dollar',
 };
+
+const POPULAR_CURRENCIES = [
+  'USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'CHF', 'CNY', 'INR', 'MXN', 'SGD', 'HKD',
+];
 
 const ExchangeRatesScreen: React.FC = () => {
   const [rates, setRates] = useState<ExchangeRates | null>(null);
@@ -72,34 +228,62 @@ const ExchangeRatesScreen: React.FC = () => {
   };
 
   const currencies = rates ? Object.keys(rates.rates).sort() : ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD'];
+  const popularCurrencies = POPULAR_CURRENCIES.filter((c) => currencies.includes(c));
+
+  const getCurrencyName = (code: string): string => {
+    return CURRENCY_NAMES[code] || code;
+  };
 
   const formatCurrency = (value: number, currency: string) => {
-    const symbol = CURRENCY_SYMBOLS[currency] || currency;
-    return `${symbol}${value.toFixed(2)}`;
+    return `${value.toFixed(2)}`;
   };
+
+  const renderCurrencyOption = (
+    currency: string,
+    selected: string,
+    onSelect: (c: string) => void,
+    onClose: () => void,
+    keyPrefix = ''
+  ) => (
+    <TouchableOpacity
+      key={`${keyPrefix}${currency}`}
+      style={[styles.currencyOption, { backgroundColor: selected === currency ? colors.primary + '20' : 'transparent' }]}
+      onPress={() => {
+        onSelect(currency);
+        onClose();
+      }}
+    >
+      <View style={{ flex: 1 }}>
+        <Text style={[styles.currencyOptionText, { color: theme.colors.text }]}>
+          {currency}
+        </Text>
+        <Text style={[styles.currencyOptionSubtext, { color: theme.colors.muted }]}>
+          {getCurrencyName(currency)}
+        </Text>
+      </View>
+      {selected === currency && <Icon name="check" size={20} color={colors.primary} />}
+    </TouchableOpacity>
+  );
 
   const renderCurrencyPicker = (selected: string, onSelect: (c: string) => void, visible: boolean, onClose: () => void) => {
     if (!visible) return null;
     return (
       <Modal visible={visible} transparent animationType="fade">
-        <TouchableOpacity style={styles.modalOverlay} onPress={onClose}>
+        <TouchableOpacity style={styles.modalOverlay} onPress={onClose} activeOpacity={1}>
           <View style={[styles.currencyPicker, { backgroundColor: theme.colors.card }]}>
             <Text style={[styles.pickerTitle, { color: theme.colors.text }]}>Select Currency</Text>
-            {currencies.map((currency) => (
-              <TouchableOpacity
-                key={currency}
-                style={[styles.currencyOption, { backgroundColor: selected === currency ? colors.primary + '20' : 'transparent' }]}
-                onPress={() => {
-                  onSelect(currency);
-                  onClose();
-                }}
-              >
-                <Text style={[styles.currencyOptionText, { color: theme.colors.text }]}>
-                  {currency} {CURRENCY_SYMBOLS[currency] || ''}
-                </Text>
-                {selected === currency && <Icon name="check" size={20} color={colors.primary} />}
-              </TouchableOpacity>
-            ))}
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <Text style={[styles.pickerSectionLabel, { color: theme.colors.muted }]}>Popular</Text>
+              {popularCurrencies.map((currency) =>
+                renderCurrencyOption(currency, selected, onSelect, onClose, 'popular-')
+              )}
+              <Text style={[styles.pickerSectionLabel, { color: theme.colors.muted, marginTop: spacing.md }]}>
+                All Currencies
+              </Text>
+              {currencies.map((currency) =>
+                renderCurrencyOption(currency, selected, onSelect, onClose)
+              )}
+            </ScrollView>
           </View>
         </TouchableOpacity>
       </Modal>
@@ -138,10 +322,10 @@ const ExchangeRatesScreen: React.FC = () => {
               onPress={() => setShowFromPicker(true)}
             >
               <Text style={[styles.currencySymbol, { color: theme.colors.text }]}>
-                {CURRENCY_SYMBOLS[fromCurrency] || fromCurrency}
+                {fromCurrency}
               </Text>
               <Text style={[styles.currencyCode, { color: theme.colors.text }]}>{fromCurrency}</Text>
-              <Icon name="chevron-down" size={16} color={theme.colors.muted} />
+              <Icon name="chevronDown" size={16} color={theme.colors.muted} />
             </TouchableOpacity>
           </View>
 
@@ -166,23 +350,23 @@ const ExchangeRatesScreen: React.FC = () => {
               onPress={() => setShowToPicker(true)}
             >
               <Text style={[styles.currencySymbol, { color: theme.colors.text }]}>
-                {CURRENCY_SYMBOLS[toCurrency] || toCurrency}
+                {toCurrency}
               </Text>
               <Text style={[styles.currencyCode, { color: theme.colors.text }]}>{toCurrency}</Text>
-              <Icon name="chevron-down" size={16} color={theme.colors.muted} />
+              <Icon name="chevronDown" size={16} color={theme.colors.muted} />
             </TouchableOpacity>
           </View>
 
           {convertedAmount !== null && (
             <View style={styles.conversionRate}>
-              <Text style={[styles.conversionRateText, { color: theme.colors.muted }]}>
-                1 {fromCurrency} = {rates ? (rates.rates[toCurrency] / rates.rates[fromCurrency]).toFixed(4)} {toCurrency}
-              </Text>
+                <Text style={[styles.conversionRateText, { color: theme.colors.muted }]}>
+                  1 {fromCurrency} = {rates ? (rates.rates[toCurrency] / rates.rates[fromCurrency]).toFixed(4) : '---'} {toCurrency}
+                </Text>
             </View>
           )}
         </View>
 
-        {/* All Rates - Alphabetical */}
+        {/* All Rates - Alphabetical (unchanged) */}
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>All Rates</Text>
           <Text style={[styles.sectionSubtitle, { color: theme.colors.muted }]}>Base: USD</Text>
@@ -197,11 +381,14 @@ const ExchangeRatesScreen: React.FC = () => {
               <View style={styles.rateHeader}>
                 <View style={[styles.currencyFlag, { backgroundColor: colors.primary + '20' }]}>
                   <Text style={[styles.currencyFlagText, { color: colors.primary }]}>
-                    {CURRENCY_SYMBOLS[currency] || currency}
+                    {currency}
                   </Text>
                 </View>
                 <View style={styles.rateInfo}>
                   <Text style={[styles.rateCurrency, { color: theme.colors.text }]}>
+                    {getCurrencyName(currency)}
+                  </Text>
+                  <Text style={[styles.rateCurrencyCode, { color: theme.colors.muted }]}>
                     {currency}
                   </Text>
                   <Text style={[styles.rateValue, { color: theme.colors.muted }]}>
@@ -344,7 +531,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   currencyFlagText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '800',
   },
   rateInfo: {
@@ -355,9 +542,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 2,
   },
+  rateCurrencyCode: {
+    fontSize: 12,
+    fontWeight: '500',
+    marginBottom: 2,
+  },
   rateValue: {
     fontSize: 14,
     fontWeight: '600',
+  },
+  currencyOptionSubtext: {
+    fontSize: 12,
+    fontWeight: '500',
+    marginTop: 2,
   },
   selectButton: {
     paddingHorizontal: spacing.md,
@@ -387,6 +584,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '800',
     marginBottom: spacing.md,
+  },
+  pickerSectionLabel: {
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+    marginBottom: spacing.xs,
   },
   currencyOption: {
     flexDirection: 'row',

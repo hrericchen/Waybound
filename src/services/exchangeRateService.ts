@@ -42,11 +42,7 @@ const exchangeRateService = {
       const rates: ExchangeRates = {
         rates: {
           USD: 1,
-          EUR: data.conversion_rates.EUR || 0.92,
-          GBP: data.conversion_rates.GBP || 0.79,
-          JPY: data.conversion_rates.JPY || 149.50,
-          CAD: data.conversion_rates.CAD || 1.36,
-          AUD: data.conversion_rates.AUD || 1.52,
+          ...data.conversion_rates,
         },
         lastUpdated: new Date().toISOString(),
       };

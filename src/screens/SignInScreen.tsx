@@ -9,6 +9,7 @@ import {
   Platform,
   ScrollView,
   StatusBar,
+  Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../context/AuthContext';
@@ -60,7 +61,6 @@ const SignInScreen: React.FC = () => {
             try {
               const decodeBase64 = (input: string) => {
                 if (typeof atob === 'function') return atob(input);
-                if (typeof Buffer !== 'undefined') return Buffer.from(input, 'base64').toString('utf8');
                 throw new Error('No base64 decoder available');
               };
               const decoded = JSON.parse(decodeBase64(base64));
@@ -99,10 +99,10 @@ const SignInScreen: React.FC = () => {
             <Icon name="back" size={22} color={colors.text} />
           </TouchableOpacity>
 
-          <View style={styles.hero}>
-            <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.logoBadge}>
-              <Icon name="plane" size={22} color={colors.white} />
-            </LinearGradient>
+           <View style={styles.hero}>
+             <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.logoBadge}>
+               <Image source={require('../../assets/icon.png')} style={styles.logoImage} resizeMode="contain" />
+             </LinearGradient>
             <Text style={styles.kicker}>WELCOME BACK</Text>
             <Text style={styles.title}>Sign in</Text>
             <Text style={styles.subtitle}>Continue planning your next great journey</Text>
@@ -162,14 +162,14 @@ const SignInScreen: React.FC = () => {
               disabled={!request}
               activeOpacity={0.9}
             >
-              <Icon name="google" size={18} color={colors.google} />
+              <Icon name="google" size={18} color="#4285F4" />
               <Text style={styles.googleText}>Google</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity
             style={styles.link}
-            onPress={() => navigation.navigate('SignUp' as any)}
+            onPress={() => (navigation as any).navigate('SignUp')}
           >
             <Text style={styles.linkText}>
               Don't have an account?{' '}
@@ -212,6 +212,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: spacing.lg,
     ...shadows.fab,
+  },
+  logoImage: {
+    width: 32,
+    height: 32,
   },
   kicker: {
     color: colors.primary,

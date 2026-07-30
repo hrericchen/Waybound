@@ -16,6 +16,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import tripService from '../services/tripService';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
+import { AuthContext } from '../context/AuthContext';
 
 const LibraryScreen: React.FC = () => {
   const [list, setList] = useState<any[]>([]);
@@ -24,11 +25,13 @@ const LibraryScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const theme = useContext(ThemeContext);
   const navigation = useNavigation();
+  const { user } = useContext(AuthContext);
 
   const loadList = async () => {
-    const itineraries = await tripService.getItineraries();
+    const itineraries = await tripService.getItineraries(user?.id);
     setList(itineraries);
   };
+
 
   const filteredList = list.filter((item) => {
     if (!searchQuery) return true;
@@ -51,23 +54,25 @@ const LibraryScreen: React.FC = () => {
 
   const handleLongPress = (item: any) => {
     setSelectedId(item.id);
+    const isActive = item.isActive;
     Alert.alert(
       item.title,
       'What would you like to do?',
       [
         { text: 'Cancel', style: 'cancel', onPress: () => setSelectedId(null) },
         {
-          text: 'Edit',
-          onPress: () => {
-            (navigation as any).navigate('Create', { editId: item.id });
-            setSelectedId(null);
-          },
-        },
-        {
           text: 'Delete',
           style: 'destructive',
           onPress: async () => {
             await tripService.deleteItinerary(item.id);
+            loadList();
+            setSelectedId(null);
+          },
+        },
+        {
+          text: isActive ? 'Set as Inactive' : 'Set as Active',
+          onPress: async () => {
+            await tripService.updateItinerary(item.id, { isActive: !isActive });
             loadList();
             setSelectedId(null);
           },
@@ -128,6 +133,7 @@ const LibraryScreen: React.FC = () => {
             <TouchableOpacity 
               style={[styles.card, { backgroundColor: theme.colors.card }, selectedId === item.id && styles.cardSelected]} 
               activeOpacity={0.9}
+              onPress={() => (navigation as any).navigate('TripDetail', { id: item.id })}
               onLongPress={() => handleLongPress(item)}
             >
               {item.coverImage ? (
@@ -148,6 +154,12 @@ const LibraryScreen: React.FC = () => {
                   </Text>
                 </View>
                 <View style={styles.statsRow}>
+                  {item.isActive && (
+                    <View style={[styles.statChip, styles.activeChip]}>
+                      <Icon name="check" size={11} color={colors.white} />
+                      <Text style={[styles.statText, styles.activeText]}>Active</Text>
+                    </View>
+                  )}
                   <View style={styles.statChip}>
                     <Icon name="calendar" size={11} color={colors.primary} />
                     <Text style={styles.statText}>{item.activities?.length || 0} stops</Text>
@@ -253,6 +265,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: radius.full,
+  },
+  activeChip: {
+    backgroundColor: colors.success,
+  },
+  activeText: {
+    color: colors.white,
   },
   statText: {
     color: colors.primary,

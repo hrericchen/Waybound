@@ -9,6 +9,7 @@ import {
   Platform,
   ScrollView,
   StatusBar,
+  Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../context/AuthContext';
@@ -45,7 +46,10 @@ const SignUpScreen: React.FC = () => {
             <Icon name="back" size={22} color={colors.text} />
           </TouchableOpacity>
 
-          <View style={styles.hero}>
+           <View style={styles.hero}>
+             <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.logoBadge}>
+               <Image source={require('../../assets/icon.png')} style={styles.logoImage} resizeMode="contain" />
+             </LinearGradient>
             <Text style={styles.kicker}>JOIN US</Text>
             <Text style={styles.title}>Create account</Text>
             <Text style={styles.subtitle}>
@@ -139,6 +143,19 @@ const styles = StyleSheet.create({
   hero: {
     marginTop: spacing.xxl,
     marginBottom: spacing.xxl,
+  },
+  logoBadge: {
+    width: 52,
+    height: 52,
+    borderRadius: radius.lg,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.lg,
+    ...shadows.fab,
+  },
+  logoImage: {
+    width: 32,
+    height: 32,
   },
   kicker: {
     color: colors.primary,

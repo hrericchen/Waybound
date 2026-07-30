@@ -100,7 +100,7 @@ const TripMap: React.FC<{ points: { lat: number; lng: number; title?: string }[]
 };
 
 const styles = StyleSheet.create({
-  container: { height: 280, borderRadius: 18, overflow: 'hidden', marginVertical: 12 },
+  container: { flex: 1, borderRadius: 18, overflow: 'hidden', marginVertical: 12 },
   map: { flex: 1 },
   navigate: { position: 'absolute', right: 12, bottom: 12, backgroundColor: '#1B6EF3', paddingHorizontal: 14, paddingVertical: 12, borderRadius: 999 },
   marker: { width: 30, height: 30, borderRadius: 15, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#1B6EF3' },

@@ -1,89 +1,62 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { LinearGradient } from 'expo-linear-gradient';
+import { useFocusEffect } from '@react-navigation/native';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
+import notificationService, { Notification } from '../services/notificationService';
+import { AuthContext } from '../context/AuthContext';
 
-type Notification = {
-  id: string;
-  type: 'saved' | 'liked' | 'followed';
-  username: string;
-  message: string;
-  time: string;
-  read: boolean;
-};
-
-const NotificationsScreen: React.FC = () => {
+const NotificationsScreen: React.FC<any> = ({ navigation }) => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [refreshing, setRefreshing] = useState(false);
   const insets = useSafeAreaInsets();
   const theme = useContext(ThemeContext);
-
-  useEffect(() => {
-    loadNotifications();
-  }, []);
+  const { user } = useContext(AuthContext);
 
   const loadNotifications = async () => {
-    // Mock notifications - in real app, fetch from Firestore
-    const mockNotifications: Notification[] = [
-      {
-        id: '1',
-        type: 'saved',
-        username: '@sarah_travels',
-        message: 'saved your "Tokyo Adventure" itinerary',
-        time: '2 hours ago',
-        read: false,
-      },
-      {
-        id: '2',
-        type: 'liked',
-        username: '@mike_explorer',
-        message: 'liked your "Paris Getaway" trip',
-        time: '5 hours ago',
-        read: false,
-      },
-      {
-        id: '3',
-        type: 'followed',
-        username: '@jessica_adventures',
-        message: 'started following you',
-        time: '1 day ago',
-        read: true,
-      },
-      {
-        id: '4',
-        type: 'saved',
-        username: '@david_backpacker',
-        message: 'saved your "Bali Paradise" itinerary',
-        time: '2 days ago',
-        read: true,
-      },
-      {
-        id: '5',
-        type: 'liked',
-        username: '@lisa_wanderlust',
-        message: 'liked your "New York City" trip',
-        time: '3 days ago',
-        read: true,
-      },
-    ];
-    setNotifications(mockNotifications);
+    if (!user) {
+      setNotifications([]);
+      return;
+    }
+    try {
+      const notifs = await notificationService.getNotifications(user.id);
+      setNotifications(notifs);
+    } catch (error) {
+      console.error('Error loading notifications:', error);
+      setNotifications([]);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      loadNotifications();
+    }, [user])
+  );
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadNotifications();
+    setRefreshing(false);
   };
 
   const getNotificationIcon = (type: string) => {
     switch (type) {
-      case 'saved':
+      case 'save':
         return 'bookmark';
-      case 'liked':
+      case 'like':
         return 'heart';
-      case 'followed':
+      case 'follow':
         return 'user';
+      case 'comment':
+        return 'chat';
       default:
         return 'bell';
     }
@@ -91,24 +64,52 @@ const NotificationsScreen: React.FC = () => {
 
   const getNotificationColor = (type: string) => {
     switch (type) {
-      case 'saved':
+      case 'save':
         return '#4ECDC4';
-      case 'liked':
+      case 'like':
         return '#FF6B6B';
-      case 'followed':
+      case 'follow':
         return '#FFD93D';
+      case 'comment':
+        return '#7985FF';
       default:
         return colors.primary;
     }
   };
 
+  const formatTime = (timestamp: number): string => {
+    const now = Date.now();
+    const diff = now - timestamp;
+    const minutes = Math.floor(diff / 60000);
+    const hours = Math.floor(diff / 3600000);
+    const days = Math.floor(diff / 86400000);
+
+    if (minutes < 1) return 'Just now';
+    if (minutes < 60) return `${minutes}m ago`;
+    if (hours < 24) return `${hours}h ago`;
+    if (days < 7) return `${days}d ago`;
+    return new Date(timestamp).toLocaleDateString();
+  };
+
   const unreadCount = notifications.filter((n) => !n.read).length;
 
-  const markAsRead = (id: string) => {
+  const markAsRead = async (id: string) => {
     const updated = notifications.map((n) =>
       n.id === id ? { ...n, read: true } : n
     );
     setNotifications(updated);
+    try {
+      await notificationService.markAsRead(id);
+    } catch (e) {
+      console.warn('Failed to mark as read', e);
+    }
+  };
+
+  const handleNotificationPress = (item: Notification) => {
+    markAsRead(item.id);
+    if (item.itineraryId && navigation) {
+      navigation.navigate('TripDetail', { id: item.itineraryId });
+    }
   };
 
   const renderNotification = ({ item }: { item: Notification }) => (
@@ -118,7 +119,7 @@ const NotificationsScreen: React.FC = () => {
         { backgroundColor: theme.colors.card, borderColor: theme.colors.border },
         !item.read && styles.unreadCard,
       ]}
-      onPress={() => markAsRead(item.id)}
+      onPress={() => handleNotificationPress(item)}
       activeOpacity={0.9}
     >
       <View style={[styles.notificationIcon, { backgroundColor: getNotificationColor(item.type) + '20' }]}>
@@ -126,10 +127,11 @@ const NotificationsScreen: React.FC = () => {
       </View>
       <View style={styles.notificationContent}>
         <Text style={[styles.notificationMessage, { color: theme.colors.text }]}>
-          <Text style={styles.username}>{item.username}</Text> {item.message}
+          <Text style={styles.username}>{item.fromUserName}</Text>{' '}
+          {item.message.replace(item.fromUserName, '').trim()}
         </Text>
         <Text style={[styles.notificationTime, { color: theme.colors.muted }]}>
-          {item.time}
+          {formatTime(item.createdAt)}
         </Text>
       </View>
       {!item.read && <View style={styles.unreadDot} />}
@@ -154,7 +156,7 @@ const NotificationsScreen: React.FC = () => {
             <Icon name="bookmark" size={20} color="#4ECDC4" />
           </View>
           <Text style={[styles.statNumber, { color: theme.colors.text }]}>
-            {notifications.filter(n => n.type === 'saved').length}
+            {notifications.filter(n => n.type === 'save').length}
           </Text>
           <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Saved</Text>
         </View>
@@ -164,7 +166,7 @@ const NotificationsScreen: React.FC = () => {
             <Icon name="heart" size={20} color="#FF6B6B" />
           </View>
           <Text style={[styles.statNumber, { color: theme.colors.text }]}>
-            {notifications.filter(n => n.type === 'liked').length}
+            {notifications.filter(n => n.type === 'like').length}
           </Text>
           <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Liked</Text>
         </View>
@@ -174,7 +176,7 @@ const NotificationsScreen: React.FC = () => {
             <Icon name="user" size={20} color="#FFD93D" />
           </View>
           <Text style={[styles.statNumber, { color: theme.colors.text }]}>
-            {notifications.filter(n => n.type === 'followed').length}
+            {notifications.filter(n => n.type === 'follow').length}
           </Text>
           <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Followers</Text>
         </View>
@@ -186,6 +188,9 @@ const NotificationsScreen: React.FC = () => {
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: 120 }}
         renderItem={renderNotification}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.primary} />
+        }
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <Icon name="bell" size={48} color={theme.colors.muted} />

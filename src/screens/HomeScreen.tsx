@@ -11,11 +11,12 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import tripService from '../services/tripService';
 import exchangeRateService, { ExchangeRates } from '../services/exchangeRateService';
+import notificationService from '../services/notificationService';
 import { Trip, Itinerary } from '../types';
 import TripCard from '../components/TripCard';
 import { Icon } from '../components/Icon';
@@ -40,13 +41,22 @@ const HomeScreen: React.FC = () => {
     fetchExchangeRates();
     loadNotifications();
     calculateStats();
-  }, []);
+  }, [user]);
+
+  // Auto-update when screen comes into focus (e.g., returning from creating itinerary)
+  useFocusEffect(
+    React.useCallback(() => {
+      loadData();
+      calculateStats();
+    }, [])
+  );
 
   const loadData = async () => {
     const tripsData = await tripService.getTrips();
     setTrips(tripsData);
     
-    const itinerariesData = await tripService.getItineraries();
+    // Load only the current user's itineraries
+    const itinerariesData = user ? await tripService.getItineraries(user.id) : [];
     setItineraries(itinerariesData);
   };
 
@@ -56,12 +66,32 @@ const HomeScreen: React.FC = () => {
   };
 
   const loadNotifications = async () => {
-    // Mock notification data - in real app, fetch from Firestore
-    setNotificationCount({
-      saved: 5,
-      liked: 3,
-      followed: 2,
-    });
+    // New users have no notifications - only load real notifications if user exists
+    if (!user) {
+      setNotificationCount({
+        saved: 0,
+        liked: 0,
+        followed: 0,
+      });
+      return;
+    }
+
+    try {
+      const notifs = await notificationService.getNotifications(user.id);
+      const counts = {
+        saved: notifs.filter(n => n.type === 'save').length,
+        liked: notifs.filter(n => n.type === 'like').length,
+        followed: notifs.filter(n => n.type === 'follow').length,
+      };
+      setNotificationCount(counts);
+    } catch (e) {
+      console.warn('Failed to load notifications:', e);
+      setNotificationCount({
+        saved: 0,
+        liked: 0,
+        followed: 0,
+      });
+    }
   };
 
   const calculateStats = async () => {
@@ -95,8 +125,13 @@ const HomeScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 120 }}
       >
-        {/* Header with Greeting and Notifications */}
-        <View style={styles.header}>
+         {/* Header with Greeting and Notifications */}
+         <View style={styles.header}>
+           <TouchableOpacity onPress={() => (navigation as any).navigate('Main')}>
+             <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.headerLogoBadge}>
+               <Icon name="compass" size={20} color={colors.white} />
+             </LinearGradient>
+           </TouchableOpacity>
           <View>
             <Text style={[styles.greeting, { color: theme.colors.muted }]}>{greeting},</Text>
             <Text style={[styles.name, { color: theme.colors.text }]}>
@@ -112,25 +147,17 @@ const HomeScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Search Bar */}
-        <View style={[styles.searchWrap, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-          <Icon name="search" size={20} color={theme.colors.muted} />
-          <TextInput
-            placeholder="Search destinations..."
-            placeholderTextColor={theme.colors.muted}
-            style={[styles.search, { color: theme.colors.text }]}
-            value={query}
-            onChangeText={setQuery}
-          />
-          <LinearGradient
-            colors={[colors.primary, '#7985FF']}
-            style={styles.micBtn}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-          >
-            <Icon name="mic" size={16} color={colors.white} />
-          </LinearGradient>
-        </View>
+          {/* Search Bar */}
+          <View style={[styles.searchWrap, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+            <Icon name="search" size={20} color={theme.colors.muted} />
+            <TextInput
+              placeholder="Search destinations..."
+              placeholderTextColor={theme.colors.muted}
+              style={[styles.search, { color: theme.colors.text }]}
+              value={query}
+              onChangeText={setQuery}
+            />
+          </View>
 
         {/* Your Itinerary Section */}
         <View style={styles.sectionHeader}>
@@ -140,13 +167,19 @@ const HomeScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {featured[0] ? (
+        {itineraries && itineraries.length > 0 ? (
           <TouchableOpacity
             activeOpacity={0.95}
             style={styles.heroCard}
-            onPress={() => (navigation as any).navigate('TripDetail', { id: featured[0].id })}
+            onPress={() => (navigation as any).navigate('TripDetail', { id: itineraries[0].id })}
           >
-            <Image source={{ uri: featured[0].image }} style={styles.heroImage} />
+            <Image 
+              source={{ 
+                uri: itineraries[0].coverImage || undefined
+              }} 
+              style={styles.heroImage}
+              defaultSource={require('../../assets/icon.png')}
+            />
             <LinearGradient
               colors={['transparent', 'rgba(8,15,30,0.7)']}
               style={styles.heroOverlay}
@@ -154,15 +187,15 @@ const HomeScreen: React.FC = () => {
             <View style={styles.heroContent}>
               <View style={styles.heroTag}>
                 <Icon name="location" size={12} color={colors.white} />
-                <Text style={styles.heroTagText}>{featured[0].country}</Text>
+                <Text style={styles.heroTagText}>{itineraries[0].destinations?.[0] || 'Your Trip'}</Text>
               </View>
               <Text style={styles.heroTitle} numberOfLines={1}>
-                {featured[0].title}
+                {itineraries[0].title}
               </Text>
               <View style={styles.heroMeta}>
-                <Text style={styles.heroMetaText}>{featured[0].season}</Text>
+                <Text style={styles.heroMetaText}>{itineraries[0].startDate ? 'Upcoming' : 'Draft'}</Text>
                 <View style={styles.heroDot} />
-                <Text style={styles.heroMetaText}>{featured[0].days?.length || 0} days</Text>
+                <Text style={styles.heroMetaText}>{itineraries[0].activities?.length || 0} activities</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -185,10 +218,10 @@ const HomeScreen: React.FC = () => {
                   Where to next?
                 </Text>
                 <Text style={[styles.quickStartSubtitle, { color: theme.colors.muted }]}>
-                  No trips planned yet? Let's fix that
+                  Create your first itinerary
                 </Text>
               </View>
-              <Icon name="chevron-right" size={24} color={colors.primary} />
+              <Icon name="chevronRight" size={24} color={colors.primary} />
             </LinearGradient>
           </TouchableOpacity>
         )}
@@ -238,70 +271,7 @@ const HomeScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Travel Stats Section */}
-        <View style={styles.sectionHeader}>
-          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Your Travel Stats</Text>
-        </View>
-
-        <View style={[styles.statsContainer, { backgroundColor: theme.colors.card }]}>
-          <View style={styles.statItem}>
-            <Text style={[styles.statNumber, { color: colors.primary }]}>{stats.countries}</Text>
-            <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Countries</Text>
-          </View>
-          <View style={[styles.statDivider, { backgroundColor: theme.colors.border }]} />
-          <View style={styles.statItem}>
-            <Text style={[styles.statNumber, { color: colors.primary }]}>{stats.cities}</Text>
-            <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Cities</Text>
-          </View>
-          <View style={[styles.statDivider, { backgroundColor: theme.colors.border }]} />
-          <View style={styles.statItem}>
-            <Text style={[styles.statNumber, { color: colors.primary }]}>{stats.itineraries}</Text>
-            <Text style={[styles.statLabel, { color: theme.colors.muted }]}>Itineraries</Text>
-          </View>
-        </View>
-
-        {/* Browse Section - See All */}
-        <View style={styles.sectionHeader}>
-          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Browse</Text>
-          <TouchableOpacity onPress={() => (navigation as any).navigate('Browse')}>
-            <Text style={styles.seeAll}>See all →</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Popular Destinations */}
-        <View style={styles.sectionHeader}>
-          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Popular Destinations</Text>
-          <TouchableOpacity onPress={() => (navigation as any).navigate('Browse')}>
-            <Text style={styles.seeAll}>See all →</Text>
-          </TouchableOpacity>
-        </View>
-
-        <FlatList
-          data={popular}
-          keyExtractor={(t) => `popular-${t.id}`}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: spacing.xl }}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.destinationCard}
-              activeOpacity={0.9}
-              onPress={() => (navigation as any).navigate('TripDetail', { id: item.id })}
-            >
-              <Image source={{ uri: item.image }} style={styles.destinationImage} />
-              <LinearGradient
-                colors={['transparent', 'rgba(8,15,30,0.75)']}
-                style={styles.destinationOverlay}
-              />
-              <View style={styles.destinationContent}>
-                <Text style={styles.destinationName}>{item.country}</Text>
-                <Text style={styles.destinationPrice}>${item.budget}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-
-        {/* Featured Trips */}
+        {/* Featured Trips (right after Travel Stats) */}
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Featured Trips</Text>
           <TouchableOpacity onPress={() => (navigation as any).navigate('Browse')}>
@@ -317,6 +287,19 @@ const HomeScreen: React.FC = () => {
           contentContainerStyle={{ paddingHorizontal: spacing.xl, paddingBottom: 4 }}
           renderItem={({ item }) => <TripCard trip={item} />}
         />
+
+        {/* Browse Section */}
+        <View style={styles.sectionHeader}>
+          <View>
+            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>Browse</Text>
+            <Text style={[styles.sectionSubtitle, { color: theme.colors.muted }]}>
+              View all our curated trips and adventures
+            </Text>
+          </View>
+          <TouchableOpacity onPress={() => (navigation as any).navigate('Browse')}>
+            <Text style={styles.seeAll}>See all →</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Community Trips Banner */}
         <TouchableOpacity
@@ -334,13 +317,13 @@ const HomeScreen: React.FC = () => {
               </View>
               <View style={styles.communityText}>
                 <Text style={[styles.communityTitle, { color: theme.colors.text }]}>
-                  Explore Community Trips
+                  🌍 Explore Community Trips
                 </Text>
                 <Text style={[styles.communitySubtitle, { color: theme.colors.muted }]}>
-                  Discover adventures from fellow travelers
+                  Waybound is the only app with a built-in community of travelers sharing real itineraries. Browse trips created by fellow adventurers!
                 </Text>
               </View>
-              <Icon name="chevron-right" size={24} color={colors.primary} />
+              <Icon name="chevronRight" size={24} color={colors.primary} />
             </View>
           </LinearGradient>
         </TouchableOpacity>
@@ -360,6 +343,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  headerLogoBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: radius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerLogo: {
+    width: 28,
+    height: 28,
   },
   greeting: {
     fontSize: 15,
@@ -430,6 +424,11 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: '700',
     fontSize: 14,
+  },
+  sectionSubtitle: {
+    fontSize: 13,
+    fontWeight: '500',
+    marginTop: 2,
   },
   heroCard: {
     marginHorizontal: spacing.xl,
