@@ -25,7 +25,21 @@
       }
     },
     "ios": {
-      "bundleIdentifier": "com.waybound.travel"
+      "bundleIdentifier": "com.waybound.travel",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "Your data is used to deliver relevant ads and measure app performance."
+      }
+    },
+
+    "updates": {
+      "url": "https://u.expo.dev/aef26386-f5b8-4774-92c7-abb3eee84894",
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_LOAD"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     },
 
     "extra": {

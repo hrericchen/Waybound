@@ -31,5 +31,20 @@ coverage/
 *.keystore
 *.jks
 
+# Debug / diagnostic artifacts (log dumps from testing - do not commit)
+adblog*.txt
+app-errors.txt
+build-output.txt
+device-*.txt
+expo-device*.txt
+expo-qr.png
+fresh-*.txt
+fresh_*.txt
+full*.txt
+live-*.txt
+live-expo*.txt
+metro_fix.log
+ps.txt
+
 # Misc
 *.pem

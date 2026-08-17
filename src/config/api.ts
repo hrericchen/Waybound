@@ -42,10 +42,9 @@ export const API_BASE_URL = `${API_ORIGIN}/api`;
  * /oauth2redirect endpoint (which bounces the code/state back into the app via
  * the com.waybound.travel custom scheme).
  *
- * Set EXPO_PUBLIC_OAUTH_REDIRECT_URL to your deployed backend, e.g.
- * https://waybound-backend.onrender.com/oauth2redirect, and register that exact
- * URL as an authorized redirect URI on the Web OAuth client in Google Cloud.
+ * Override with EXPO_PUBLIC_OAUTH_REDIRECT_URL. The registered URL must match
+ * the "Authorized redirect URIs" entry on the Web OAuth client in Google Cloud.
  */
 export const GOOGLE_OAUTH_REDIRECT_URL =
   process.env.EXPO_PUBLIC_OAUTH_REDIRECT_URL ||
-  'https://REPLACE-WITH-YOUR-BACKEND.onrender.com/oauth2redirect';
+  'https://waybound-backend.onrender.com/oauth2redirect';

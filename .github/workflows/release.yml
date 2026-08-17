@@ -1,0 +1,44 @@
+# Build native binaries for both stores and upload them.
+# Runs when you push a version tag (e.g. v1.2.0) or manually from the Actions tab.
+#
+# Prerequisites:
+#   1. EXPO_TOKEN secret (same as the update workflow).
+#   2. Run `eas credentials` once locally so EAS stores the Android keystore and
+#      the iOS distribution certificate + provisioning profile.
+#   3. EXPO_PUBLIC_API_URL / EXPO_PUBLIC_OAUTH_REDIRECT_URL as EAS project env vars.
+#   4. To auto-submit: configure App Store Connect + Play Console credentials via
+#      `eas submit:configure`, then uncomment the submit step below.
+name: Build native release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Build Android (.aab) + iOS (.ipa) for production
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: npx eas-cli@latest build --platform all --profile production --non-interactive --no-wait
+
+      # Optional - uncomment once store credentials are configured:
+      # - name: Submit to App Store + Play Console
+      #   env:
+      #     EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      #   run: npx eas-cli@latest submit --platform all --profile production --non-interactive

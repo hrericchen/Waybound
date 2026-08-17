@@ -1,0 +1,38 @@
+# Ship JS changes to both iOS and Android instantly via EAS Update.
+# Runs on every push to master.
+#
+# Prerequisites:
+#   1. Create an Expo access token: https://expo.dev/settings/access-tokens
+#      (classic token with "Build & submit" permissions).
+#   2. Add it as a GitHub Actions secret named EXPO_TOKEN.
+#   3. Make sure EXPO_PUBLIC_API_URL and EXPO_PUBLIC_OAUTH_REDIRECT_URL are set as
+#      EAS project environment variables (EAS dashboard -> Environment variables,
+#      or `eas env:create`) so CI builds inline them.
+name: Publish OTA update
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Publish update to production channel
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: npx eas-cli@latest update --channel production --message "Update ${GITHUB_SHA}" --non-interactive

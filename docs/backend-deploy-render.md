@@ -13,8 +13,9 @@ from it.
 
 ## 2. Create the Render service
 
-**Option A — Blueprint (easiest):** Render dashboard → **New → Blueprint** → select
-the repo. `backend/render.yaml` is auto-detected.
+**Option A — Blueprint (easiest):** `render.yaml` is at the **repo root** (the service
+definition uses `rootDir: backend`). Render dashboard → **New → Blueprint** → select
+the repo → it auto-detects `render.yaml`.
 
 **Option B — Manual Web Service:**
 - New → **Web Service** → connect the repo.
