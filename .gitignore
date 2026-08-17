@@ -27,5 +27,9 @@ Thumbs.db
 # Testing
 coverage/
 
+# Keystores (NEVER commit these!)
+*.keystore
+*.jks
+
 # Misc
 *.pem

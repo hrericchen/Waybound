@@ -3,6 +3,7 @@
     "name": "Waybound",
     "slug": "waybound-travel",
     "version": "1.0.0",
+    "scheme": "com.waybound.travel",
     "platforms": [
       "ios",
       "android",
@@ -10,12 +11,13 @@
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "splash": {
-      "backgroundColor": "#ffffff"
-    },
     "android": {
       "package": "com.waybound.travel",
       "googleServicesFile": "./google-services.json",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#023c69"
+      },
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyAbbkPp5J5glJ4GXlhkttS-bEtdwFykz9c"
@@ -23,17 +25,34 @@
       }
     },
     "ios": {
-      "bundleIdentifier": "com.waybound.travel",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyAbbkPp5J5glJ4GXlhkttS-bEtdwFykz9c"
-        }
-      }
+      "bundleIdentifier": "com.waybound.travel"
     },
+
     "extra": {
       "eas": {
         "projectId": "aef26386-f5b8-4774-92c7-abb3eee84894"
-      }
-    }
+      },
+      "posthogProjectToken": "phc_pAPvBzFyBQtnzW3nN9w2CXMvHRinHvTjtqjyRdTuucUo",
+      "posthogHost": "https://us.i.posthog.com"
+    },
+    "plugins": [
+      "expo-web-browser",
+      "expo-font",
+      "expo-video",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.732997491914-sc7if38gh8kis8kjfoo7gj1djvuo3cvh"
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-7167949082841776~7336120994",
+          "iosAppId": "ca-app-pub-7167949082841776~7336120994",
+          "delayAppMeasurementInit": false
+        }
+      ]
+    ]
   }
 }

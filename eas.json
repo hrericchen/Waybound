@@ -15,10 +15,19 @@
       }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "android": {
+        "buildType": "app-bundle",
+        "gradleCommand": ":app:bundleRelease"
+      }
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
   }
 }

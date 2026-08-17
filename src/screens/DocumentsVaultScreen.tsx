@@ -7,10 +7,15 @@ import {
   FlatList,
   Alert,
   Platform,
+  Image,
+  Modal,
+  Pressable,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as DocumentPicker from 'expo-document-picker';
+import * as Sharing from 'expo-sharing';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import storageService from '../services/storageService';
@@ -28,8 +33,11 @@ type Document = {
 
 const DocumentsVaultScreen: React.FC = () => {
   const [documents, setDocuments] = useState<Document[]>([]);
+  const [picking, setPicking] = useState(false);
+  const [previewDoc, setPreviewDoc] = useState<Document | null>(null);
   const insets = useSafeAreaInsets();
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   useEffect(() => {
     loadDocuments();
@@ -48,6 +56,8 @@ const DocumentsVaultScreen: React.FC = () => {
   };
 
   const pickDocument = async () => {
+    if (picking) return; // Prevent concurrent pickers ("Different document picking in progress")
+    setPicking(true);
     try {
       const result = await DocumentPicker.getDocumentAsync({
         type: ['application/pdf', 'image/*'],
@@ -73,6 +83,8 @@ const DocumentsVaultScreen: React.FC = () => {
     } catch (error) {
       console.error('Error picking document:', error);
       Alert.alert('Error', 'Failed to add document. Please try again.');
+    } finally {
+      setPicking(false);
     }
   };
 
@@ -106,13 +118,50 @@ const DocumentsVaultScreen: React.FC = () => {
     return 'document';
   };
 
+  const isImageDoc = (type: string) => (type || '').startsWith('image/');
+
+  // "Download" — hands the file to the OS (share/save sheet) via expo-sharing.
+  const shareDocument = async (doc: Document, mode: 'View' | 'Download') => {
+    try {
+      if (!(await Sharing.isAvailableAsync())) {
+        Alert.alert(mode, 'Sharing is not available on this device.');
+        return;
+      }
+      await Sharing.shareAsync(doc.uri, {
+        mimeType: doc.type,
+        dialogTitle: mode === 'View' ? `Open ${doc.name}` : `Save ${doc.name}`,
+        UTI: doc.type,
+      });
+    } catch (e) {
+      console.warn('Failed to share document:', e);
+      Alert.alert('Error', 'Could not open the document on this device.');
+    }
+  };
+
+  const handleDocPress = (doc: Document) => {
+    if (isImageDoc(doc.type)) {
+      setPreviewDoc(doc);
+      return;
+    }
+    Alert.alert(doc.name, 'What would you like to do?', [
+      { text: 'View', onPress: () => shareDocument(doc, 'View') },
+      { text: 'Download', onPress: () => shareDocument(doc, 'Download') },
+      { text: 'Cancel', style: 'cancel' },
+    ]);
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background, paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.colors.text }]}>Documents Vault</Text>
-        <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
-          {documents.length} {documents.length === 1 ? 'document' : 'documents'} stored
-        </Text>
+        <TouchableOpacity style={styles.closeBtn} onPress={() => navigation.goBack()}>
+          <Icon name="close" size={22} color={theme.colors.text} />
+        </TouchableOpacity>
+        <View>
+          <Text style={[styles.title, { color: theme.colors.text }]}>Documents Vault</Text>
+          <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
+            {documents.length} {documents.length === 1 ? 'document' : 'documents'} stored
+          </Text>
+        </View>
       </View>
 
       {/* Add Document Button */}
@@ -141,6 +190,7 @@ const DocumentsVaultScreen: React.FC = () => {
           <TouchableOpacity
             style={[styles.documentCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}
             activeOpacity={0.9}
+            onPress={() => handleDocPress(item)}
           >
             <View style={[styles.documentIcon, { backgroundColor: colors.primary + '20' }]}>
               <Icon name={getFileIcon(item.type)} size={28} color={colors.primary} />
@@ -153,6 +203,12 @@ const DocumentsVaultScreen: React.FC = () => {
                 {formatFileSize(item.size)} • {new Date(item.addedAt).toLocaleDateString()}
               </Text>
             </View>
+            <TouchableOpacity
+              onPress={() => handleDocPress(item)}
+              style={styles.openButton}
+            >
+              <Icon name={isImageDoc(item.type) ? 'image' : 'eye'} size={20} color={colors.primary} />
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => deleteDocument(item.id)}
               style={styles.deleteButton}
@@ -173,6 +229,21 @@ const DocumentsVaultScreen: React.FC = () => {
           </View>
         }
       />
+
+      {/* Full-screen image preview */}
+      <Modal visible={!!previewDoc} transparent animationType="fade" onRequestClose={() => setPreviewDoc(null)}>
+        <Pressable style={styles.previewOverlay} onPress={() => setPreviewDoc(null)}>
+          {previewDoc ? (
+            <Image source={{ uri: previewDoc.uri }} style={styles.previewImage} resizeMode="contain" />
+          ) : null}
+          <TouchableOpacity style={styles.previewClose} onPress={() => setPreviewDoc(null)}>
+            <Icon name="close" size={24} color={colors.white} />
+          </TouchableOpacity>
+          {previewDoc ? (
+            <Text style={styles.previewName} numberOfLines={1}>{previewDoc.name}</Text>
+          ) : null}
+        </Pressable>
+      </Modal>
     </View>
   );
 };
@@ -185,6 +256,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.lg,
     paddingBottom: spacing.md,
+  },
+  closeBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.md,
+    backgroundColor: colors.card,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.sm,
+    ...shadows.soft,
   },
   title: {
     fontSize: 28,
@@ -246,6 +327,39 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     padding: 8,
+  },
+  openButton: {
+    padding: 8,
+  },
+  previewOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(8,15,30,0.94)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  previewImage: {
+    width: '100%',
+    height: '80%',
+  },
+  previewClose: {
+    position: 'absolute',
+    top: 48,
+    right: spacing.lg,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  previewName: {
+    position: 'absolute',
+    bottom: 48,
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingHorizontal: spacing.xl,
   },
   emptyContainer: {
     alignItems: 'center',

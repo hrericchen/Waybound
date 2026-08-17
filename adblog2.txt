@@ -1,0 +1,5 @@
+--------- beginning of main
+07-30 21:47:16.637 31704  8549 W ReactNativeJS: This method is deprecated (as well as all React Native Firebase namespaced API) and will be removed in the next major release as part of move to match Firebase Web modular SDK API. Please see migration guide for more details: https://rnfirebase.io/migrating-to-v22 Please use `getApp()` instead.
+07-30 21:47:17.654 31704  8549 W ReactNativeJS: This method is deprecated (as well as all React Native Firebase namespaced API) and will be removed in the next major release as part of move to match Firebase Web modular SDK API. Please see migration guide for more details: https://rnfirebase.io/migrating-to-v22 Please use `getApp()` instead.
+07-30 21:47:19.002 31704  8549 E ReactNativeJS: [runtime not ready]: TypeError: undefined cannot be used as a constructor.
+07-30 21:47:19.070 31704  8549 I ReactNativeJS: Running "main" with {"rootTag":1,"initialProps":{},"fabric":true}

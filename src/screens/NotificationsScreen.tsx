@@ -57,6 +57,12 @@ const NotificationsScreen: React.FC<any> = ({ navigation }) => {
         return 'user';
       case 'comment':
         return 'chat';
+      case 'report':
+        return 'flag';
+      case 'warning':
+        return 'warning';
+      case 'suspension':
+        return 'lock';
       default:
         return 'bell';
     }
@@ -72,6 +78,12 @@ const NotificationsScreen: React.FC<any> = ({ navigation }) => {
         return '#FFD93D';
       case 'comment':
         return '#7985FF';
+      case 'report':
+        return '#EF4444';
+      case 'warning':
+        return '#F59E0B';
+      case 'suspension':
+        return '#EF4444';
       default:
         return colors.primary;
     }

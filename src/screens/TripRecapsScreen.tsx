@@ -15,6 +15,7 @@ import tripService from '../services/tripService';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import { Itinerary, ActivityPhoto } from '../types';
+import { AuthContext } from '../context/AuthContext';
 
 const TripRecapsScreen: React.FC = () => {
   const [itineraries, setItineraries] = useState<Itinerary[]>([]);
@@ -23,20 +24,21 @@ const TripRecapsScreen: React.FC = () => {
   const theme = useContext(ThemeContext);
   const navigation = useNavigation();
   const route = useRoute();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     loadItineraries();
   }, []);
 
   const loadItineraries = async () => {
-    const allItineraries = await tripService.getItineraries();
-    setItineraries(allItineraries);
+    const allItineraries = await tripService.getItineraries(user?.id);
+    setItineraries(allItineraries.filter((i: any) => i.userId === user?.id));
   };
 
   const getTripPhotos = (itinerary: Itinerary): ActivityPhoto[] => {
     const allPhotos: ActivityPhoto[] = [];
-    itinerary.activities.forEach(activity => {
-      if (activity.photos && activity.completed) {
+    (itinerary.activities || []).forEach(activity => {
+      if (activity.photos) {
         allPhotos.push(...activity.photos);
       }
     });
@@ -59,7 +61,7 @@ const TripRecapsScreen: React.FC = () => {
               {item.title}
             </Text>
             <Text style={[styles.tripCardMeta, { color: theme.colors.muted }]}>
-              {item.destinations.slice(0, 2).join(', ')}
+              {(item.destinations || []).slice(0, 2).join(', ')}
             </Text>
           </View>
           {hasPhotos && (
@@ -79,6 +81,7 @@ const TripRecapsScreen: React.FC = () => {
                 key={photo.id}
                 source={{ uri: photo.base64 ? `data:image/jpeg;base64,${photo.base64}` : photo.uri }}
                 style={styles.photoPreview}
+                resizeMode="cover"
               />
             ))}
           </View>
@@ -97,7 +100,7 @@ const TripRecapsScreen: React.FC = () => {
         <View style={styles.emptyTimeline}>
           <Icon name="camera" size={48} color={theme.colors.muted} />
           <Text style={[styles.emptyText, { color: theme.colors.muted }]}>
-            No photos yet. Mark activities as complete and add photos to create your visual timeline.
+            Upload photos in your itinerary for each activity to create your trip recap!
           </Text>
         </View>
       );
@@ -117,6 +120,7 @@ const TripRecapsScreen: React.FC = () => {
                 <Image
                   source={{ uri: photo.base64 ? `data:image/jpeg;base64,${photo.base64}` : photo.uri }}
                   style={styles.timelinePhoto}
+                  resizeMode="cover"
                 />
                 {activity && (
                   <View style={styles.timelineMeta}>
@@ -124,7 +128,7 @@ const TripRecapsScreen: React.FC = () => {
                       {activity.emoji} {activity.title}
                     </Text>
                     <Text style={[styles.timelineDate, { color: theme.colors.muted }]}>
-                      {new Date(photo.timestamp).toLocaleDateString()}
+                      Day {activity.day} · {new Date(photo.timestamp).toLocaleDateString()}
                     </Text>
                   </View>
                 )}
@@ -140,7 +144,7 @@ const TripRecapsScreen: React.FC = () => {
     <View style={[styles.container, { backgroundColor: theme.colors.background, paddingTop: insets.top }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="chevron-left" size={24} color={theme.colors.text} />
+          <Icon name="chevronLeft" size={24} color={theme.colors.text} />
         </TouchableOpacity>
         <Text style={[styles.title, { color: theme.colors.text }]}>Trip Recaps</Text>
         <View style={{ width: 24 }} />
@@ -149,7 +153,7 @@ const TripRecapsScreen: React.FC = () => {
       {!selectedTrip ? (
         <>
           <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
-            Select a trip to view your visual timeline
+            Tap a trip to view your photo timeline
           </Text>
           <FlatList
             data={itineraries}
@@ -170,7 +174,7 @@ const TripRecapsScreen: React.FC = () => {
         <>
           <View style={styles.selectedTripHeader}>
             <TouchableOpacity onPress={() => setSelectedTrip(null)}>
-              <Icon name="chevron-left" size={24} color={theme.colors.text} />
+              <Icon name="close" size={24} color={theme.colors.text} />
             </TouchableOpacity>
             <Text style={[styles.selectedTripTitle, { color: theme.colors.text }]}>
               {selectedTrip.title}

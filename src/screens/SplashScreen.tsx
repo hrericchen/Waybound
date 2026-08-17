@@ -12,6 +12,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 
@@ -22,25 +23,37 @@ const SplashScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
   const theme = React.useContext(ThemeContext);
 
+  // Looping, muted background video (assets/video.mp4).
+  const player = useVideoPlayer(require('../../assets/video.mp4'), (p) => {
+    p.loop = true;
+    p.muted = true;
+    p.play();
+  });
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <ImageBackground
-        source={{
-          uri: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80',
-        }}
-        style={styles.bg}
-        resizeMode="cover"
-      >
+      <View style={styles.bg}>
+        {/* Static fallback image, visible while the video loads */}
+        <ImageBackground
+          source={require('../../assets/backdrop.png')}
+          style={StyleSheet.absoluteFill}
+          resizeMode="cover"
+        />
+        {/* Background video layer */}
+        <VideoView
+          player={player}
+          style={StyleSheet.absoluteFill}
+          contentFit="cover"
+          nativeControls={false}
+        />
         <LinearGradient
           colors={['rgba(8,15,30,0.1)', 'rgba(8,15,30,0.3)', 'rgba(8,15,30,0.88)']}
           style={styles.gradient}
         >
           <View style={[styles.top, { paddingTop: insets.top + 16 }]}>
             <View style={styles.brandRow}>
-              <View style={styles.logoBadge}>
-                <Image source={require('../../assets/icon.png')} style={styles.logoImage} resizeMode="contain" />
-              </View>
+              <Image source={require('../../assets/logo.png')} style={styles.logoImage} resizeMode="contain" />
               <Text style={styles.brand}>Waybound</Text>
             </View>
             <View style={styles.locationPill}>
@@ -74,7 +87,7 @@ const SplashScreen: React.FC = () => {
             </TouchableOpacity>
           </View>
         </LinearGradient>
-      </ImageBackground>
+      </View>
     </View>
   );
 };
@@ -102,18 +115,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
-  logoBadge: {
-    width: 36,
-    height: 36,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.2)',
-  },
   logoImage: {
-    width: 28,
-    height: 28,
+    width: 46,
+    height: 46,
+    borderRadius: 12,
   },
   brand: {
     color: colors.white,

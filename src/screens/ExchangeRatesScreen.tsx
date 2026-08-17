@@ -9,10 +9,12 @@ import {
   Modal,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
 import exchangeRateService, { ExchangeRates } from '../services/exchangeRateService';
+import { useRevenueCat } from '../context/RevenueCatContext';
 
 const CURRENCY_NAMES: Record<string, string> = {
   USD: 'US Dollar',
@@ -191,6 +193,11 @@ const ExchangeRatesScreen: React.FC = () => {
   
   const insets = useSafeAreaInsets();
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
+  const { isPro, presentPaywall } = useRevenueCat();
+
+  // Non-Pro: popular currencies including CNY (Chinese Yuan). Pro: all currencies.
+  const ALLOWED_CURRENCIES = ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'CNY'];
 
   useEffect(() => {
     loadRates();
@@ -227,8 +234,9 @@ const ExchangeRatesScreen: React.FC = () => {
     setToCurrency(fromCurrency);
   };
 
-  const currencies = rates ? Object.keys(rates.rates).sort() : ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD'];
-  const popularCurrencies = POPULAR_CURRENCIES.filter((c) => currencies.includes(c));
+  const allCurrencies = rates ? Object.keys(rates.rates).sort() : ALLOWED_CURRENCIES;
+  const currencies = isPro ? allCurrencies : allCurrencies.filter((c) => ALLOWED_CURRENCIES.includes(c));
+  const popularCurrencies = POPULAR_CURRENCIES.filter((c) => allCurrencies.includes(c));
 
   const getCurrencyName = (code: string): string => {
     return CURRENCY_NAMES[code] || code;
@@ -297,10 +305,17 @@ const ExchangeRatesScreen: React.FC = () => {
         contentContainerStyle={{ paddingBottom: 120 }}
       >
         <View style={styles.header}>
-          <Text style={[styles.title, { color: theme.colors.text }]}>Exchange Rates</Text>
-          <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
-            Last updated: {lastUpdated || 'Loading...'}
-          </Text>
+          {navigation.canGoBack() && (
+            <TouchableOpacity style={styles.closeBtn} onPress={() => navigation.goBack()}>
+              <Icon name="close" size={22} color={theme.colors.text} />
+            </TouchableOpacity>
+          )}
+          <View>
+            <Text style={[styles.title, { color: theme.colors.text }]}>Exchange Rates</Text>
+            <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
+              Last updated: {lastUpdated || 'Loading...'}
+            </Text>
+          </View>
         </View>
 
         {/* Currency Converter */}
@@ -366,39 +381,62 @@ const ExchangeRatesScreen: React.FC = () => {
           )}
         </View>
 
-        {/* All Rates - Alphabetical (unchanged) */}
-        <View style={styles.sectionHeader}>
-          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>All Rates</Text>
-          <Text style={[styles.sectionSubtitle, { color: theme.colors.muted }]}>Base: USD</Text>
-        </View>
+      {/* All Rates - Alphabetical */}
+      <View style={styles.sectionHeader}>
+        <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
+          {isPro ? 'All Rates' : 'Available Rates'}
+        </Text>
+        <Text style={[styles.sectionSubtitle, { color: theme.colors.muted }]}>Base: USD</Text>
+      </View>
 
-        <View style={styles.ratesList}>
-          {currencies.map((currency) => (
-            <View
-              key={currency}
-              style={[styles.rateCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}
-            >
-              <View style={styles.rateHeader}>
-                <View style={[styles.currencyFlag, { backgroundColor: colors.primary + '20' }]}>
-                  <Text style={[styles.currencyFlagText, { color: colors.primary }]}>
-                    {currency}
-                  </Text>
-                </View>
-                <View style={styles.rateInfo}>
-                  <Text style={[styles.rateCurrency, { color: theme.colors.text }]}>
-                    {getCurrencyName(currency)}
-                  </Text>
-                  <Text style={[styles.rateCurrencyCode, { color: theme.colors.muted }]}>
-                    {currency}
-                  </Text>
-                  <Text style={[styles.rateValue, { color: theme.colors.muted }]}>
-                    {rates ? formatCurrency(rates.rates[currency], currency) : 'Loading...'}
-                  </Text>
-                </View>
+      <View style={styles.ratesList}>
+        {currencies.map((currency) => (
+          <View
+            key={currency}
+            style={[styles.rateCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}
+          >
+            <View style={styles.rateHeader}>
+              <View style={[styles.currencyFlag, { backgroundColor: colors.primary + '20' }]}>
+                <Text style={[styles.currencyFlagText, { color: colors.primary }]}>
+                  {currency}
+                </Text>
+              </View>
+              <View style={styles.rateInfo}>
+                <Text style={[styles.rateCurrency, { color: theme.colors.text }]}>
+                  {getCurrencyName(currency)}
+                </Text>
+                <Text style={[styles.rateCurrencyCode, { color: theme.colors.muted }]}>
+                  {currency}
+                </Text>
+                <Text style={[styles.rateValue, { color: theme.colors.muted }]}>
+                  {rates ? formatCurrency(rates.rates[currency], currency) : 'Loading...'}
+                </Text>
               </View>
             </View>
-          ))}
-        </View>
+          </View>
+        ))}
+      </View>
+
+      {/* Pro Upsell for non-Pro users */}
+      {!isPro && (
+        <TouchableOpacity
+          style={[styles.proUpsellBtn]}
+          onPress={() => presentPaywall()}
+          activeOpacity={0.9}
+        >
+          <LinearGradient
+            colors={[colors.primary, '#7985FF']}
+            style={StyleSheet.absoluteFill}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+          />
+          <Icon name="lock" size={16} color={colors.white} />
+          <Text style={styles.proUpsellText}>
+            Want all 170+ currencies? Get Waybound Pro
+          </Text>
+          <Icon name="chevronRight" size={16} color={colors.white} />
+        </TouchableOpacity>
+      )}
       </ScrollView>
 
       {/* Currency Pickers */}
@@ -416,6 +454,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.lg,
     paddingBottom: spacing.md,
+  },
+  closeBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.md,
+    backgroundColor: colors.card,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.sm,
+    ...shadows.soft,
   },
   title: {
     fontSize: 28,
@@ -609,6 +657,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     marginRight: 4,
+  },
+  proUpsellBtn: {
+    marginHorizontal: spacing.xl,
+    marginTop: spacing.xl,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: radius.full,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 8,
+    overflow: 'hidden',
+    ...shadows.fab,
+  },
+  proUpsellText: {
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: '700',
+    flex: 1,
   },
 });
 

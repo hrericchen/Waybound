@@ -14,6 +14,38 @@
       },
       "oauth_client": [
         {
+          "client_id": "732997491914-0biluu62kbdluub0842up2n5li4uc81a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waybound.travel",
+            "certificate_hash": "5ae37189f2b4f879fe4690d176c08abe40d5b34d"
+          }
+        },
+        {
+          "client_id": "732997491914-df3taqg9qcfcskbr5gbd3d63a80e0bj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waybound.travel",
+            "certificate_hash": "cc226b237becfeffcec84a7067848d2d2ed78513"
+          }
+        },
+        {
+          "client_id": "732997491914-h8ss0hjo7la6edfi6bd47ps49c3oli5q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waybound.travel",
+            "certificate_hash": "3df2b6ad83451ccea3af0c62264396ffec27ada6"
+          }
+        },
+        {
+          "client_id": "732997491914-odq9ah2ih903qjq9g7qm9qvvrhunt3mn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waybound.travel",
+            "certificate_hash": "036ff89462c0ee7849aa4e94a45728c4c8f5a81c"
+          }
+        },
+        {
           "client_id": "732997491914-eotvgdvv430gsu16i978clqg1577gicm.apps.googleusercontent.com",
           "client_type": 3
         }

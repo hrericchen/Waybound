@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Trip } from '../types';
@@ -15,14 +15,32 @@ const TripCard: React.FC<Props> = ({ trip, variant = 'featured' }) => {
   const nav = useNavigation();
   const isWide = variant === 'wide';
   const isCompact = variant === 'compact';
+  const [imgFailed, setImgFailed] = useState(false);
 
   return (
     <TouchableOpacity
       activeOpacity={0.9}
       style={[styles.card, isWide && styles.wideCard, isCompact && styles.compactCard]}
-      onPress={() => nav.navigate('TripDetail' as any, { id: trip.id })}
+      onPress={() => (nav as any).navigate('TripDetail', { id: trip.id })}
+
     >
-      <Image source={{ uri: trip.image }} style={[styles.image, isWide && styles.wideImage, isCompact && styles.compactImage]} />
+      {(trip.coverImage || trip.image) && !imgFailed ? (
+        <Image
+          source={{ uri: trip.coverImage || trip.image }}
+          style={[styles.image, isWide && styles.wideImage, isCompact && styles.compactImage]}
+          resizeMode="cover"
+          onError={() => setImgFailed(true)}
+        />
+      ) : (
+        <LinearGradient
+          colors={[colors.primarySoft, '#E0E4FF']}
+          style={[styles.image, isWide && styles.wideImage, isCompact && styles.compactImage]}
+        >
+          <View style={styles.imageFallbackIcon}>
+            <Icon name="image" size={isCompact ? 20 : 30} color={colors.primary} />
+          </View>
+        </LinearGradient>
+      )}
       {!isCompact && (
         <LinearGradient colors={['transparent', 'rgba(8,15,30,0.6)']} style={styles.imageOverlay} />
       )}
@@ -83,6 +101,11 @@ const styles = StyleSheet.create({
   },
   compactImage: {
     height: 100,
+  },
+  imageFallbackIcon: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imageOverlay: {
     position: 'absolute',

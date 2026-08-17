@@ -2,3 +2,13 @@ node_modules/
 .expo/
 .git/
 AppData/
+
+# Android local build artifacts (contain Windows paths that break Linux builds)
+android/.gradle/
+android/app/build/
+android/app/.cxx/
+android/build/
+
+# Keystore files (never upload to EAS - use EAS secrets instead)
+android/app/*.keystore
+android/app/*.jks

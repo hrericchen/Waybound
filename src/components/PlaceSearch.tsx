@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, TextInput, FlatList, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { GOOGLE_API_KEY } from '../constants/google';
+import { GOOGLE_API_KEY, PLACES_API_KEY } from '../constants/google';
 import { Icon } from './Icon';
 import { colors, radius, shadows, spacing } from '../theme/theme';
+import { searchPlacesResilient, geocodeAddress, PlaceResult } from '../services/placesService';
 
 const SAMPLE_LOCATIONS = [
   // Tokyo landmarks
@@ -77,64 +78,90 @@ const SAMPLE_LOCATIONS = [
   { name: 'Las Vegas Strip', lat: 36.1147, lng: -115.1728 },
 ];
 
-const PlaceSearch: React.FC<{ onSelect: (place: { name: string; lat: number; lng: number }) => void }> = ({
-  onSelect,
-}) => {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState<any[]>([]);
-  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+const PlaceSearch: React.FC<{
+  onSelect: (place: { name: string; lat: number; lng: number; address?: string }) => void;
+  locationBias?: { lat: number; lng: number };
+  initialQuery?: string;
+}> = ({ onSelect, locationBias, initialQuery }) => {
+  const [query, setQuery] = useState(initialQuery || '');
+  const [results, setResults] = useState<PlaceResult[]>([]);
+  const [searching, setSearching] = useState(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastQueryRef = useRef('');
 
-  const search = async (q: string) => {
+  useEffect(
+    () => () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    },
+    []
+  );
+
+  // Prefill when the parent passes a saved location name/address
+  useEffect(() => {
+    setQuery(initialQuery || '');
+    if (initialQuery) {
+      search(initialQuery, true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialQuery]);
+
+  const search = async (q: string, force = false) => {
     setQuery(q);
-    if (!q || q.length < 2) return setResults([]);
-    if (!GOOGLE_API_KEY || GOOGLE_API_KEY.startsWith('<')) {
-      console.warn('Google Places API key not set in src/constants/google.ts');
-      // Show filtered sample locations as fallback
-      const filtered = SAMPLE_LOCATIONS.filter(loc => 
+    const qq = (q || '').trim();
+    if (qq.length < 3) return setResults([]);
+    if (!force && qq === lastQueryRef.current) return;
+    lastQueryRef.current = qq;
+    setSearching(true);
+    if ((!PLACES_API_KEY || PLACES_API_KEY.startsWith('<')) && (!GOOGLE_API_KEY || GOOGLE_API_KEY.startsWith('<'))) {
+      console.warn('Google Places API keys not set in src/constants/google.ts');
+      const filtered = SAMPLE_LOCATIONS.filter((loc) =>
         loc.name.toLowerCase().includes(q.toLowerCase())
-      ).map(loc => ({
-        place_id: `sample-${loc.name}`,
-        description: loc.name,
-        structured_formatting: { main_text: loc.name, secondary_text: '' },
-        sampleData: loc
+      ).map((loc) => ({
+        id: `sample-${loc.name}`,
+        name: loc.name,
+        address: '',
+        lat: loc.lat,
+        lng: loc.lng,
+        types: [],
       }));
       setResults(filtered);
+      setSearching(false);
       return;
     }
     try {
-      const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
-        q
-      )}&key=${GOOGLE_API_KEY}&types=geocode&language=en`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setResults(data.predictions || []);
+      const found = await searchPlacesResilient(q, locationBias);
+      setResults(found);
     } catch (e) {
       console.warn('Places search failed', e);
+      setResults([]);
+    } finally {
+      setSearching(false);
     }
   };
 
-  const fetchDetails = async (placeId: string) => {
-    if (!GOOGLE_API_KEY || GOOGLE_API_KEY.startsWith('<')) return null;
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${GOOGLE_API_KEY}&fields=geometry,name,formatted_address`;
-    const res = await fetch(url);
-    const data = await res.json();
-    return data.result;
+  const onQueryChange = (q: string) => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => search(q), 450);
   };
 
-  const handleSelect = async (item: any) => {
-    // Check if it's a sample location
-    if (item.sampleData) {
-      onSelect(item.sampleData);
-      return;
-    }
-    const det = await fetchDetails(item.place_id);
-    if (det && det.geometry && det.geometry.location) {
-      onSelect({
-        name: det.name || det.formatted_address,
-        lat: det.geometry.location.lat,
-        lng: det.geometry.location.lng,
-      });
-    }
+  const handleSelect = (item: PlaceResult) => {
+    onSelect({
+      name: item.name,
+      lat: item.lat,
+      lng: item.lng,
+      address: item.address,
+    });
+  };
+
+  const handleCustomLocation = async () => {
+    // Fallback: user enters a raw address that returned no API results
+    const geocoded = await geocodeAddress(query);
+    onSelect({
+      name: query,
+      lat: geocoded?.lat ?? locationBias?.lat ?? 0,
+      lng: geocoded?.lng ?? locationBias?.lng ?? 0,
+      address: geocoded?.address || query,
+    });
   };
 
   return (
@@ -147,25 +174,36 @@ const PlaceSearch: React.FC<{ onSelect: (place: { name: string; lat: number; lng
           placeholder="Search places"
           placeholderTextColor={colors.muted}
           value={query}
-          onChangeText={search}
+          onChangeText={onQueryChange}
           style={styles.input}
         />
       </View>
       <FlatList
         data={results}
-        keyExtractor={(r) => r.place_id}
+        keyExtractor={(r) => r.id}
         keyboardShouldPersistTaps="handled"
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.row} onPress={() => handleSelect(item)} activeOpacity={0.85}>
             <LinearGradient colors={[colors.primarySoft, '#E0E4FF']} style={styles.rowIcon}>
               <Icon name="location" size={16} color={colors.primary} />
             </LinearGradient>
-            <Text style={styles.rowText}>{item.description}</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.rowText}>{item.name}</Text>
+              {item.address ? <Text style={styles.rowSub}>{item.address}</Text> : null}
+            </View>
           </TouchableOpacity>
         )}
         ListEmptyComponent={
-          query.length >= 2 ? (
-            <Text style={styles.empty}>No places found</Text>
+          searching ? (
+            <Text style={styles.empty}>Searching…</Text>
+          ) : query.length >= 2 ? (
+            <View style={{ alignItems: 'center', marginTop: spacing.xl }}>
+              <Text style={styles.empty}>No places found</Text>
+              <TouchableOpacity style={styles.customBtn} onPress={handleCustomLocation} activeOpacity={0.85}>
+                <Icon name="location" size={16} color={colors.primary} />
+                <Text style={styles.customText}>Add Custom Location / Drop Pin</Text>
+              </TouchableOpacity>
+            </View>
           ) : (
             <Text style={styles.empty}>Start typing to search destinations</Text>
           )
@@ -225,6 +263,26 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontSize: 14,
     fontWeight: '600',
+  },
+  rowSub: {
+    color: colors.muted,
+    fontSize: 12,
+    marginTop: 2,
+  },
+  customBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: spacing.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: 12,
+    borderRadius: radius.full,
+    backgroundColor: colors.primarySoft,
+  },
+  customText: {
+    color: colors.primary,
+    fontSize: 14,
+    fontWeight: '700',
   },
   empty: {
     marginTop: spacing.xl,

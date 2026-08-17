@@ -21,13 +21,10 @@ const BrowseScreen: React.FC = () => {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [filteredTrips, setFilteredTrips] = useState<Trip[]>([]);
   const [query, setQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
   
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const theme = useContext(ThemeContext);
-
-  const categories = ['All', 'Beach', 'Mountain', 'City', 'Adventure', 'Cultural'];
 
   useEffect(() => {
     loadTrips();
@@ -35,7 +32,7 @@ const BrowseScreen: React.FC = () => {
 
   useEffect(() => {
     filterTrips();
-  }, [query, selectedCategory, trips]);
+  }, [query, trips]);
 
   const loadTrips = async () => {
     const data = await tripService.getTrips();
@@ -52,10 +49,6 @@ const BrowseScreen: React.FC = () => {
           t.title.toLowerCase().includes(query.toLowerCase()) ||
           t.country.toLowerCase().includes(query.toLowerCase())
       );
-    }
-
-    if (selectedCategory !== 'All') {
-      filtered = filtered.filter((t) => t.tags?.includes(selectedCategory.toLowerCase()));
     }
 
     setFilteredTrips(filtered);
@@ -80,36 +73,6 @@ const BrowseScreen: React.FC = () => {
           style={[styles.search, { color: theme.colors.text }]}
           value={query}
           onChangeText={setQuery}
-        />
-      </View>
-
-      {/* Categories */}
-      <View style={styles.categoriesContainer}>
-        <FlatList
-          data={categories}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: spacing.xl }}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={[
-                styles.categoryChip,
-                { backgroundColor: theme.colors.card, borderColor: theme.colors.border },
-                selectedCategory === item && { backgroundColor: colors.primary, borderColor: colors.primary },
-              ]}
-              onPress={() => setSelectedCategory(item)}
-            >
-              <Text
-                style={[
-                  styles.categoryText,
-                  { color: theme.colors.muted },
-                  selectedCategory === item && { color: colors.white },
-                ]}
-              >
-                {item}
-              </Text>
-            </TouchableOpacity>
-          )}
         />
       </View>
 
@@ -183,27 +146,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 16,
     paddingVertical: 4,
+    marginBottom: spacing.lg,
     ...shadows.soft,
   },
   search: {
     flex: 1,
     paddingVertical: 12,
     fontSize: 15,
-  },
-  categoriesContainer: {
-    marginTop: spacing.lg,
-    marginBottom: spacing.md,
-  },
-  categoryChip: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
-    borderRadius: radius.full,
-    borderWidth: 1,
-    marginRight: spacing.sm,
-  },
-  categoryText: {
-    fontSize: 14,
-    fontWeight: '700',
   },
   row: {
     justifyContent: 'space-between',
@@ -225,8 +174,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   gridOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    ...(StyleSheet.absoluteFill as object),
   },
+
   gridContent: {
     position: 'absolute',
     bottom: 0,

@@ -9,6 +9,7 @@ import {
   Keyboard,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Icon } from '../components/Icon';
 import { ThemeContext, colors, radius, shadows, spacing } from '../theme/theme';
@@ -27,6 +28,7 @@ const PackingChecklistScreen: React.FC = () => {
   const [newItem, setNewItem] = useState('');
   const insets = useSafeAreaInsets();
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   useEffect(() => {
     loadItems();
@@ -75,10 +77,15 @@ const PackingChecklistScreen: React.FC = () => {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background, paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.colors.text }]}>Packing Checklist</Text>
-        <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
-          {checkedCount}/{items.length} items packed
-        </Text>
+        <TouchableOpacity style={styles.closeBtn} onPress={() => navigation.goBack()}>
+          <Icon name="close" size={22} color={theme.colors.text} />
+        </TouchableOpacity>
+        <View>
+          <Text style={[styles.title, { color: theme.colors.text }]}>Packing Checklist</Text>
+          <Text style={[styles.subtitle, { color: theme.colors.muted }]}>
+            {checkedCount}/{items.length} items packed
+          </Text>
+        </View>
       </View>
 
       {/* Progress Bar */}
@@ -179,6 +186,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.lg,
     paddingBottom: spacing.md,
+  },
+  closeBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.md,
+    backgroundColor: colors.card,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.sm,
+    ...shadows.soft,
   },
   title: {
     fontSize: 28,

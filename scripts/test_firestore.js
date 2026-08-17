@@ -168,6 +168,49 @@ async function testFilterByAuthor() {
   }
 }
 
+// Test 6: Publishing 奇峰 itinerary with cover image (admin use case)
+async function testQifengItinerary() {
+  console.log('\n=== Test 6: Publishing 奇峰 Itinerary with Cover Image ===');
+  
+  const itinerary = {
+    id: 'qifeng-001',
+    title: '奇峰',
+    destinations: ['Nanchang', 'Jingdezhen', 'Lushan'],
+    activities: [
+      { id: 'q1', day: 1, title: 'Arrive in Nanchang', notes: 'Visit Tengwang Pavilion', links: [], photos: [], completed: false },
+      { id: 'q2', day: 2, title: 'Jingdezhen Ceramics', notes: 'Explore porcelain capital', links: [], photos: [], completed: false },
+      { id: 'q3', day: 3, title: 'Lushan Mountain', notes: 'Hike and enjoy scenery', links: [], photos: [], completed: false }
+    ],
+    tags: ['china', 'culture', 'mountain'],
+    season: 'Spring',
+    budget: 1500,
+    authorName: 'Admin',
+    authorId: 'admin-001',
+    coverImageBase64: 'fakebase64dataforqifengitinerary',
+    publishedAt: Date.now(),
+  };
+
+  try {
+    await mockFirestore.collection('itineraries').doc(itinerary.id).set(itinerary);
+    console.log(`✓ 奇峰 itinerary published with coverImageBase64`);
+    
+    // Simulate fetching and reconstructing coverImage from base64
+    const doc = await mockFirestore.collection('itineraries').doc(itinerary.id).get();
+    const data = doc.data();
+    const reconstructedCover = data.coverImageBase64 
+      ? `data:image/jpeg;base64,${data.coverImageBase64}` 
+      : data.coverImage;
+    
+    if (reconstructedCover.startsWith('data:image/jpeg;base64,')) {
+      console.log(`✓ Cover image reconstructed correctly from base64`);
+    } else {
+      console.error(`✗ Cover image reconstruction failed: ${reconstructedCover}`);
+    }
+  } catch (e) {
+    console.error(`✗ Failed: ${e.message}`);
+  }
+}
+
 // Run all tests
 async function runTests() {
   console.log('🧪 Firestore Functionality Tests');
@@ -178,6 +221,7 @@ async function runTests() {
   await testUpdateItinerary();
   await testFetchItineraries();
   await testFilterByAuthor();
+  await testQifengItinerary();
   
   console.log('\n✅ All tests completed');
 }

@@ -1,10 +1,5 @@
 import { getGenericErrorMessage } from '../utils/validation';
-
-// Use environment variable or default to development
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 
-  (typeof __DEV__ !== 'undefined' && __DEV__ 
-    ? 'http://localhost:3000/api' 
-    : 'https://your-production-backend.com/api');
+import { API_BASE_URL } from '../config/api';
 
 export interface ApiResponse<T> {
   data?: T;
@@ -114,6 +109,78 @@ class ApiService {
     return this.request<{ valid: boolean; user: any }>('/auth/verify', {
       method: 'POST',
       body: JSON.stringify({ token }),
+    });
+  }
+
+  /**
+   * Grant / revoke a RevenueCat Pro or Mini entitlement for a user.
+   * Admin-only: the caller must be the app's admin account (its Firebase ID
+   * token is verified server-side; the RevenueCat secret key never leaves
+   * the backend).
+   */
+  async adminEntitlement(
+    token: string,
+    params: { uid: string; entitlement: 'pro' | 'mini'; action: 'grant' | 'revoke'; duration?: string }
+  ) {
+    return this.request<{ ok: boolean; message: string }>('/admin/entitlements', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify(params),
+    });
+  }
+
+  /**
+   * Look up a user's current RevenueCat entitlements. Admin-only.
+   */
+  async adminGetCustomer(token: string, uid: string) {
+    return this.request<{
+      found: boolean;
+      uid: string;
+      activeEntitlements?: string[];
+      firstSeen?: string | null;
+      lastSeen?: string | null;
+    }>(`/admin/customers/${encodeURIComponent(uid)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  /**
+   * Server-side moderation action. Admin-only: the caller's Firebase ID token
+   * is verified server-side before the action is applied.
+   */
+  async adminModeration(
+    token: string,
+    action: 'warn' | 'suspend' | 'unsuspend' | 'delete',
+    params: {
+      uid: string;
+      days?: number;
+      reason?: string;
+      note?: string;
+    }
+  ) {
+    return this.request<{ ok: boolean; message?: string; warningCount?: number }>(
+      `/admin/moderation/${action}`,
+      {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: JSON.stringify(params),
+      }
+    );
+  }
+
+  /**
+   * Server-side account status check (suspended / deleted). The caller's
+   * Firebase ID token is verified server-side.
+   */
+  async getAccountStatus(token: string) {
+    return this.request<{
+      uid: string;
+      exists: boolean | null;
+      suspended: boolean;
+      suspendedUntil: number;
+      deleted: boolean;
+    }>('/auth/status', {
+      headers: { Authorization: `Bearer ${token}` },
     });
   }
 }

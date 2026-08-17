@@ -3,12 +3,12 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": false,
-    "baseUrl": "./"
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src/**/*",

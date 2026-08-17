@@ -8,22 +8,120 @@
     "season": "Spring",
     "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrival in Tokyo", "activities": ["Check into Shinjuku hotel", "Evening stroll at Shibuya Crossing", "Welcome dinner at izakaya"] },
-      { "day": 2, "title": "Tokyo Highlights", "activities": ["Visit Senso-ji Temple in Asakusa", "Explore Akihabara electronics district", "TeamLab Borderless digital art museum"] },
-      { "day": 3, "title": "Cherry Blossom Tour", "activities": ["Ueno Park cherry blossom viewing", "Boat ride at Chidorigafuchi", "Night illumination at Meguro River"] },
-      { "day": 4, "title": "Day Trip to Nikko", "activities": ["Toshogu Shrine", "Kegon Waterfall", "Lake Chuzenji scenic walk"] },
-      { "day": 5, "title": "Travel to Kyoto", "activities": ["Shinkansen bullet train ride", "Fushimi Inari Shrine", "Traditional kaiseki dinner in Gion"] },
-      { "day": 6, "title": "Kyoto Temples", "activities": ["Kinkaku-ji (Golden Pavilion)", "Arashiyama Bamboo Grove", "Tenryu-ji Temple zen garden"] },
-      { "day": 7, "title": "Cultural Immersion", "activities": ["Tea ceremony experience", "Kiyomizu-dera Temple", "Nishiki Market food tour"] },
-      { "day": 8, "title": "Osaka Food Adventure", "activities": ["Osaka Castle", "Dotonbori street food", "Takoyaki and okonomiyaki cooking class"] },
-      { "day": 9, "title": "Universal Studios Japan", "activities": ["Super Nintendo World", "Wizarding World of Harry Potter", "Evening Minoh Falls visit"] },
-      { "day": 10, "title": "Departure", "activities": ["Last-minute souvenir shopping at Shinsaibashi", "Depart from Kansai Airport"] }
+      {
+        "day": 1,
+        "title": "Arrival in Tokyo",
+        "activities": [
+          "Check into Shinjuku hotel",
+          "Evening stroll at Shibuya Crossing",
+          "Welcome dinner at izakaya"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Tokyo Highlights",
+        "activities": [
+          "Visit Senso-ji Temple in Asakusa",
+          "Explore Akihabara electronics district",
+          "TeamLab Borderless digital art museum"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Cherry Blossom Tour",
+        "activities": [
+          "Ueno Park cherry blossom viewing",
+          "Boat ride at Chidorigafuchi",
+          "Night illumination at Meguro River"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Day Trip to Nikko",
+        "activities": [
+          "Toshogu Shrine",
+          "Kegon Waterfall",
+          "Lake Chuzenji scenic walk"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Travel to Kyoto",
+        "activities": [
+          "Shinkansen bullet train ride",
+          "Fushimi Inari Shrine",
+          "Traditional kaiseki dinner in Gion"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Kyoto Temples",
+        "activities": [
+          "Kinkaku-ji (Golden Pavilion)",
+          "Arashiyama Bamboo Grove",
+          "Tenryu-ji Temple zen garden"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Cultural Immersion",
+        "activities": [
+          "Tea ceremony experience",
+          "Kiyomizu-dera Temple",
+          "Nishiki Market food tour"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Osaka Food Adventure",
+        "activities": [
+          "Osaka Castle",
+          "Dotonbori street food",
+          "Takoyaki and okonomiyaki cooking class"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Universal Studios Japan",
+        "activities": [
+          "Super Nintendo World",
+          "Wizarding World of Harry Potter",
+          "Evening Minoh Falls visit"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last-minute souvenir shopping at Shinsaibashi",
+          "Depart from Kansai Airport"
+        ]
+      }
     ],
-    "highlights": ["Cherry blossoms at Ueno Park", "Senso-ji Temple", "Fushimi Inari gates", "Osaka street food", "Tea ceremony"],
-    "packing": ["Light jacket for spring", "Comfortable walking shoes", "Camera", "Portable Wi-Fi router"],
-    "tags": ["asia", "culture", "spring", "food"],
+    "highlights": [
+      "Cherry blossoms at Ueno Park",
+      "Senso-ji Temple",
+      "Fushimi Inari gates",
+      "Osaka street food",
+      "Tea ceremony"
+    ],
+    "packing": [
+      "Light jacket for spring",
+      "Comfortable walking shoes",
+      "Camera",
+      "Portable Wi-Fi router"
+    ],
+    "tags": [
+      "asia",
+      "culture",
+      "spring",
+      "food"
+    ],
     "category": "cultural",
-    "coords": { "lat": 35.6762, "lng": 139.6503 }
+    "coords": {
+      "lat": 35.6762,
+      "lng": 139.6503
+    }
   },
   {
     "id": "maldives-summer",
@@ -34,18 +132,93 @@
     "season": "Summer",
     "image": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrival in Malé", "activities": ["Seaplane transfer to resort", "Welcome cocktail at overwater villa", "Sunset beach walk"] },
-      { "day": 2, "title": "Snorkeling Adventure", "activities": ["House reef snorkeling", "Manta ray spotting", "Sandbank picnic lunch"] },
-      { "day": 3, "title": "Diving & Water Sports", "activities": ["Scuba diving at coral gardens", "Jet ski safari", "Underwater restaurant dinner"] },
-      { "day": 4, "title": "Island Exploration", "activities": ["Local island visit to Maafushi", "Souvenir shopping", "Traditional Bodu Beru dance show"] },
-      { "day": 5, "title": "Spa & Relaxation", "activities": ["Overwater spa treatment", "Sunset dolphin cruise", "Private beach dinner"] },
-      { "day": 6, "title": "Fishing Experience", "activities": ["Big game fishing", "Cooking class with catch", "Stargazing on deck"] },
-      { "day": 7, "title": "Departure", "activities": ["Last snorkeling session", "Seaplane back to Malé", "Departure"] }
+      {
+        "day": 1,
+        "title": "Arrival in Malé",
+        "activities": [
+          "Seaplane transfer to resort",
+          "Welcome cocktail at overwater villa",
+          "Sunset beach walk"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Snorkeling Adventure",
+        "activities": [
+          "House reef snorkeling",
+          "Manta ray spotting",
+          "Sandbank picnic lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Diving & Water Sports",
+        "activities": [
+          "Scuba diving at coral gardens",
+          "Jet ski safari",
+          "Underwater restaurant dinner"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Island Exploration",
+        "activities": [
+          "Local island visit to Maafushi",
+          "Souvenir shopping",
+          "Traditional Bodu Beru dance show"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Spa & Relaxation",
+        "activities": [
+          "Overwater spa treatment",
+          "Sunset dolphin cruise",
+          "Private beach dinner"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Fishing Experience",
+        "activities": [
+          "Big game fishing",
+          "Cooking class with catch",
+          "Stargazing on deck"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Departure",
+        "activities": [
+          "Last snorkeling session",
+          "Seaplane back to Malé",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Overwater bungalows", "Manta ray snorkeling", "Underwater dining", "Sunset cruises", "Crystal clear lagoons"],
-    "packing": ["Swimwear", "Sunscreen SPF 50", "Snorkel gear", "Light linen clothes", "Underwater camera"],
-    "tags": ["beach", "luxury", "tropical"],
-    "coords": { "lat": 3.2028, "lng": 73.2207 }
+    "highlights": [
+      "Overwater bungalows",
+      "Manta ray snorkeling",
+      "Underwater dining",
+      "Sunset cruises",
+      "Crystal clear lagoons"
+    ],
+    "packing": [
+      "Swimwear",
+      "Sunscreen SPF 50",
+      "Snorkel gear",
+      "Light linen clothes",
+      "Underwater camera"
+    ],
+    "tags": [
+      "beach",
+      "luxury",
+      "tropical"
+    ],
+    "coords": {
+      "lat": 3.2028,
+      "lng": 73.2207
+    }
   },
   {
     "id": "peru-backpacking",
@@ -56,22 +229,123 @@
     "season": "May-September",
     "image": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrival in Lima", "activities": ["Explore Miraflores", "Museo Larco", "Ceviche tasting"] },
-      { "day": 2, "title": "Lima to Cusco", "activities": ["Flight to Cusco", "Acclimatization walk", "San Pedro Market"] },
-      { "day": 3, "title": "Sacred Valley", "activities": ["Pisac ruins and market", "Ollantaytambo fortress", "Moray terraces"] },
-      { "day": 4, "title": "Inca Trail Start", "activities": ["Start trek at Km 82", "Wayllabamba campsite", "Mountain views"] },
-      { "day": 5, "title": "Inca Trail Day 2", "activities": ["Dead Woman's Pass", "Pacaymayo valley", "Camp at Chaquicocha"] },
-      { "day": 6, "title": "Inca Trail Day 3", "activities": ["Phuyupatamarca ruins", "Wiñay Wayna", "Cloud forest trekking"] },
-      { "day": 7, "title": "Machu Picchu", "activities": ["Sun Gate sunrise", "Guided Machu Picchu tour", "Huayna Picchu climb", "Train back to Cusco"] },
-      { "day": 8, "title": "Rainbow Mountain", "activities": ["Day hike to Vinicunca", "Red Valley views", "Return to Cusco"] },
-      { "day": 9, "title": "Cusco City", "activities": ["Sacsayhuaman ruins", "Qorikancha temple", "Night market"] },
-      { "day": 10, "title": "Departure", "activities": ["Last market shopping", "Flight from Cusco", "Departure"] }
+      {
+        "day": 1,
+        "title": "Arrival in Lima",
+        "activities": [
+          "Explore Miraflores",
+          "Museo Larco",
+          "Ceviche tasting"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Lima to Cusco",
+        "activities": [
+          "Flight to Cusco",
+          "Acclimatization walk",
+          "San Pedro Market"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sacred Valley",
+        "activities": [
+          "Pisac ruins and market",
+          "Ollantaytambo fortress",
+          "Moray terraces"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Inca Trail Start",
+        "activities": [
+          "Start trek at Km 82",
+          "Wayllabamba campsite",
+          "Mountain views"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Inca Trail Day 2",
+        "activities": [
+          "Dead Woman's Pass",
+          "Pacaymayo valley",
+          "Camp at Chaquicocha"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Inca Trail Day 3",
+        "activities": [
+          "Phuyupatamarca ruins",
+          "Wiñay Wayna",
+          "Cloud forest trekking"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Machu Picchu",
+        "activities": [
+          "Sun Gate sunrise",
+          "Guided Machu Picchu tour",
+          "Huayna Picchu climb",
+          "Train back to Cusco"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Rainbow Mountain",
+        "activities": [
+          "Day hike to Vinicunca",
+          "Red Valley views",
+          "Return to Cusco"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Cusco City",
+        "activities": [
+          "Sacsayhuaman ruins",
+          "Qorikancha temple",
+          "Night market"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last market shopping",
+          "Flight from Cusco",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Machu Picchu sunrise", "Inca Trail trek", "Rainbow Mountain", "Sacred Valley", "Cusco's colonial charm"],
-    "packing": ["Hiking boots", "Layered clothes", "Rain jacket", "Altitude sickness pills", "Headlamp"],
-    "tags": ["adventure", "hiking", "culture", "history"],
+    "highlights": [
+      "Machu Picchu sunrise",
+      "Inca Trail trek",
+      "Rainbow Mountain",
+      "Sacred Valley",
+      "Cusco's colonial charm"
+    ],
+    "packing": [
+      "Hiking boots",
+      "Layered clothes",
+      "Rain jacket",
+      "Altitude sickness pills",
+      "Headlamp"
+    ],
+    "tags": [
+      "adventure",
+      "hiking",
+      "culture",
+      "history"
+    ],
     "category": "mountain",
-    "coords": { "lat": -13.1631, "lng": -72.5450 }
+    "coords": {
+      "lat": -13.1631,
+      "lng": -72.545
+    }
   },
   {
     "id": "iceland-ring",
@@ -82,22 +356,121 @@
     "season": "June-August",
     "image": "https://images.unsplash.com/photo-1504829857797-ddff29c27927?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Reykjavik & Blue Lagoon", "activities": ["Blue Lagoon geothermal spa", "Hallgrimskirkja church", "Harpa concert hall"] },
-      { "day": 2, "title": "Golden Circle", "activities": ["Thingvellir National Park", "Gullfoss waterfall", "Geysir hot springs"] },
-      { "day": 3, "title": "South Coast to Vik", "activities": ["Seljalandsfoss waterfall", "Skogafoss waterfall", "Reynisfjara black sand beach"] },
-      { "day": 4, "title": "Glacier Adventures", "activities": ["Skaftafell glacier hike", "Jokulsarlon glacier lagoon", "Diamond Beach"] },
-      { "day": 5, "title": "East Fjords", "activities": ["Drive through scenic fjords", "Hike to Hengifoss", "Puffin watching at Borgarfjordur"] },
-      { "day": 6, "title": "Northern Iceland", "activities": ["Dettifoss waterfall", "Asbyrgi canyon", "Husavik whale watching"] },
-      { "day": 7, "title": "Myvatn Region", "activities": ["Myvatn Nature Baths", "Dimmuborgir lava fields", "Krafla volcano crater"] },
-      { "day": 8, "title": "Westfjords & Snaefellsnes", "activities": ["Snaefellsjokull glacier", "Kirkjufell mountain", "Arnarstapi cliffs"] },
-      { "day": 9, "title": "Return to Reykjavik", "activities": ["Whales of Iceland museum", "Last souvenir shopping", "Farewell dinner"] },
-      { "day": 10, "title": "Departure", "activities": ["Breakfast in Reykjavik", "Depart from Keflavik"] }
+      {
+        "day": 1,
+        "title": "Reykjavik & Blue Lagoon",
+        "activities": [
+          "Blue Lagoon geothermal spa",
+          "Hallgrimskirkja church",
+          "Harpa concert hall"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Golden Circle",
+        "activities": [
+          "Thingvellir National Park",
+          "Gullfoss waterfall",
+          "Geysir hot springs"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "South Coast to Vik",
+        "activities": [
+          "Seljalandsfoss waterfall",
+          "Skogafoss waterfall",
+          "Reynisfjara black sand beach"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Glacier Adventures",
+        "activities": [
+          "Skaftafell glacier hike",
+          "Jokulsarlon glacier lagoon",
+          "Diamond Beach"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "East Fjords",
+        "activities": [
+          "Drive through scenic fjords",
+          "Hike to Hengifoss",
+          "Puffin watching at Borgarfjordur"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Northern Iceland",
+        "activities": [
+          "Dettifoss waterfall",
+          "Asbyrgi canyon",
+          "Husavik whale watching"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Myvatn Region",
+        "activities": [
+          "Myvatn Nature Baths",
+          "Dimmuborgir lava fields",
+          "Krafla volcano crater"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Westfjords & Snaefellsnes",
+        "activities": [
+          "Snaefellsjokull glacier",
+          "Kirkjufell mountain",
+          "Arnarstapi cliffs"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Return to Reykjavik",
+        "activities": [
+          "Whales of Iceland museum",
+          "Last souvenir shopping",
+          "Farewell dinner"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Breakfast in Reykjavik",
+          "Depart from Keflavik"
+        ]
+      }
     ],
-    "highlights": ["Northern Lights (if winter)", "Jokulsarlon glacier lagoon", "Gullfoss waterfall", "Blue Lagoon", "Whale watching"],
-    "packing": ["Windproof jacket", "Hiking gear", "Swimwear for thermal pools", "Waterproof pants", "Warm layers"],
-    "tags": ["roadtrip", "nature", "adventure", "winter"],
+    "highlights": [
+      "Northern Lights (if winter)",
+      "Jokulsarlon glacier lagoon",
+      "Gullfoss waterfall",
+      "Blue Lagoon",
+      "Whale watching"
+    ],
+    "packing": [
+      "Windproof jacket",
+      "Hiking gear",
+      "Swimwear for thermal pools",
+      "Waterproof pants",
+      "Warm layers"
+    ],
+    "tags": [
+      "roadtrip",
+      "nature",
+      "adventure",
+      "winter"
+    ],
     "category": "mountain",
-    "coords": { "lat": 64.9631, "lng": -19.0208 }
+    "coords": {
+      "lat": 64.9631,
+      "lng": -19.0208
+    }
   },
   {
     "id": "greece-islands",
@@ -108,21 +481,120 @@
     "season": "May-September",
     "image": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrive in Athens", "activities": ["Acropolis visit", "Plaka neighborhood stroll", "Rooftop dinner with Acropolis view"] },
-      { "day": 2, "title": "Athens to Santorini", "activities": ["Ferry to Santorini", "Check into Oia hotel", "Sunset at Oia castle"] },
-      { "day": 3, "title": "Santorini Exploration", "activities": ["Hike from Fira to Oia", "Red Beach swimming", "Wine tasting at local vineyards"] },
-      { "day": 4, "title": "Santorini Sailing", "activities": ["Catamaran cruise", "Hot springs at Palea Kameni", "BBQ dinner on board"] },
-      { "day": 5, "title": "Mykonos Island", "activities": ["Ferry to Mykonos", "Little Venice photos", "Windmills at sunset"] },
-      { "day": 6, "title": "Mykonos Beaches", "activities": ["Paradise Beach", "Super Paradise Beach", "Mykonos town shopping"] },
-      { "day": 7, "title": "Paros Island", "activities": ["Ferry to Paros", "Naoussa harbor", "Kolymbithres beach"] },
-      { "day": 8, "title": "Paros Exploration", "activities": ["Lefkes village walk", "Antiparos day trip", "Sunset dinner at Souvlaki Story"] },
-      { "day": 9, "title": "Return to Athens", "activities": ["Ferry back", "National Archaeological Museum", "Monastiraki flea market"] },
-      { "day": 10, "title": "Departure", "activities": ["Last Greek coffee", "Depart from Athens"] }
+      {
+        "day": 1,
+        "title": "Arrive in Athens",
+        "activities": [
+          "Acropolis visit",
+          "Plaka neighborhood stroll",
+          "Rooftop dinner with Acropolis view"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Athens to Santorini",
+        "activities": [
+          "Ferry to Santorini",
+          "Check into Oia hotel",
+          "Sunset at Oia castle"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Santorini Exploration",
+        "activities": [
+          "Hike from Fira to Oia",
+          "Red Beach swimming",
+          "Wine tasting at local vineyards"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Santorini Sailing",
+        "activities": [
+          "Catamaran cruise",
+          "Hot springs at Palea Kameni",
+          "BBQ dinner on board"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Mykonos Island",
+        "activities": [
+          "Ferry to Mykonos",
+          "Little Venice photos",
+          "Windmills at sunset"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Mykonos Beaches",
+        "activities": [
+          "Paradise Beach",
+          "Super Paradise Beach",
+          "Mykonos town shopping"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Paros Island",
+        "activities": [
+          "Ferry to Paros",
+          "Naoussa harbor",
+          "Kolymbithres beach"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Paros Exploration",
+        "activities": [
+          "Lefkes village walk",
+          "Antiparos day trip",
+          "Sunset dinner at Souvlaki Story"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Return to Athens",
+        "activities": [
+          "Ferry back",
+          "National Archaeological Museum",
+          "Monastiraki flea market"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last Greek coffee",
+          "Depart from Athens"
+        ]
+      }
     ],
-    "highlights": ["Santorini sunset in Oia", "Mykonos windmills", "Catamaran cruise", "Paros beaches", "Acropolis"],
-    "packing": ["Sunscreen", "Summer clothes", "Swimwear", "Comfortable sandals", "Camera"],
-    "tags": ["beach", "sailing", "culture", "europe"],
-    "coords": { "lat": 36.3932, "lng": 25.4615 }
+    "highlights": [
+      "Santorini sunset in Oia",
+      "Mykonos windmills",
+      "Catamaran cruise",
+      "Paros beaches",
+      "Acropolis"
+    ],
+    "packing": [
+      "Sunscreen",
+      "Summer clothes",
+      "Swimwear",
+      "Comfortable sandals",
+      "Camera"
+    ],
+    "tags": [
+      "beach",
+      "sailing",
+      "culture",
+      "europe"
+    ],
+    "coords": {
+      "lat": 36.3932,
+      "lng": 25.4615
+    }
   },
   {
     "id": "korea-food",
@@ -133,20 +605,102 @@
     "season": "April-June",
     "image": "https://images.unsplash.com/photo-1553163147-622ab57be1c7?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrival in Seoul", "activities": ["Check into Myeongdong hotel", "Myeongdong street food tour", "N Seoul Tower night view"] },
-      { "day": 2, "title": "Korean BBQ Experience", "activities": ["Gwangjang Market breakfast", "Korean BBQ cooking class", "Mapo-gu BBQ district dinner"] },
-      { "day": 3, "title": "Street Food Crawl", "activities": ["Hongdae food stalls", "Tteokbokki tasting", "Dessert cafe hopping"] },
-      { "day": 4, "title": "Traditional Cuisine", "activities": ["Insadong tea ceremony", "Temple food lunch", "Jongno bibimbap tour"] },
-      { "day": 5, "title": "Day Trip to Busan", "activities": ["KTX train to Busan", "Jagalchi Fish Market", "Busan seafood feast"] },
-      { "day": 6, "title": "Michelin Dining", "activities": ["Michelin-starred lunch", "Gangnam district", "Sool-anju (alcohol pairing) dinner"] },
-      { "day": 7, "title": "Market Marathon", "activities": ["Namdaemun Market", "Dongdaemun Night Market", "Korean fried chicken & beer"] },
-      { "day": 8, "title": "Cooking & Departure", "activities": ["Kimchi making class", "Last-minute shopping", "Departure"] }
+      {
+        "day": 1,
+        "title": "Arrival in Seoul",
+        "activities": [
+          "Check into Myeongdong hotel",
+          "Myeongdong street food tour",
+          "N Seoul Tower night view"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Korean BBQ Experience",
+        "activities": [
+          "Gwangjang Market breakfast",
+          "Korean BBQ cooking class",
+          "Mapo-gu BBQ district dinner"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Street Food Crawl",
+        "activities": [
+          "Hongdae food stalls",
+          "Tteokbokki tasting",
+          "Dessert cafe hopping"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Traditional Cuisine",
+        "activities": [
+          "Insadong tea ceremony",
+          "Temple food lunch",
+          "Jongno bibimbap tour"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Day Trip to Busan",
+        "activities": [
+          "KTX train to Busan",
+          "Jagalchi Fish Market",
+          "Busan seafood feast"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Michelin Dining",
+        "activities": [
+          "Michelin-starred lunch",
+          "Gangnam district",
+          "Sool-anju (alcohol pairing) dinner"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Market Marathon",
+        "activities": [
+          "Namdaemun Market",
+          "Dongdaemun Night Market",
+          "Korean fried chicken & beer"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Cooking & Departure",
+        "activities": [
+          "Kimchi making class",
+          "Last-minute shopping",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Korean BBQ", "Street food in Myeongdong", "Gwangjang Market", "Busan seafood", "Kimchi making"],
-    "packing": ["Comfortable shoes", "Loose fitting clothes for eating", "Tums/Pepto", "Reusable chopsticks"],
-    "tags": ["food", "asia", "culture"],
+    "highlights": [
+      "Korean BBQ",
+      "Street food in Myeongdong",
+      "Gwangjang Market",
+      "Busan seafood",
+      "Kimchi making"
+    ],
+    "packing": [
+      "Comfortable shoes",
+      "Loose fitting clothes for eating",
+      "Tums/Pepto",
+      "Reusable chopsticks"
+    ],
+    "tags": [
+      "food",
+      "asia",
+      "culture"
+    ],
     "category": "cultural",
-    "coords": { "lat": 37.5665, "lng": 126.9780 }
+    "coords": {
+      "lat": 37.5665,
+      "lng": 126.978
+    }
   },
   {
     "id": "bali-wellness",
@@ -157,18 +711,93 @@
     "season": "April-October",
     "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrival in Ubud", "activities": ["Check into wellness resort", "Welcome massage", "Evening yoga session"] },
-      { "day": 2, "title": "Rice Terrace Yoga", "activities": ["Sunrise yoga at Tegallalang", "Rice terrace trek", "Organic farm lunch"] },
-      { "day": 3, "title": "Purification & Spa", "activities": ["Tirta Empul water temple", "Traditional Balinese spa", "Flower bath ritual"] },
-      { "day": 4, "title": "Meditation & Nature", "activities": ["Monkey Forest walk", "Guided meditation", "Campuhan Ridge sunset walk"] },
-      { "day": 5, "title": "Mount Batur Sunrise", "activities": ["3am trek to Mt Batur", "Sunrise breakfast at summit", "Hot springs recovery"] },
-      { "day": 6, "title": "Beach Day in Seminyak", "activities": ["Transfer to Seminyak", "Befront yoga class", "Sunset beach dinner"] },
-      { "day": 7, "title": "Departure", "activities": ["Last surf lesson", "Spa treatment", "Departure from Ngurah Rai"] }
+      {
+        "day": 1,
+        "title": "Arrival in Ubud",
+        "activities": [
+          "Check into wellness resort",
+          "Welcome massage",
+          "Evening yoga session"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Rice Terrace Yoga",
+        "activities": [
+          "Sunrise yoga at Tegallalang",
+          "Rice terrace trek",
+          "Organic farm lunch"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Purification & Spa",
+        "activities": [
+          "Tirta Empul water temple",
+          "Traditional Balinese spa",
+          "Flower bath ritual"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Meditation & Nature",
+        "activities": [
+          "Monkey Forest walk",
+          "Guided meditation",
+          "Campuhan Ridge sunset walk"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Mount Batur Sunrise",
+        "activities": [
+          "3am trek to Mt Batur",
+          "Sunrise breakfast at summit",
+          "Hot springs recovery"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Beach Day in Seminyak",
+        "activities": [
+          "Transfer to Seminyak",
+          "Befront yoga class",
+          "Sunset beach dinner"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Departure",
+        "activities": [
+          "Last surf lesson",
+          "Spa treatment",
+          "Departure from Ngurah Rai"
+        ]
+      }
     ],
-    "highlights": ["Ubud rice terraces", "Tirta Empul water temple", "Mount Batur sunrise", "Balinese massage", "Yoga retreats"],
-    "packing": ["Yoga clothes", "Lightweight clothing", "Insect repellent", "Sarong for temples"],
-    "tags": ["wellness", "beach", "yoga", "nature"],
-    "coords": { "lat": -8.5069, "lng": 115.2625 }
+    "highlights": [
+      "Ubud rice terraces",
+      "Tirta Empul water temple",
+      "Mount Batur sunrise",
+      "Balinese massage",
+      "Yoga retreats"
+    ],
+    "packing": [
+      "Yoga clothes",
+      "Lightweight clothing",
+      "Insect repellent",
+      "Sarong for temples"
+    ],
+    "tags": [
+      "wellness",
+      "beach",
+      "yoga",
+      "nature"
+    ],
+    "coords": {
+      "lat": -8.5069,
+      "lng": 115.2625
+    }
   },
   {
     "id": "thailand-islands",
@@ -179,19 +808,103 @@
     "season": "November-March",
     "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrive Phuket", "activities": ["Check into Patong resort", "Bangla Road nightlife", "Thai massage"] },
-      { "day": 2, "title": "Phuket Beaches", "activities": ["Kata Beach swimming", "Big Buddha temple", "Promthep Cape sunset"] },
-      { "day": 3, "title": "Phi Phi Islands", "activities": ["Ferry to Koh Phi Phi", "Maya Bay snorkeling", "Viewpoint hike"] },
-      { "day": 4, "title": "Phi Phi Exploration", "activities": ["Bamboo Island day trip", "Night snorkeling with plankton", "Beach BBQ"] },
-      { "day": 5, "title": "Krabi & Railay", "activities": ["Ferry to Krabi", "Railay Beach rock climbing", "Princess Lagoon swim"] },
-      { "day": 6, "title": "Krabi Four Islands", "activities": ["Chicken Island", "Poda Island", "Tub Island sandbar", "Emerald Pool"] },
-      { "day": 7, "title": "Khao Sok National Park", "activities": ["Cheow Lan Lake boat tour", "Jungle trekking", "Bamboo rafting"] },
-      { "day": 8, "title": "Departure", "activities": ["Last beach time", "Depart from Phuket"] }
+      {
+        "day": 1,
+        "title": "Arrive Phuket",
+        "activities": [
+          "Check into Patong resort",
+          "Bangla Road nightlife",
+          "Thai massage"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Phuket Beaches",
+        "activities": [
+          "Kata Beach swimming",
+          "Big Buddha temple",
+          "Promthep Cape sunset"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Phi Phi Islands",
+        "activities": [
+          "Ferry to Koh Phi Phi",
+          "Maya Bay snorkeling",
+          "Viewpoint hike"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Phi Phi Exploration",
+        "activities": [
+          "Bamboo Island day trip",
+          "Night snorkeling with plankton",
+          "Beach BBQ"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Krabi & Railay",
+        "activities": [
+          "Ferry to Krabi",
+          "Railay Beach rock climbing",
+          "Princess Lagoon swim"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Krabi Four Islands",
+        "activities": [
+          "Chicken Island",
+          "Poda Island",
+          "Tub Island sandbar",
+          "Emerald Pool"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Khao Sok National Park",
+        "activities": [
+          "Cheow Lan Lake boat tour",
+          "Jungle trekking",
+          "Bamboo rafting"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Departure",
+        "activities": [
+          "Last beach time",
+          "Depart from Phuket"
+        ]
+      }
     ],
-    "highlights": ["Maya Bay snorkeling", "Railay Beach rock climbing", "Phi Phi viewpoint", "Emerald Pool", "Cheow Lan Lake"],
-    "packing": ["Snorkel gear", "Swimwear", "Light clothes", "Waterproof phone case", "Flip flops"],
-    "tags": ["beach", "islands", "adventure", "snorkeling"],
-    "coords": { "lat": 7.9519, "lng": 98.3381 }
+    "highlights": [
+      "Maya Bay snorkeling",
+      "Railay Beach rock climbing",
+      "Phi Phi viewpoint",
+      "Emerald Pool",
+      "Cheow Lan Lake"
+    ],
+    "packing": [
+      "Snorkel gear",
+      "Swimwear",
+      "Light clothes",
+      "Waterproof phone case",
+      "Flip flops"
+    ],
+    "tags": [
+      "beach",
+      "islands",
+      "adventure",
+      "snorkeling"
+    ],
+    "coords": {
+      "lat": 7.9519,
+      "lng": 98.3381
+    }
   },
   {
     "id": "norway-fjords",
@@ -202,21 +915,120 @@
     "season": "June-August",
     "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Bergen Arrival", "activities": ["Bryggen wharf exploration", "Floyen funicular", "Seafood market dinner"] },
-      { "day": 2, "title": "Norway in a Nutshell", "activities": ["Bergen Railway to Myrdal", "Flamsbana train descent", "Fjord cruise to Gudvangen"] },
-      { "day": 3, "title": "Sognefjord", "activities": ["Kayaking in Nærøyfjord", "Stegastein viewpoint", "Aurland village walk"] },
-      { "day": 4, "title": "Jotunheimen National Park", "activities": ["Drive to Jotunheimen", "Besseggen Ridge hike", "Mountain lodge stay"] },
-      { "day": 5, "title": "Geirangerfjord", "activities": ["Trollstigen mountain road", "Geirangerfjord cruise", "Flydalsjuvet viewpoint"] },
-      { "day": 6, "title": "Atlantic Road", "activities": ["Drive Atlantic Road", "Kristiansund city", "Stave church visit"] },
-      { "day": 7, "title": "Lofoten Islands", "activities": ["Flight to Lofoten", "Reine village", "Midnight sun hike"] },
-      { "day": 8, "title": "Lofoten Fishing Village", "activities": ["Sea eagle safari", "Stockfish museum", "Rorbu cabin stay"] },
-      { "day": 9, "title": "Tromsø", "activities": ["Arctic Cathedral", "Cable car up Mt Storsteinen", "Samí culture experience"] },
-      { "day": 10, "title": "Departure", "activities": ["Last fjord view", "Depart from Tromsø"] }
+      {
+        "day": 1,
+        "title": "Bergen Arrival",
+        "activities": [
+          "Bryggen wharf exploration",
+          "Floyen funicular",
+          "Seafood market dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Norway in a Nutshell",
+        "activities": [
+          "Bergen Railway to Myrdal",
+          "Flamsbana train descent",
+          "Fjord cruise to Gudvangen"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sognefjord",
+        "activities": [
+          "Kayaking in Nærøyfjord",
+          "Stegastein viewpoint",
+          "Aurland village walk"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Jotunheimen National Park",
+        "activities": [
+          "Drive to Jotunheimen",
+          "Besseggen Ridge hike",
+          "Mountain lodge stay"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Geirangerfjord",
+        "activities": [
+          "Trollstigen mountain road",
+          "Geirangerfjord cruise",
+          "Flydalsjuvet viewpoint"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Atlantic Road",
+        "activities": [
+          "Drive Atlantic Road",
+          "Kristiansund city",
+          "Stave church visit"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Lofoten Islands",
+        "activities": [
+          "Flight to Lofoten",
+          "Reine village",
+          "Midnight sun hike"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Lofoten Fishing Village",
+        "activities": [
+          "Sea eagle safari",
+          "Stockfish museum",
+          "Rorbu cabin stay"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Tromsø",
+        "activities": [
+          "Arctic Cathedral",
+          "Cable car up Mt Storsteinen",
+          "Samí culture experience"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last fjord view",
+          "Depart from Tromsø"
+        ]
+      }
     ],
-    "highlights": ["Geirangerfjord cruise", "Flamsbana railway", "Lofoten Islands", "Midnight sun", "Trollstigen road"],
-    "packing": ["Layers", "Waterproof jacket", "Hiking boots", "Wool base layers", "Camera"],
-    "tags": ["nature", "cruise", "hiking", "scenic"],
-    "coords": { "lat": 60.4720, "lng": 8.4689 }
+    "highlights": [
+      "Geirangerfjord cruise",
+      "Flamsbana railway",
+      "Lofoten Islands",
+      "Midnight sun",
+      "Trollstigen road"
+    ],
+    "packing": [
+      "Layers",
+      "Waterproof jacket",
+      "Hiking boots",
+      "Wool base layers",
+      "Camera"
+    ],
+    "tags": [
+      "nature",
+      "cruise",
+      "hiking",
+      "scenic"
+    ],
+    "coords": {
+      "lat": 60.472,
+      "lng": 8.4689
+    }
   },
   {
     "id": "swiss-alps",
@@ -227,22 +1039,121 @@
     "season": "June-September",
     "image": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Zurich to Lucerne", "activities": ["Arrive Zurich", "Lucerne Chapel Bridge", "Lion Monument"] },
-      { "day": 2, "title": "Mount Pilatus", "activities": ["Golden round trip to Pilatus", "Cable car and cogwheel train", "Lake Lucerne cruise"] },
-      { "day": 3, "title": "Interlaken", "activities": ["Train to Interlaken", "Harder Kulm viewpoint", "Paragliding over lakes"] },
-      { "day": 4, "title": "Jungfraujoch", "activities": ["Cogwheel train to Jungfraujoch", "Ice Palace", "Sphinx Observatory panorama"] },
-      { "day": 5, "title": "Grindelwald", "activities": ["First Cliff Walk", "Grindelwald-First mountain cart", "Lauterbrunnen Valley"] },
-      { "day": 6, "title": "Zermatt & Matterhorn", "activities": ["Scenic train to Zermatt", "Gornergrat Railway", "Matterhorn glacier paradise"] },
-      { "day": 7, "title": "Matterhorn Hike", "activities": ["Five Lakes Hike", "Zermatt village stroll", "Fondue dinner"] },
-      { "day": 8, "title": "Montreux & Lavaux", "activities": ["Chillon Castle", "Lavaux vineyards walk", "Montreux Jazz sculpture promenade"] },
-      { "day": 9, "title": "Geneva", "activities": ["Jet d'Eau", "Old Town exploration", "UN headquarters tour"] },
-      { "day": 10, "title": "Departure", "activities": ["Last Swiss chocolate shopping", "Depart from Geneva"] }
+      {
+        "day": 1,
+        "title": "Zurich to Lucerne",
+        "activities": [
+          "Arrive Zurich",
+          "Lucerne Chapel Bridge",
+          "Lion Monument"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Mount Pilatus",
+        "activities": [
+          "Golden round trip to Pilatus",
+          "Cable car and cogwheel train",
+          "Lake Lucerne cruise"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Interlaken",
+        "activities": [
+          "Train to Interlaken",
+          "Harder Kulm viewpoint",
+          "Paragliding over lakes"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Jungfraujoch",
+        "activities": [
+          "Cogwheel train to Jungfraujoch",
+          "Ice Palace",
+          "Sphinx Observatory panorama"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Grindelwald",
+        "activities": [
+          "First Cliff Walk",
+          "Grindelwald-First mountain cart",
+          "Lauterbrunnen Valley"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Zermatt & Matterhorn",
+        "activities": [
+          "Scenic train to Zermatt",
+          "Gornergrat Railway",
+          "Matterhorn glacier paradise"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Matterhorn Hike",
+        "activities": [
+          "Five Lakes Hike",
+          "Zermatt village stroll",
+          "Fondue dinner"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Montreux & Lavaux",
+        "activities": [
+          "Chillon Castle",
+          "Lavaux vineyards walk",
+          "Montreux Jazz sculpture promenade"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Geneva",
+        "activities": [
+          "Jet d'Eau",
+          "Old Town exploration",
+          "UN headquarters tour"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last Swiss chocolate shopping",
+          "Depart from Geneva"
+        ]
+      }
     ],
-    "highlights": ["Jungfraujoch Top of Europe", "Matterhorn views", "Interlaken paragliding", "Mount Pilatus", "Lake Lucerne"],
-    "packing": ["Hiking boots", "Warm jacket", "Sunglasses", "Swiss adapter plug"],
-    "tags": ["alps", "hiking", "luxury", "scenic", "europe"],
+    "highlights": [
+      "Jungfraujoch Top of Europe",
+      "Matterhorn views",
+      "Interlaken paragliding",
+      "Mount Pilatus",
+      "Lake Lucerne"
+    ],
+    "packing": [
+      "Hiking boots",
+      "Warm jacket",
+      "Sunglasses",
+      "Swiss adapter plug"
+    ],
+    "tags": [
+      "alps",
+      "hiking",
+      "luxury",
+      "scenic",
+      "europe"
+    ],
     "category": "mountain",
-    "coords": { "lat": 46.8182, "lng": 8.2275 }
+    "coords": {
+      "lat": 46.8182,
+      "lng": 8.2275
+    }
   },
   {
     "id": "vietnam-highlights",
@@ -253,21 +1164,120 @@
     "season": "February-April",
     "image": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Hanoi Arrival", "activities": ["Old Quarter walking tour", "Hoan Kiem Lake", "Bun Cha dinner"] },
-      { "day": 2, "title": "Hanoi Culture", "activities": ["Temple of Literature", "Vietnamese coffee workshop", "Water puppet show"] },
-      { "day": 3, "title": "Ha Long Bay", "activities": ["Ha Long Bay cruise", "Kayaking among karsts", "Sunset party on deck"] },
-      { "day": 4, "title": "Ha Long Bay to Hue", "activities": ["Tai Chi sunrise", "Surprise Cave visit", "Night train to Hue"] },
-      { "day": 5, "title": "Hue Imperial City", "activities": ["Hue Citadel", "Perfume River boat trip", "Royal cuisine dinner"] },
-      { "day": 6, "title": "Hoi An Ancient Town", "activities": ["Hai Van Pass drive", "Hoi An Old Town", "Tailor-made clothing"] },
-      { "day": 7, "title": "Hoi An Cooking", "activities": ["Morning market visit", "Vietnamese cooking class", "Lantern-lit evening stroll"] },
-      { "day": 8, "title": "Ho Chi Minh City", "activities": ["Flight to Saigon", "Cu Chi Tunnels", "Ben Thanh Market"] },
-      { "day": 9, "title": "Mekong Delta", "activities": ["Mekong Delta day trip", "Floating market", "Coconut candy workshop"] },
-      { "day": 10, "title": "Departure", "activities": ["War Remnants Museum", "Pho lunch", "Departure"] }
+      {
+        "day": 1,
+        "title": "Hanoi Arrival",
+        "activities": [
+          "Old Quarter walking tour",
+          "Hoan Kiem Lake",
+          "Bun Cha dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Hanoi Culture",
+        "activities": [
+          "Temple of Literature",
+          "Vietnamese coffee workshop",
+          "Water puppet show"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ha Long Bay",
+        "activities": [
+          "Ha Long Bay cruise",
+          "Kayaking among karsts",
+          "Sunset party on deck"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ha Long Bay to Hue",
+        "activities": [
+          "Tai Chi sunrise",
+          "Surprise Cave visit",
+          "Night train to Hue"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Hue Imperial City",
+        "activities": [
+          "Hue Citadel",
+          "Perfume River boat trip",
+          "Royal cuisine dinner"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Hoi An Ancient Town",
+        "activities": [
+          "Hai Van Pass drive",
+          "Hoi An Old Town",
+          "Tailor-made clothing"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Hoi An Cooking",
+        "activities": [
+          "Morning market visit",
+          "Vietnamese cooking class",
+          "Lantern-lit evening stroll"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Ho Chi Minh City",
+        "activities": [
+          "Flight to Saigon",
+          "Cu Chi Tunnels",
+          "Ben Thanh Market"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Mekong Delta",
+        "activities": [
+          "Mekong Delta day trip",
+          "Floating market",
+          "Coconut candy workshop"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "War Remnants Museum",
+          "Pho lunch",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Ha Long Bay cruise", "Hoi An Old Town", "Mekong Delta", "Vietnamese street food", "Cu Chi Tunnels"],
-    "packing": ["Light clothes", "Rain jacket", "Insect repellent", "Comfortable shoes"],
-    "tags": ["asia", "food", "culture", "history"],
-    "coords": { "lat": 14.0583, "lng": 108.2772 }
+    "highlights": [
+      "Ha Long Bay cruise",
+      "Hoi An Old Town",
+      "Mekong Delta",
+      "Vietnamese street food",
+      "Cu Chi Tunnels"
+    ],
+    "packing": [
+      "Light clothes",
+      "Rain jacket",
+      "Insect repellent",
+      "Comfortable shoes"
+    ],
+    "tags": [
+      "asia",
+      "food",
+      "culture",
+      "history"
+    ],
+    "coords": {
+      "lat": 14.0583,
+      "lng": 108.2772
+    }
   },
   {
     "id": "morocco-desert",
@@ -278,21 +1288,120 @@
     "season": "March-May",
     "image": "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Marrakech Arrival", "activities": ["Jemaa el-Fnaa square", "Bahia Palace", "Moroccan dinner with show"] },
-      { "day": 2, "title": "Marrakech Exploration", "activities": ["Majorelle Garden", "Souk shopping", "Ben Youssef Madrasa"] },
-      { "day": 3, "title": "Atlas Mountains", "activities": ["Day trip to Ourika Valley", "Berber village visit", "Waterfall hike"] },
-      { "day": 4, "title": "Ait Ben Haddou", "activities": ["Drive over Tizi n'Tichka pass", "Kasbah Ait Ben Haddou", "Sunset photos"] },
-      { "day": 5, "title": "Todra Gorge", "activities": ["Todra Gorge rock climbing", "Rose Valley visit", "Traditional Berber dinner"] },
-      { "day": 6, "title": "Sahara Desert", "activities": ["Camel trek into Erg Chebbi", "Sand dune sunset", "Camp under stars"] },
-      { "day": 7, "title": "Sahara Sunrise", "activities": ["Desert sunrise", "4x4 dunes safari", "Drive to Fes"] },
-      { "day": 8, "title": "Fes Medina", "activities": ["Al Quaraouiyine mosque", "Chouara Tannery", "Fes pottery workshop"] },
-      { "day": 9, "title": "Chefchaouen Blue City", "activities": ["Drive to Chefchaouen", "Blue streets photography", "Rif Mountain hike"] },
-      { "day": 10, "title": "Return to Marrakech", "activities": ["Transfer to Marrakech", "Last souk visit", "Departure"] }
+      {
+        "day": 1,
+        "title": "Marrakech Arrival",
+        "activities": [
+          "Jemaa el-Fnaa square",
+          "Bahia Palace",
+          "Moroccan dinner with show"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Marrakech Exploration",
+        "activities": [
+          "Majorelle Garden",
+          "Souk shopping",
+          "Ben Youssef Madrasa"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Atlas Mountains",
+        "activities": [
+          "Day trip to Ourika Valley",
+          "Berber village visit",
+          "Waterfall hike"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Ait Ben Haddou",
+        "activities": [
+          "Drive over Tizi n'Tichka pass",
+          "Kasbah Ait Ben Haddou",
+          "Sunset photos"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Todra Gorge",
+        "activities": [
+          "Todra Gorge rock climbing",
+          "Rose Valley visit",
+          "Traditional Berber dinner"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Sahara Desert",
+        "activities": [
+          "Camel trek into Erg Chebbi",
+          "Sand dune sunset",
+          "Camp under stars"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Sahara Sunrise",
+        "activities": [
+          "Desert sunrise",
+          "4x4 dunes safari",
+          "Drive to Fes"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Fes Medina",
+        "activities": [
+          "Al Quaraouiyine mosque",
+          "Chouara Tannery",
+          "Fes pottery workshop"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Chefchaouen Blue City",
+        "activities": [
+          "Drive to Chefchaouen",
+          "Blue streets photography",
+          "Rif Mountain hike"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Return to Marrakech",
+        "activities": [
+          "Transfer to Marrakech",
+          "Last souk visit",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Sahara desert camp", "Ait Ben Haddou kasbah", "Fes medieval medina", "Chefchaouen blue city", "Jemaa el-Fnaa square"],
-    "packing": ["Sun protection", "Light scarf", "Comfortable walking shoes", "Warm layers for desert nights"],
-    "tags": ["desert", "culture", "adventure", "history"],
-    "coords": { "lat": 31.7917, "lng": -7.0926 }
+    "highlights": [
+      "Sahara desert camp",
+      "Ait Ben Haddou kasbah",
+      "Fes medieval medina",
+      "Chefchaouen blue city",
+      "Jemaa el-Fnaa square"
+    ],
+    "packing": [
+      "Sun protection",
+      "Light scarf",
+      "Comfortable walking shoes",
+      "Warm layers for desert nights"
+    ],
+    "tags": [
+      "desert",
+      "culture",
+      "adventure",
+      "history"
+    ],
+    "coords": {
+      "lat": 31.7917,
+      "lng": -7.0926
+    }
   },
   {
     "id": "egypt-ancient",
@@ -303,21 +1412,120 @@
     "season": "October-April",
     "image": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Cairo Arrival", "activities": ["Great Pyramids of Giza", "Sphinx photo stop", "Sound and Light show"] },
-      { "day": 2, "title": "Cairo Museums", "activities": ["Egyptian Museum", "Khan el-Khalili bazaar", "Al-Azhar Mosque"] },
-      { "day": 3, "title": "Saqqara & Memphis", "activities": ["Step Pyramid of Djoser", "Memphis open air museum", "Coptic Cairo"] },
-      { "day": 4, "title": "Fly to Luxor", "activities": ["Karnak Temple", "Luxor Temple at night", "Nile felucca ride"] },
-      { "day": 5, "title": "Valley of the Kings", "activities": ["Valley of the Kings", "Hatshepsut Temple", "Colossi of Memnon"] },
-      { "day": 6, "title": "Nile Cruise Start", "activities": ["Board Nile cruise", "Edfu Temple", "Kom Ombo Temple"] },
-      { "day": 7, "title": "Aswan Exploration", "activities": ["Philae Temple", "Unfinished Obelisk", "Nubian Village visit"] },
-      { "day": 8, "title": "Abu Simbel", "activities": ["Early drive to Abu Simbel", "Ramesses II temple", "Return to Aswan"] },
-      { "day": 9, "title": "Return to Cairo", "activities": ["Flight to Cairo", "Salah El-Din Citadel", "Farewell dinner on Nile"] },
-      { "day": 10, "title": "Departure", "activities": ["Last market shopping", "Depart from Cairo"] }
+      {
+        "day": 1,
+        "title": "Cairo Arrival",
+        "activities": [
+          "Great Pyramids of Giza",
+          "Sphinx photo stop",
+          "Sound and Light show"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Cairo Museums",
+        "activities": [
+          "Egyptian Museum",
+          "Khan el-Khalili bazaar",
+          "Al-Azhar Mosque"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Saqqara & Memphis",
+        "activities": [
+          "Step Pyramid of Djoser",
+          "Memphis open air museum",
+          "Coptic Cairo"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Fly to Luxor",
+        "activities": [
+          "Karnak Temple",
+          "Luxor Temple at night",
+          "Nile felucca ride"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Valley of the Kings",
+        "activities": [
+          "Valley of the Kings",
+          "Hatshepsut Temple",
+          "Colossi of Memnon"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Nile Cruise Start",
+        "activities": [
+          "Board Nile cruise",
+          "Edfu Temple",
+          "Kom Ombo Temple"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Aswan Exploration",
+        "activities": [
+          "Philae Temple",
+          "Unfinished Obelisk",
+          "Nubian Village visit"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Abu Simbel",
+        "activities": [
+          "Early drive to Abu Simbel",
+          "Ramesses II temple",
+          "Return to Aswan"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Return to Cairo",
+        "activities": [
+          "Flight to Cairo",
+          "Salah El-Din Citadel",
+          "Farewell dinner on Nile"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last market shopping",
+          "Depart from Cairo"
+        ]
+      }
     ],
-    "highlights": ["Great Pyramids of Giza", "Valley of the Kings", "Abu Simbel", "Nile cruise", "Karnak Temple"],
-    "packing": ["Hat", "Sunscreen", "Comfortable walking shoes", "Lightweight clothes", "Scarf for temples"],
-    "tags": ["history", "culture", "ancient", "cruise"],
-    "coords": { "lat": 26.8206, "lng": 30.8025 }
+    "highlights": [
+      "Great Pyramids of Giza",
+      "Valley of the Kings",
+      "Abu Simbel",
+      "Nile cruise",
+      "Karnak Temple"
+    ],
+    "packing": [
+      "Hat",
+      "Sunscreen",
+      "Comfortable walking shoes",
+      "Lightweight clothes",
+      "Scarf for temples"
+    ],
+    "tags": [
+      "history",
+      "culture",
+      "ancient",
+      "cruise"
+    ],
+    "coords": {
+      "lat": 26.8206,
+      "lng": 30.8025
+    }
   },
   {
     "id": "italy-food-wine",
@@ -328,21 +1536,118 @@
     "season": "April-June",
     "image": "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Venice Arrival", "activities": ["Grand Canal gondola ride", "St. Mark's Square", "Cicchetti bar crawl"] },
-      { "day": 2, "title": "Venice Food Tour", "activities": ["Rialto Market tour", "Pasta making class", "Murano glass blowing"] },
-      { "day": 3, "title": "Bologna - Food Capital", "activities": ["Train to Bologna", "Food tour with tortellini", "Parmigiano-Reggiano factory"] },
-      { "day": 4, "title": "Florence Arrival", "activities": ["Duomo climb", "Uffizi Gallery", "Florentine steak dinner"] },
-      { "day": 5, "title": "Tuscan Wine Country", "activities": ["Chianti wine region tour", "Vineyard lunch", "Olive oil tasting"] },
-      { "day": 6, "title": "Florence Cooking", "activities": ["Central Market tour", "Risotto & tiramisu class", "Piazzale Michelangelo sunset"] },
-      { "day": 7, "title": "Rome Arrival", "activities": ["Colosseum tour", "Trevi Fountain", "Trastevere dinner"] },
-      { "day": 8, "title": "Rome Ancient & Modern", "activities": ["Vatican Museums", "Sistine Chapel", "Carbonara cooking class"] },
-      { "day": 9, "title": "Rome Food Crawl", "activities": ["Testaccio Market", "Gelato tasting tour", "Roman pizza workshop"] },
-      { "day": 10, "title": "Departure", "activities": ["Last espresso", "Depart from Rome"] }
+      {
+        "day": 1,
+        "title": "Venice Arrival",
+        "activities": [
+          "Grand Canal gondola ride",
+          "St. Mark's Square",
+          "Cicchetti bar crawl"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Venice Food Tour",
+        "activities": [
+          "Rialto Market tour",
+          "Pasta making class",
+          "Murano glass blowing"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Bologna - Food Capital",
+        "activities": [
+          "Train to Bologna",
+          "Food tour with tortellini",
+          "Parmigiano-Reggiano factory"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Florence Arrival",
+        "activities": [
+          "Duomo climb",
+          "Uffizi Gallery",
+          "Florentine steak dinner"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Tuscan Wine Country",
+        "activities": [
+          "Chianti wine region tour",
+          "Vineyard lunch",
+          "Olive oil tasting"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Florence Cooking",
+        "activities": [
+          "Central Market tour",
+          "Risotto & tiramisu class",
+          "Piazzale Michelangelo sunset"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Rome Arrival",
+        "activities": [
+          "Colosseum tour",
+          "Trevi Fountain",
+          "Trastevere dinner"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Rome Ancient & Modern",
+        "activities": [
+          "Vatican Museums",
+          "Sistine Chapel",
+          "Carbonara cooking class"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Rome Food Crawl",
+        "activities": [
+          "Testaccio Market",
+          "Gelato tasting tour",
+          "Roman pizza workshop"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last espresso",
+          "Depart from Rome"
+        ]
+      }
     ],
-    "highlights": ["Gondola in Venice", "Tuscan wine tasting", "Colosseum", "Florentine steak", "Pasta making class"],
-    "packing": ["Smart casual", "Comfortable walking shoes", "Appetite!"],
-    "tags": ["food", "europe", "culture", "wine"],
-    "coords": { "lat": 41.8719, "lng": 12.5674 }
+    "highlights": [
+      "Gondola in Venice",
+      "Tuscan wine tasting",
+      "Colosseum",
+      "Florentine steak",
+      "Pasta making class"
+    ],
+    "packing": [
+      "Smart casual",
+      "Comfortable walking shoes",
+      "Appetite!"
+    ],
+    "tags": [
+      "food",
+      "europe",
+      "culture",
+      "wine"
+    ],
+    "coords": {
+      "lat": 41.8719,
+      "lng": 12.5674
+    }
   },
   {
     "id": "paris-weekend",
@@ -353,15 +1658,66 @@
     "season": "April-June",
     "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Eiffel Tower & Champs-Élysées", "activities": ["Eiffel Tower summit", "Avenue des Champs-Élysées", "Arc de Triomphe climb"] },
-      { "day": 2, "title": "Louvre & Seine Cruise", "activities": ["Louvre Museum (Mona Lisa)", "Tuileries Garden stroll", "Seine river sunset cruise"] },
-      { "day": 3, "title": "Montmartre & Sacré-Cœur", "activities": ["Sacré-Cœur Basilica", "Place du Tertre artists", "Moulin Rouge area walk"] },
-      { "day": 4, "title": "Le Marais & Departure", "activities": ["Notre-Dame exterior", "Le Marais district", "Departure"] }
+      {
+        "day": 1,
+        "title": "Eiffel Tower & Champs-Élysées",
+        "activities": [
+          "Eiffel Tower summit",
+          "Avenue des Champs-Élysées",
+          "Arc de Triomphe climb"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Louvre & Seine Cruise",
+        "activities": [
+          "Louvre Museum (Mona Lisa)",
+          "Tuileries Garden stroll",
+          "Seine river sunset cruise"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Montmartre & Sacré-Cœur",
+        "activities": [
+          "Sacré-Cœur Basilica",
+          "Place du Tertre artists",
+          "Moulin Rouge area walk"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Le Marais & Departure",
+        "activities": [
+          "Notre-Dame exterior",
+          "Le Marais district",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Eiffel Tower", "Louvre Museum", "Seine cruise", "Montmartre", "French pastries"],
-    "packing": ["Smart clothes", "Comfortable shoes", "Umbrella", "Camera"],
-    "tags": ["romance", "city", "europe", "culture"],
-    "coords": { "lat": 48.8566, "lng": 2.3522 }
+    "highlights": [
+      "Eiffel Tower",
+      "Louvre Museum",
+      "Seine cruise",
+      "Montmartre",
+      "French pastries"
+    ],
+    "packing": [
+      "Smart clothes",
+      "Comfortable shoes",
+      "Umbrella",
+      "Camera"
+    ],
+    "tags": [
+      "romance",
+      "city",
+      "europe",
+      "culture"
+    ],
+    "coords": {
+      "lat": 48.8566,
+      "lng": 2.3522
+    }
   },
   {
     "id": "london-explorer",
@@ -372,18 +1728,93 @@
     "season": "May-September",
     "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Westminster & South Bank", "activities": ["Big Ben & Parliament", "Westminster Abbey", "London Eye ride"] },
-      { "day": 2, "title": "Royal London", "activities": ["Buckingham Palace", "Changing of the Guard", "Trafalgar Square & National Gallery"] },
-      { "day": 3, "title": "Museums & Markets", "activities": ["British Museum", "Camden Market lunch", "Regent's Park walk"] },
-      { "day": 4, "title": "Tower of London", "activities": ["Tower of London", "Tower Bridge experience", "Borough Market food tour"] },
-      { "day": 5, "title": "Greenwich & East End", "activities": ["Cutty Sark & Maritime Museum", "Greenwich Park view", "Brick Lane curry"] },
-      { "day": 6, "title": "Day Trip to Windsor", "activities": ["Windsor Castle", "Eton College", "Thames riverside walk"] },
-      { "day": 7, "title": "Departure", "activities": ["Hyde Park walk", "Harrods shopping", "Departure"] }
+      {
+        "day": 1,
+        "title": "Westminster & South Bank",
+        "activities": [
+          "Big Ben & Parliament",
+          "Westminster Abbey",
+          "London Eye ride"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Royal London",
+        "activities": [
+          "Buckingham Palace",
+          "Changing of the Guard",
+          "Trafalgar Square & National Gallery"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Museums & Markets",
+        "activities": [
+          "British Museum",
+          "Camden Market lunch",
+          "Regent's Park walk"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Tower of London",
+        "activities": [
+          "Tower of London",
+          "Tower Bridge experience",
+          "Borough Market food tour"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Greenwich & East End",
+        "activities": [
+          "Cutty Sark & Maritime Museum",
+          "Greenwich Park view",
+          "Brick Lane curry"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Day Trip to Windsor",
+        "activities": [
+          "Windsor Castle",
+          "Eton College",
+          "Thames riverside walk"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Departure",
+        "activities": [
+          "Hyde Park walk",
+          "Harrods shopping",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Big Ben and Parliament", "Tower of London", "British Museum", "Borough Market", "Windsor Castle"],
-    "packing": ["Umbrella", "Layered clothes", "Comfortable walking shoes", "Oyster card"],
-    "tags": ["city", "culture", "history", "europe"],
-    "coords": { "lat": 51.5074, "lng": -0.1278 }
+    "highlights": [
+      "Big Ben and Parliament",
+      "Tower of London",
+      "British Museum",
+      "Borough Market",
+      "Windsor Castle"
+    ],
+    "packing": [
+      "Umbrella",
+      "Layered clothes",
+      "Comfortable walking shoes",
+      "Oyster card"
+    ],
+    "tags": [
+      "city",
+      "culture",
+      "history",
+      "europe"
+    ],
+    "coords": {
+      "lat": 51.5074,
+      "lng": -0.1278
+    }
   },
   {
     "id": "patagonia-trek",
@@ -394,22 +1825,121 @@
     "season": "November-March",
     "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrive Buenos Aires", "activities": ["San Telmo Market", "Recoleta Cemetery", "Tango show dinner"] },
-      { "day": 2, "title": "Fly to El Calafate", "activities": ["Flight to Patagonia", "Lake Argentina view", "Calafate welcome dinner"] },
-      { "day": 3, "title": "Perito Moreno Glacier", "activities": ["Perito Moreno ice trekking", "Glacier viewpoint walkways", "Whiskey with glacier ice"] },
-      { "day": 4, "title": "El Chaltén", "activities": ["Drive to El Chaltén", "Laguna de los Tres trek", "Fitz Roy sunset"] },
-      { "day": 5, "title": "El Chaltén Hikes", "activities": ["Laguna Torre hike", "Cerro Torre viewpoint", "Craft beer at local brewery"] },
-      { "day": 6, "title": "Torres del Paine", "activities": ["Cross border into Chile", "Paine Massif views", "Grey Lake kayaking"] },
-      { "day": 7, "title": "W Trek - Base Torres", "activities": ["Las Torres hike", "Refugio stay", "Patagonian lamb dinner"] },
-      { "day": 8, "title": "W Trek - French Valley", "activities": ["French Valley hike", "Hanging bridges", "Los Cuernos views"] },
-      { "day": 9, "title": "W Trek - Grey Glacier", "activities": ["Grey Glacier kayaking", "Iceberg floating", "Return to hotel"] },
-      { "day": 10, "title": "Departure from Punta Arenas", "activities": ["Last Patagonian scenery", "Flight home"] }
+      {
+        "day": 1,
+        "title": "Arrive Buenos Aires",
+        "activities": [
+          "San Telmo Market",
+          "Recoleta Cemetery",
+          "Tango show dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Fly to El Calafate",
+        "activities": [
+          "Flight to Patagonia",
+          "Lake Argentina view",
+          "Calafate welcome dinner"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Perito Moreno Glacier",
+        "activities": [
+          "Perito Moreno ice trekking",
+          "Glacier viewpoint walkways",
+          "Whiskey with glacier ice"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "El Chaltén",
+        "activities": [
+          "Drive to El Chaltén",
+          "Laguna de los Tres trek",
+          "Fitz Roy sunset"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "El Chaltén Hikes",
+        "activities": [
+          "Laguna Torre hike",
+          "Cerro Torre viewpoint",
+          "Craft beer at local brewery"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Torres del Paine",
+        "activities": [
+          "Cross border into Chile",
+          "Paine Massif views",
+          "Grey Lake kayaking"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "W Trek - Base Torres",
+        "activities": [
+          "Las Torres hike",
+          "Refugio stay",
+          "Patagonian lamb dinner"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "W Trek - French Valley",
+        "activities": [
+          "French Valley hike",
+          "Hanging bridges",
+          "Los Cuernos views"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "W Trek - Grey Glacier",
+        "activities": [
+          "Grey Glacier kayaking",
+          "Iceberg floating",
+          "Return to hotel"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure from Punta Arenas",
+        "activities": [
+          "Last Patagonian scenery",
+          "Flight home"
+        ]
+      }
     ],
-    "highlights": ["Perito Moreno Glacier", "Fitz Roy sunrise", "Torres del Paine", "W Trek", "Patagonian lamb"],
-    "packing": ["Warm layers", "Waterproof jacket", "Trekking poles", "Windproof pants", "Sleeping bag"],
-    "tags": ["adventure", "hiking", "nature", "glacier"],
+    "highlights": [
+      "Perito Moreno Glacier",
+      "Fitz Roy sunrise",
+      "Torres del Paine",
+      "W Trek",
+      "Patagonian lamb"
+    ],
+    "packing": [
+      "Warm layers",
+      "Waterproof jacket",
+      "Trekking poles",
+      "Windproof pants",
+      "Sleeping bag"
+    ],
+    "tags": [
+      "adventure",
+      "hiking",
+      "nature",
+      "glacier"
+    ],
     "category": "mountain",
-    "coords": { "lat": -49.3316, "lng": -72.8498 }
+    "coords": {
+      "lat": -49.3316,
+      "lng": -72.8498
+    }
   },
   {
     "id": "canada-rockies",
@@ -420,19 +1950,104 @@
     "season": "June-September",
     "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Calgary to Banff", "activities": ["Rent car in Calgary", "Banff Avenue stroll", "Banff Upper Hot Springs"] },
-      { "day": 2, "title": "Lake Louise", "activities": ["Lake Louise canoe", "Lake Agnes Tea House hike", "Moraine Lake sunrise"] },
-      { "day": 3, "title": "Icefields Parkway", "activities": ["Drive Icefields Parkway", "Columbia Icefield Skywalk", "Athabasca Glacier walk"] },
-      { "day": 4, "title": "Jasper National Park", "activities": ["Maligne Lake cruise", "Spirit Island", "Jasper dark sky preserve"] },
-      { "day": 5, "title": "Jasper to Yoho", "activities": ["Athabasca Falls", "Natural Bridge", "Emerald Lake canoe"] },
-      { "day": 6, "title": "Kootenay National Park", "activities": ["Marble Canyon hike", "Radium Hot Springs", "Paint Pots trail"] },
-      { "day": 7, "title": "Canmore & Kananaskis", "activities": ["Grassi Lakes hike", "Canmore Nordic Centre", "Elevation Place spa"] },
-      { "day": 8, "title": "Departure", "activities": ["Last Banff breakfast", "Return to Calgary", "Departure"] }
+      {
+        "day": 1,
+        "title": "Calgary to Banff",
+        "activities": [
+          "Rent car in Calgary",
+          "Banff Avenue stroll",
+          "Banff Upper Hot Springs"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Lake Louise",
+        "activities": [
+          "Lake Louise canoe",
+          "Lake Agnes Tea House hike",
+          "Moraine Lake sunrise"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Icefields Parkway",
+        "activities": [
+          "Drive Icefields Parkway",
+          "Columbia Icefield Skywalk",
+          "Athabasca Glacier walk"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Jasper National Park",
+        "activities": [
+          "Maligne Lake cruise",
+          "Spirit Island",
+          "Jasper dark sky preserve"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Jasper to Yoho",
+        "activities": [
+          "Athabasca Falls",
+          "Natural Bridge",
+          "Emerald Lake canoe"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Kootenay National Park",
+        "activities": [
+          "Marble Canyon hike",
+          "Radium Hot Springs",
+          "Paint Pots trail"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Canmore & Kananaskis",
+        "activities": [
+          "Grassi Lakes hike",
+          "Canmore Nordic Centre",
+          "Elevation Place spa"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Departure",
+        "activities": [
+          "Last Banff breakfast",
+          "Return to Calgary",
+          "Departure"
+        ]
+      }
     ],
-    "highlights": ["Lake Louise", "Moraine Lake", "Icefields Parkway", "Jasper wildlife", "Columbia Icefield"],
-    "packing": ["Layers", "Hiking boots", "Bug spray", "Bear spray", "Camera"],
-    "tags": ["roadtrip", "nature", "hiking", "scenic", "north america"],
-    "coords": { "lat": 51.4968, "lng": -115.9281 }
+    "highlights": [
+      "Lake Louise",
+      "Moraine Lake",
+      "Icefields Parkway",
+      "Jasper wildlife",
+      "Columbia Icefield"
+    ],
+    "packing": [
+      "Layers",
+      "Hiking boots",
+      "Bug spray",
+      "Bear spray",
+      "Camera"
+    ],
+    "tags": [
+      "roadtrip",
+      "nature",
+      "hiking",
+      "scenic",
+      "north america"
+    ],
+    "coords": {
+      "lat": 51.4968,
+      "lng": -115.9281
+    }
   },
   {
     "id": "kenya-safari",
@@ -443,19 +2058,102 @@
     "season": "July-October",
     "image": "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrive Nairobi", "activities": ["David Sheldrick Elephant Orphanage", "Giraffe Centre", "Nairobi National Park game drive"] },
-      { "day": 2, "title": "Amboseli National Park", "activities": ["Drive to Amboseli", "Elephant herds at Kilimanjaro", "Lodge sunset views"] },
-      { "day": 3, "title": "Amboseli Safari", "activities": ["Full day game drive", "Lion & cheetah spotting", "Observation hill walk"] },
-      { "day": 4, "title": "Lake Naivasha", "activities": ["Boat ride on Lake Naivasha", "Hell's Gate bicycle safari", "Crescent Island walking safari"] },
-      { "day": 5, "title": "Masai Mara", "activities": ["Drive to Masai Mara", "Afternoon game drive", "River crossing search (if seasonable)"] },
-      { "day": 6, "title": "Full Day Masai Mara", "activities": ["Dawn game drive", "Big five tracking", "Sundowner on the plains"] },
-      { "day": 7, "title": "Maasai Village", "activities": ["Maasai cultural visit", "Bush walk with Maasai guide", "Farewell barbecue dinner"] },
-      { "day": 8, "title": "Departure", "activities": ["Morning game drive", "Flight from Mara airstrip", "Depart from Nairobi"] }
+      {
+        "day": 1,
+        "title": "Arrive Nairobi",
+        "activities": [
+          "David Sheldrick Elephant Orphanage",
+          "Giraffe Centre",
+          "Nairobi National Park game drive"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Amboseli National Park",
+        "activities": [
+          "Drive to Amboseli",
+          "Elephant herds at Kilimanjaro",
+          "Lodge sunset views"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Amboseli Safari",
+        "activities": [
+          "Full day game drive",
+          "Lion & cheetah spotting",
+          "Observation hill walk"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Lake Naivasha",
+        "activities": [
+          "Boat ride on Lake Naivasha",
+          "Hell's Gate bicycle safari",
+          "Crescent Island walking safari"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Masai Mara",
+        "activities": [
+          "Drive to Masai Mara",
+          "Afternoon game drive",
+          "River crossing search (if seasonable)"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Full Day Masai Mara",
+        "activities": [
+          "Dawn game drive",
+          "Big five tracking",
+          "Sundowner on the plains"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Maasai Village",
+        "activities": [
+          "Maasai cultural visit",
+          "Bush walk with Maasai guide",
+          "Farewell barbecue dinner"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Departure",
+        "activities": [
+          "Morning game drive",
+          "Flight from Mara airstrip",
+          "Depart from Nairobi"
+        ]
+      }
     ],
-    "highlights": ["Masai Mara game drives", "Great Migration (if seasonable)", "Amboseli elephants", "Maasai village visit", "Nairobi elephant orphanage"],
-    "packing": ["Binoculars", "Neutral colored clothes", "Safari hat", "Camera with zoom lens"],
-    "tags": ["safari", "wildlife", "nature", "africa"],
-    "coords": { "lat": -0.0236, "lng": 37.9062 }
+    "highlights": [
+      "Masai Mara game drives",
+      "Great Migration (if seasonable)",
+      "Amboseli elephants",
+      "Maasai village visit",
+      "Nairobi elephant orphanage"
+    ],
+    "packing": [
+      "Binoculars",
+      "Neutral colored clothes",
+      "Safari hat",
+      "Camera with zoom lens"
+    ],
+    "tags": [
+      "safari",
+      "wildlife",
+      "nature",
+      "africa"
+    ],
+    "coords": {
+      "lat": -0.0236,
+      "lng": 37.9062
+    }
   },
   {
     "id": "hawaii-adventure",
@@ -466,19 +2164,103 @@
     "season": "April-October",
     "image": "https://images.unsplash.com/photo-1507876466758-bc54f384809c?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Oahu Arrival - Waikiki", "activities": ["Waikiki Beach swim", "Diamond Head hike", "Hula show & luau dinner"] },
-      { "day": 2, "title": "North Shore Oahu", "activities": ["North Shore surf spots", "Polynesian Cultural Center", "Shave ice at Matsumoto's"] },
-      { "day": 3, "title": "Pearl Harbor & Kualoa", "activities": ["Pearl Harbor memorial", "Kualoa Ranch ATV tour", "Byodo-In Temple"] },
-      { "day": 4, "title": "Big Island - Volcanoes", "activities": ["Fly to Big Island", "Hawaii Volcanoes National Park", "Kilauea Iki hike"] },
-      { "day": 5, "title": "Big Island - West Coast", "activities": ["Snorkeling at Captain Cook", "Pu'uhonua o Honaunau", "Kona coffee tour"] },
-      { "day": 6, "title": "Maui - Road to Hana", "activities": ["Fly to Maui", "Road to Hana drive", "Wai'anapanapa black sand beach"] },
-      { "day": 7, "title": "Haleakalā Sunrise", "activities": ["Haleakalā sunrise summit", "Maui wine tour", "Whale watching (seasonal)"] },
-      { "day": 8, "title": "Departure", "activities": ["Last snorkeling at Molokini", "Departure from Kahului"] }
+      {
+        "day": 1,
+        "title": "Oahu Arrival - Waikiki",
+        "activities": [
+          "Waikiki Beach swim",
+          "Diamond Head hike",
+          "Hula show & luau dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "North Shore Oahu",
+        "activities": [
+          "North Shore surf spots",
+          "Polynesian Cultural Center",
+          "Shave ice at Matsumoto's"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Pearl Harbor & Kualoa",
+        "activities": [
+          "Pearl Harbor memorial",
+          "Kualoa Ranch ATV tour",
+          "Byodo-In Temple"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Big Island - Volcanoes",
+        "activities": [
+          "Fly to Big Island",
+          "Hawaii Volcanoes National Park",
+          "Kilauea Iki hike"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Big Island - West Coast",
+        "activities": [
+          "Snorkeling at Captain Cook",
+          "Pu'uhonua o Honaunau",
+          "Kona coffee tour"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Maui - Road to Hana",
+        "activities": [
+          "Fly to Maui",
+          "Road to Hana drive",
+          "Wai'anapanapa black sand beach"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Haleakalā Sunrise",
+        "activities": [
+          "Haleakalā sunrise summit",
+          "Maui wine tour",
+          "Whale watching (seasonal)"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Departure",
+        "activities": [
+          "Last snorkeling at Molokini",
+          "Departure from Kahului"
+        ]
+      }
     ],
-    "highlights": ["Diamond Head hike", "Hawaii Volcanoes National Park", "Road to Hana", "Haleakalā sunrise", "Waikiki Beach"],
-    "packing": ["Swimwear", "Snorkel gear", "Hiking shoes", "Sunscreen", "Light rain jacket"],
-    "tags": ["beach", "nature", "adventure", "volcano", "usa"],
-    "coords": { "lat": 19.8968, "lng": -155.5828 }
+    "highlights": [
+      "Diamond Head hike",
+      "Hawaii Volcanoes National Park",
+      "Road to Hana",
+      "Haleakalā sunrise",
+      "Waikiki Beach"
+    ],
+    "packing": [
+      "Swimwear",
+      "Snorkel gear",
+      "Hiking shoes",
+      "Sunscreen",
+      "Light rain jacket"
+    ],
+    "tags": [
+      "beach",
+      "nature",
+      "adventure",
+      "volcano",
+      "usa"
+    ],
+    "coords": {
+      "lat": 19.8968,
+      "lng": -155.5828
+    }
   },
   {
     "id": "alaska-cruise",
@@ -489,19 +2271,103 @@
     "season": "May-September",
     "image": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Vancouver Embarkation", "activities": ["Board cruise ship", "Sailaway from Vancouver", "Welcome dinner"] },
-      { "day": 2, "title": "Inside Passage", "activities": ["Scenic cruising", "Whale watching from deck", "Onboard naturalist talk"] },
-      { "day": 3, "title": "Ketchikan", "activities": ["Creek Street boardwalk", "Misty Fjords flightseeing", "Salmon fishing excursion"] },
-      { "day": 4, "title": "Juneau", "activities": ["Mendenhall Glacier", "Whale watching tour", "Mount Roberts tramway"] },
-      { "day": 5, "title": "Skagway", "activities": ["White Pass & Yukon Railway", "Gold rush history walk", "Dog sledding on glacier"] },
-      { "day": 6, "title": "Glacier Bay", "activities": ["Glacier Bay National Park", "Margerie Glacier calving", "Ranger narration onboard"] },
-      { "day": 7, "title": "Sitka", "activities": ["Russian Bishop's House", "Alaska Raptor Center", "Sea kayaking"] },
-      { "day": 8, "title": "Disembark in Seward", "activities": ["Kenai Fjords cruise", "Exit Glacier hike", "Departure from Anchorage"] }
+      {
+        "day": 1,
+        "title": "Vancouver Embarkation",
+        "activities": [
+          "Board cruise ship",
+          "Sailaway from Vancouver",
+          "Welcome dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Inside Passage",
+        "activities": [
+          "Scenic cruising",
+          "Whale watching from deck",
+          "Onboard naturalist talk"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Ketchikan",
+        "activities": [
+          "Creek Street boardwalk",
+          "Misty Fjords flightseeing",
+          "Salmon fishing excursion"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Juneau",
+        "activities": [
+          "Mendenhall Glacier",
+          "Whale watching tour",
+          "Mount Roberts tramway"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Skagway",
+        "activities": [
+          "White Pass & Yukon Railway",
+          "Gold rush history walk",
+          "Dog sledding on glacier"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Glacier Bay",
+        "activities": [
+          "Glacier Bay National Park",
+          "Margerie Glacier calving",
+          "Ranger narration onboard"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Sitka",
+        "activities": [
+          "Russian Bishop's House",
+          "Alaska Raptor Center",
+          "Sea kayaking"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Disembark in Seward",
+        "activities": [
+          "Kenai Fjords cruise",
+          "Exit Glacier hike",
+          "Departure from Anchorage"
+        ]
+      }
     ],
-    "highlights": ["Glacier Bay National Park", "Mendenhall Glacier", "Whale watching", "White Pass Railway", "Kenai Fjords"],
-    "packing": ["Warm layers", "Binoculars", "Waterproof jacket", "Camera with zoom"],
-    "tags": ["cruise", "nature", "wildlife", "glacier", "usa"],
-    "coords": { "lat": 64.2008, "lng": -149.4937 }
+    "highlights": [
+      "Glacier Bay National Park",
+      "Mendenhall Glacier",
+      "Whale watching",
+      "White Pass Railway",
+      "Kenai Fjords"
+    ],
+    "packing": [
+      "Warm layers",
+      "Binoculars",
+      "Waterproof jacket",
+      "Camera with zoom"
+    ],
+    "tags": [
+      "cruise",
+      "nature",
+      "wildlife",
+      "glacier",
+      "usa"
+    ],
+    "coords": {
+      "lat": 64.2008,
+      "lng": -149.4937
+    }
   },
   {
     "id": "dubai-luxury",
@@ -512,18 +2378,93 @@
     "season": "November-March",
     "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Dubai Arrival", "activities": ["Burj Khalifa observation deck", "Dubai Mall shopping", "Dubai Fountain show"] },
-      { "day": 2, "title": "Desert Safari", "activities": ["Dune bashing", "Camel riding", "BBQ dinner under stars"] },
-      { "day": 3, "title": "Palm Jumeirah", "activities": ["Atlantis Aquaventure Park", "The Pointe dining", "Palm Jumeirah helicopter tour"] },
-      { "day": 4, "title": "Old Dubai & Gold Souk", "activities": ["Abra ride across Dubai Creek", "Gold & Spice Souks", "Al Fahidi historical district"] },
-      { "day": 5, "title": "Dubai Marina", "activities": ["Yacht cruise from Marina", "JBR Beach walk", "The Beach dinner"] },
-      { "day": 6, "title": "Abu Dhabi Day Trip", "activities": ["Sheikh Zayed Grand Mosque", "Louvre Abu Dhabi", "Ferrari World Yas Island"] },
-      { "day": 7, "title": "Departure", "activities": ["Last shopping at Dubai Mall", "Departure from DXB"] }
+      {
+        "day": 1,
+        "title": "Dubai Arrival",
+        "activities": [
+          "Burj Khalifa observation deck",
+          "Dubai Mall shopping",
+          "Dubai Fountain show"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Desert Safari",
+        "activities": [
+          "Dune bashing",
+          "Camel riding",
+          "BBQ dinner under stars"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Palm Jumeirah",
+        "activities": [
+          "Atlantis Aquaventure Park",
+          "The Pointe dining",
+          "Palm Jumeirah helicopter tour"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Old Dubai & Gold Souk",
+        "activities": [
+          "Abra ride across Dubai Creek",
+          "Gold & Spice Souks",
+          "Al Fahidi historical district"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Dubai Marina",
+        "activities": [
+          "Yacht cruise from Marina",
+          "JBR Beach walk",
+          "The Beach dinner"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Abu Dhabi Day Trip",
+        "activities": [
+          "Sheikh Zayed Grand Mosque",
+          "Louvre Abu Dhabi",
+          "Ferrari World Yas Island"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Departure",
+        "activities": [
+          "Last shopping at Dubai Mall",
+          "Departure from DXB"
+        ]
+      }
     ],
-    "highlights": ["Burj Khalifa", "Dubai Mall", "Desert safari", "Sheikh Zayed Grand Mosque", "Palm Jumeirah"],
-    "packing": ["Smart attire", "Light clothes", "Sunscreen", "Swimwear", "Power adapter"],
-    "tags": ["luxury", "city", "shopping", "desert"],
-    "coords": { "lat": 25.2048, "lng": 55.2708 }
+    "highlights": [
+      "Burj Khalifa",
+      "Dubai Mall",
+      "Desert safari",
+      "Sheikh Zayed Grand Mosque",
+      "Palm Jumeirah"
+    ],
+    "packing": [
+      "Smart attire",
+      "Light clothes",
+      "Sunscreen",
+      "Swimwear",
+      "Power adapter"
+    ],
+    "tags": [
+      "luxury",
+      "city",
+      "shopping",
+      "desert"
+    ],
+    "coords": {
+      "lat": 25.2048,
+      "lng": 55.2708
+    }
   },
   {
     "id": "singapore-break",
@@ -534,16 +2475,76 @@
     "season": "February-April",
     "image": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrival in Singapore", "activities": ["Marina Bay Sands observation", "Gardens by the Bay light show", "Satay by the Bay dinner"] },
-      { "day": 2, "title": "Chinatown & Little India", "activities": ["Chinatown market", "Sri Mariamman Temple", "Little India colour walk", "Chili crab dinner"] },
-      { "day": 3, "title": "Sentosa Island", "activities": ["Universal Studios Singapore", "S.E.A. Aquarium", "Sentosa beach club"] },
-      { "day": 4, "title": "Orchard Road & Hawker Tour", "activities": ["Orchard Road shopping", "Maxwell Food Centre lunch", "Haji Lane street art"] },
-      { "day": 5, "title": "Nature & Departure", "activities": ["Botanic Gardens & National Orchid Garden", "Supertree Grove walk", "Departure from Changi"] }
+      {
+        "day": 1,
+        "title": "Arrival in Singapore",
+        "activities": [
+          "Marina Bay Sands observation",
+          "Gardens by the Bay light show",
+          "Satay by the Bay dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Chinatown & Little India",
+        "activities": [
+          "Chinatown market",
+          "Sri Mariamman Temple",
+          "Little India colour walk",
+          "Chili crab dinner"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sentosa Island",
+        "activities": [
+          "Universal Studios Singapore",
+          "S.E.A. Aquarium",
+          "Sentosa beach club"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Orchard Road & Hawker Tour",
+        "activities": [
+          "Orchard Road shopping",
+          "Maxwell Food Centre lunch",
+          "Haji Lane street art"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Nature & Departure",
+        "activities": [
+          "Botanic Gardens & National Orchid Garden",
+          "Supertree Grove walk",
+          "Departure from Changi"
+        ]
+      }
     ],
-    "highlights": ["Gardens by the Bay", "Marina Bay Sands", "Chili crab", "Sentosa Island", "Hawker food"],
-    "packing": ["Light clothes", "Umbrella", "Comfortable walking shoes", "Swimwear"],
-    "tags": ["city", "food", "asia", "culture"],
-    "coords": { "lat": 1.3521, "lng": 103.8198 }
+    "highlights": [
+      "Gardens by the Bay",
+      "Marina Bay Sands",
+      "Chili crab",
+      "Sentosa Island",
+      "Hawker food"
+    ],
+    "packing": [
+      "Light clothes",
+      "Umbrella",
+      "Comfortable walking shoes",
+      "Swimwear"
+    ],
+    "tags": [
+      "city",
+      "food",
+      "asia",
+      "culture"
+    ],
+    "coords": {
+      "lat": 1.3521,
+      "lng": 103.8198
+    }
   },
   {
     "id": "portugal-coast",
@@ -554,43 +2555,121 @@
     "season": "May-September",
     "image": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Lisbon Arrival", "activities": ["Alfama district walk", "Tram 28 ride", "Fado show dinner"] },
-      { "day": 2, "title": "Lisbon Highlights", "activities": ["Belém Tower & Jeronimos Monastery", "Pasteis de Belém tasting", "LX Factory market"] },
-      { "day": 3, "title": "Sintra Day Trip", "activities": ["Pena Palace", "Sintra National Palace", "Cabo da Roca (westernmost point)"] },
-      { "day": 4, "title": "Cascais & Estoril", "activities": ["Cascais coastal walk", "Boca do Inferno", "Guincho Beach surf lesson"] },
-      { "day": 5, "title": "Algarve - Lagos", "activities": ["Train to Lagos", "Ponta da Piedade cliffs", "Benagil Cave kayaking"] },
-      { "day": 6, "title": "Algarve Beaches", "activities": ["Marinha Beach", "Seven Hanging Valleys hike", "Sunset at Cape St. Vincent"] },
-      { "day": 7, "title": "Porto Arrival", "activities": ["Train to Porto", "Douro River cruise", "Port wine cellar tour"] },
-      { "day": 8, "title": "Porto Exploration", "activities": ["Livraria Lello", "Clérigos Tower", "Francesinha dinner"] },
-      { "day": 9, "title": "Douro Valley", "activities": ["Douro Valley wine tour", "Vineyard lunch", "Scenic train back"] },
-      { "day": 10, "title": "Departure", "activities": ["São Bento Station", "Last pastel de nata", "Departure from Porto"] }
+      {
+        "day": 1,
+        "title": "Lisbon Arrival",
+        "activities": [
+          "Alfama district walk",
+          "Tram 28 ride",
+          "Fado show dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Lisbon Highlights",
+        "activities": [
+          "Belém Tower & Jeronimos Monastery",
+          "Pasteis de Belém tasting",
+          "LX Factory market"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Sintra Day Trip",
+        "activities": [
+          "Pena Palace",
+          "Sintra National Palace",
+          "Cabo da Roca (westernmost point)"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Cascais & Estoril",
+        "activities": [
+          "Cascais coastal walk",
+          "Boca do Inferno",
+          "Guincho Beach surf lesson"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Algarve - Lagos",
+        "activities": [
+          "Train to Lagos",
+          "Ponta da Piedade cliffs",
+          "Benagil Cave kayaking"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Algarve Beaches",
+        "activities": [
+          "Marinha Beach",
+          "Seven Hanging Valleys hike",
+          "Sunset at Cape St. Vincent"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Porto Arrival",
+        "activities": [
+          "Train to Porto",
+          "Douro River cruise",
+          "Port wine cellar tour"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Porto Exploration",
+        "activities": [
+          "Livraria Lello",
+          "Clérigos Tower",
+          "Francesinha dinner"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Douro Valley",
+        "activities": [
+          "Douro Valley wine tour",
+          "Vineyard lunch",
+          "Scenic train back"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "São Bento Station",
+          "Last pastel de nata",
+          "Departure from Porto"
+        ]
+      }
     ],
-    "highlights": ["Belém Tower", "Pena Palace", "Ponta da Piedade", "Porto wine cellars", "Benagil Cave"],
-    "packing": ["Swimwear", "Surf gear", "Comfortable walking shoes", "Sun protection"],
-    "tags": ["coast", "surf", "food", "europe", "culture"],
-    "coords": { "lat": 39.3999, "lng": -8.2245 }
-  },
-  {
-    "id": "croatia-sailing",
-    "title": "Croatia Sailing Holiday",
-    "country": "Croatia",
-    "description": "Island hop through the Adriatic — crystal waters, historic towns, and incredible seafood.",
-    "budget": "3500",
-    "season": "June-September",
-    "image": "https://images.unsplash.com/photo-1591389703635-e15a5b0b3a1a?auto=format&fit=crop&w=1200&q=80",
-    "days": [
-      { "day": 1, "title": "Split Embarkation", "activities": ["Board sailboat in Split", "Diocletian's Palace", "Welcome dinner at Riva"] },
-      { "day": 2, "title": "Hvar Island", "activities": ["Sail to Hvar", "Hvar Fortress", "Carpe Diem beach club"] },
-      { "day": 3, "title": "Vis Island", "activities": ["Blue Cave tour", "Stiniva Beach swim", "Vis town seafood"] },
-      { "day": 4, "title": "Korcula", "activities": ["Korcula Old Town", "Marco Polo house", "Grill fish dinner"] },
-      { "day": 5, "title": "Mljet National Park", "activities": ["Mljet lakes kayaking", "Cycling around island", "Benedictine monastery"] },
-      { "day": 6, "title": "Dubrovnik", "activities": ["Sail to Dubrovnik", "Walls of Dubrovnik walk", "Game of Thrones tour"] },
-      { "day": 7, "title": "Dubrovnik & Departure", "activities": ["Lokrum Island", "Cable car to Mount Srđ", "Departure"] }
+    "highlights": [
+      "Belém Tower",
+      "Pena Palace",
+      "Ponta da Piedade",
+      "Porto wine cellars",
+      "Benagil Cave"
     ],
-    "highlights": ["Blue Cave on Vis", "Walls of Dubrovnik", "Hvar nightlife", "Korcula Old Town", "Island hopping"],
-    "packing": ["Sunscreen", "Swimwear", "Light clothes", "Non-slip boat shoes"],
-    "tags": ["sailing", "europe", "beach", "islands"],
-    "coords": { "lat": 44.1194, "lng": 15.2314 }
+    "packing": [
+      "Swimwear",
+      "Surf gear",
+      "Comfortable walking shoes",
+      "Sun protection"
+    ],
+    "tags": [
+      "coast",
+      "surf",
+      "food",
+      "europe",
+      "culture"
+    ],
+    "coords": {
+      "lat": 39.3999,
+      "lng": -8.2245
+    }
   },
   {
     "id": "mexico-riviera",
@@ -601,19 +2680,102 @@
     "season": "November-April",
     "image": "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Cancún Arrival", "activities": ["Hotel Zone beach", "La Isla shopping", "Cenote swimming"] },
-      { "day": 2, "title": "Chichén Itzá", "activities": ["Chichén Itzá sunrise tour", "Cenote Ik Kil swim", "Valladolid colonial town"] },
-      { "day": 3, "title": "Tulum Ruins", "activities": ["Tulum archaeological site", "Paradise Beach", "Cenote Dos Ojos snorkeling"] },
-      { "day": 4, "title": "Playa del Carmen", "activities": ["Quinta Avenida walk", "Xcaret eco-park", "Coqui Coqui perfumery"] },
-      { "day": 5, "title": "Cozumel Island", "activities": ["Ferry to Cozumel", "Palancar Reef snorkeling", "El Cedral ruins"] },
-      { "day": 6, "title": "Sian Ka'an Biosphere", "activities": ["Boat tour through canals", "Floating in natural channels", "Bird watching"] },
-      { "day": 7, "title": "Isla Mujeres", "activities": ["Catamaran to Isla Mujeres", "Snorkeling with sea turtles", "Punta Sur cliffs"] },
-      { "day": 8, "title": "Departure", "activities": ["Last beach breakfast", "Depart from Cancún"] }
+      {
+        "day": 1,
+        "title": "Cancún Arrival",
+        "activities": [
+          "Hotel Zone beach",
+          "La Isla shopping",
+          "Cenote swimming"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Chichén Itzá",
+        "activities": [
+          "Chichén Itzá sunrise tour",
+          "Cenote Ik Kil swim",
+          "Valladolid colonial town"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Tulum Ruins",
+        "activities": [
+          "Tulum archaeological site",
+          "Paradise Beach",
+          "Cenote Dos Ojos snorkeling"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Playa del Carmen",
+        "activities": [
+          "Quinta Avenida walk",
+          "Xcaret eco-park",
+          "Coqui Coqui perfumery"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Cozumel Island",
+        "activities": [
+          "Ferry to Cozumel",
+          "Palancar Reef snorkeling",
+          "El Cedral ruins"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Sian Ka'an Biosphere",
+        "activities": [
+          "Boat tour through canals",
+          "Floating in natural channels",
+          "Bird watching"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Isla Mujeres",
+        "activities": [
+          "Catamaran to Isla Mujeres",
+          "Snorkeling with sea turtles",
+          "Punta Sur cliffs"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Departure",
+        "activities": [
+          "Last beach breakfast",
+          "Depart from Cancún"
+        ]
+      }
     ],
-    "highlights": ["Chichén Itzá", "Tulum ruins", "Cenote swimming", "Cozumel snorkeling", "Isla Mujeres"],
-    "packing": ["Swimwear", "Light clothes", "Insect repellent", "Sunscreen", "Water shoes"],
-    "tags": ["beach", "adventure", "history", "cenotes"],
-    "coords": { "lat": 23.6345, "lng": -102.5528 }
+    "highlights": [
+      "Chichén Itzá",
+      "Tulum ruins",
+      "Cenote swimming",
+      "Cozumel snorkeling",
+      "Isla Mujeres"
+    ],
+    "packing": [
+      "Swimwear",
+      "Light clothes",
+      "Insect repellent",
+      "Sunscreen",
+      "Water shoes"
+    ],
+    "tags": [
+      "beach",
+      "adventure",
+      "history",
+      "cenotes"
+    ],
+    "coords": {
+      "lat": 23.6345,
+      "lng": -102.5528
+    }
   },
   {
     "id": "australia-east",
@@ -624,21 +2786,122 @@
     "season": "September-November",
     "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Sydney Arrival", "activities": ["Sydney Opera House tour", "Bondi to Coogee coastal walk", "Darling Harbour dinner"] },
-      { "day": 2, "title": "Sydney Harbour", "activities": ["Harbour Bridge climb", "Taronga Zoo", "Ferry to Manly Beach"] },
-      { "day": 3, "title": "Blue Mountains", "activities": ["Three Sisters lookout", "Scenic World railway", "Katoomba Falls hike"] },
-      { "day": 4, "title": "Byron Bay", "activities": ["Flight to Byron Bay", "Cape Byron lighthouse", "Crystal Castle"] },
-      { "day": 5, "title": "Surfers Paradise", "activities": ["Surf lesson at Gold Coast", "SkyPoint Observation Deck", "Night markets"] },
-      { "day": 6, "title": "Whitsundays", "activities": ["Fly to Airlie Beach", "Whitehaven Beach tour", "Hill Inlet lookout"] },
-      { "day": 7, "title": "Great Barrier Reef", "activities": ["Reef cruise snorkeling", "Heart Reef scenic flight", "Hamilton Island dinner"] },
-      { "day": 8, "title": "Magnetic Island", "activities": ["Koala sanctuary", "Fort walk", "Magnetic Island nightlife"] },
-      { "day": 9, "title": "Daintree Rainforest", "activities": ["Daintree River croc cruise", "Mossman Gorge walk", "Cape Tribulation beach"] },
-      { "day": 10, "title": "Cairns & Departure", "activities": ["Kuranda Scenic Railway", "Esplanade lagoon", "Departure from Cairns"] }
+      {
+        "day": 1,
+        "title": "Sydney Arrival",
+        "activities": [
+          "Sydney Opera House tour",
+          "Bondi to Coogee coastal walk",
+          "Darling Harbour dinner"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Sydney Harbour",
+        "activities": [
+          "Harbour Bridge climb",
+          "Taronga Zoo",
+          "Ferry to Manly Beach"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Blue Mountains",
+        "activities": [
+          "Three Sisters lookout",
+          "Scenic World railway",
+          "Katoomba Falls hike"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Byron Bay",
+        "activities": [
+          "Flight to Byron Bay",
+          "Cape Byron lighthouse",
+          "Crystal Castle"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Surfers Paradise",
+        "activities": [
+          "Surf lesson at Gold Coast",
+          "SkyPoint Observation Deck",
+          "Night markets"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Whitsundays",
+        "activities": [
+          "Fly to Airlie Beach",
+          "Whitehaven Beach tour",
+          "Hill Inlet lookout"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Great Barrier Reef",
+        "activities": [
+          "Reef cruise snorkeling",
+          "Heart Reef scenic flight",
+          "Hamilton Island dinner"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Magnetic Island",
+        "activities": [
+          "Koala sanctuary",
+          "Fort walk",
+          "Magnetic Island nightlife"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Daintree Rainforest",
+        "activities": [
+          "Daintree River croc cruise",
+          "Mossman Gorge walk",
+          "Cape Tribulation beach"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Cairns & Departure",
+        "activities": [
+          "Kuranda Scenic Railway",
+          "Esplanade lagoon",
+          "Departure from Cairns"
+        ]
+      }
     ],
-    "highlights": ["Sydney Opera House", "Great Barrier Reef", "Whitehaven Beach", "Blue Mountains", "Daintree Rainforest"],
-    "packing": ["Swimwear", "Hiking shoes", "Sun protection", "Insect repellent", "Camera"],
-    "tags": ["australia", "roadtrip", "beach", "nature", "reef"],
-    "coords": { "lat": -25.2744, "lng": 133.7751 }
+    "highlights": [
+      "Sydney Opera House",
+      "Great Barrier Reef",
+      "Whitehaven Beach",
+      "Blue Mountains",
+      "Daintree Rainforest"
+    ],
+    "packing": [
+      "Swimwear",
+      "Hiking shoes",
+      "Sun protection",
+      "Insect repellent",
+      "Camera"
+    ],
+    "tags": [
+      "australia",
+      "roadtrip",
+      "beach",
+      "nature",
+      "reef"
+    ],
+    "coords": {
+      "lat": -25.2744,
+      "lng": 133.7751
+    }
   },
   {
     "id": "turkey-journey",
@@ -649,68 +2912,318 @@
     "season": "April-June",
     "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Istanbul Arrival", "activities": ["Hagia Sophia", "Blue Mosque", "Grand Bazaar shopping"] },
-      { "day": 2, "title": "Istanbul's Treasures", "activities": ["Topkapi Palace", "Basilica Cistern", "Bosphorus cruise dinner"] },
-      { "day": 3, "title": "Cappadocia Arrival", "activities": ["Flight to Cappadocia", "Goreme Open Air Museum", "Sunset at Uchisar Castle"] },
-      { "day": 4, "title": "Cappadocia Hot Air Balloon", "activities": ["Sunrise balloon ride", "Love Valley hike", "Pottery workshop in Avanos"] },
-      { "day": 5, "title": "Underground Cities", "activities": ["Derinkuyu underground city", "Ihlara Valley hike", "Cave hotel stay"] },
-      { "day": 6, "title": "Pamukkale", "activities": ["Drive to Pamukkale", "Cotton Castle terraces", "Hierapolis ancient city"] },
-      { "day": 7, "title": "Ephesus & Kusadasi", "activities": ["Ephesus ancient city", "House of Virgin Mary", "Kusadasi seaside dinner"] },
-      { "day": 8, "title": "Aegean Coast", "activities": ["Sirince village wine tasting", "Alacati beaches", "Turkish cooking class"] },
-      { "day": 9, "title": "Return to Istanbul", "activities": ["Spice Bazaar", "Galata Tower View", "Farewell Turkish dinner"] },
-      { "day": 10, "title": "Departure", "activities": ["Last Turkish coffee", "Depart from IST"] }
+      {
+        "day": 1,
+        "title": "Istanbul Arrival",
+        "activities": [
+          "Hagia Sophia",
+          "Blue Mosque",
+          "Grand Bazaar shopping"
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Istanbul's Treasures",
+        "activities": [
+          "Topkapi Palace",
+          "Basilica Cistern",
+          "Bosphorus cruise dinner"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Cappadocia Arrival",
+        "activities": [
+          "Flight to Cappadocia",
+          "Goreme Open Air Museum",
+          "Sunset at Uchisar Castle"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Cappadocia Hot Air Balloon",
+        "activities": [
+          "Sunrise balloon ride",
+          "Love Valley hike",
+          "Pottery workshop in Avanos"
+        ]
+      },
+      {
+        "day": 5,
+        "title": "Underground Cities",
+        "activities": [
+          "Derinkuyu underground city",
+          "Ihlara Valley hike",
+          "Cave hotel stay"
+        ]
+      },
+      {
+        "day": 6,
+        "title": "Pamukkale",
+        "activities": [
+          "Drive to Pamukkale",
+          "Cotton Castle terraces",
+          "Hierapolis ancient city"
+        ]
+      },
+      {
+        "day": 7,
+        "title": "Ephesus & Kusadasi",
+        "activities": [
+          "Ephesus ancient city",
+          "House of Virgin Mary",
+          "Kusadasi seaside dinner"
+        ]
+      },
+      {
+        "day": 8,
+        "title": "Aegean Coast",
+        "activities": [
+          "Sirince village wine tasting",
+          "Alacati beaches",
+          "Turkish cooking class"
+        ]
+      },
+      {
+        "day": 9,
+        "title": "Return to Istanbul",
+        "activities": [
+          "Spice Bazaar",
+          "Galata Tower View",
+          "Farewell Turkish dinner"
+        ]
+      },
+      {
+        "day": 10,
+        "title": "Departure",
+        "activities": [
+          "Last Turkish coffee",
+          "Depart from IST"
+        ]
+      }
     ],
-    "highlights": ["Hagia Sophia", "Cappadocia hot air balloon", "Ephesus ruins", "Pamukkale terraces", "Grand Bazaar"],
-    "packing": ["Comfortable shoes", "Light scarf for mosques", "Sunscreen", "Camera"],
-    "tags": ["culture", "history", "adventure", "europe"],
-    "coords": { "lat": 38.9637, "lng": 35.2433 }
+    "highlights": [
+      "Hagia Sophia",
+      "Cappadocia hot air balloon",
+      "Ephesus ruins",
+      "Pamukkale terraces",
+      "Grand Bazaar"
+    ],
+    "packing": [
+      "Comfortable shoes",
+      "Light scarf for mosques",
+      "Sunscreen",
+      "Camera"
+    ],
+    "tags": [
+      "culture",
+      "history",
+      "adventure",
+      "europe"
+    ],
+    "coords": {
+      "lat": 38.9637,
+      "lng": 35.2433
+    }
   },
   {
-    "id": "nz-roadtrip",
-    "title": "New Zealand South Island Road Trip",
-    "country": "New Zealand",
-    "description": "Epic scenery, dramatic fjords, glaciers, coastal drives, and Lord of the Rings filming locations.",
-    "budget": "4600",
+    "id": "nyc-city",
+    "title": "New York City Five Boroughs",
+    "country": "USA",
+    "description": "Skyscrapers, world-class museums, iconic parks, Broadway shows, and unbeatable food across the five boroughs.",
+    "budget": "3000",
+    "season": "April-June",
+    "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Arrival & Times Square", "activities": ["Check into Midtown hotel", "Times Square lights", "Broadway show in the evening"] },
+      { "day": 2, "title": "Lower Manhattan", "activities": ["Statue of Liberty ferry", "Wall Street & 9/11 Memorial", "Brooklyn Bridge sunset walk"] },
+      { "day": 3, "title": "Central Park & Museums", "activities": ["Central Park bike tour", "Metropolitan Museum of Art", "The High Line walk"] },
+      { "day": 4, "title": "Brooklyn & Dumbo", "activities": ["Brooklyn Heights promenade", "Dumbo waterfront photos", "Williamsburg food market"] },
+      { "day": 5, "title": "Uptown & Departure", "activities": ["Museum of Natural History", "Fifth Avenue shopping", "Departure from JFK"] }
+    ],
+    "highlights": ["Statue of Liberty", "Central Park", "Broadway", "Brooklyn Bridge", "The High Line"],
+    "packing": ["Comfortable walking shoes", "Light layers", "Metro card", "Camera"],
+    "tags": ["city", "culture", "food", "north america"],
+    "coords": { "lat": 40.7128, "lng": -74.006 }
+  },
+  {
+    "id": "barcelona-spain",
+    "title": "Barcelona Art & Coast",
+    "country": "Spain",
+    "description": "Gaudi masterpieces, gothic lanes, tapas at sunset, and Mediterranean beaches in Catalonia's vibrant capital.",
+    "budget": "2400",
+    "season": "May-September",
+    "image": "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Gothic Quarter", "activities": ["La Rambla stroll", "Gothic Quarter labyrinth", "Boqueria market tapas"] },
+      { "day": 2, "title": "Gaudi Architecture", "activities": ["Sagrada Familia", "Park Guell", "Casa Batllo night views"] },
+      { "day": 3, "title": "Montjuic & Beach", "activities": ["Montjuic cable car", "Barceloneta beach", "Port Olympic dinner"] },
+      { "day": 4, "title": "Day Trip to Sitges", "activities": ["Train to Sitges", "Beach time", "Wine tasting at Penedes"] },
+      { "day": 5, "title": "Dali & Departure", "activities": ["Morning market", "El Born shopping", "Departure from El Prat"] }
+    ],
+    "highlights": ["Sagrada Familia", "Park Guell", "Gothic Quarter", "Barceloneta beach", "Boqueria Market"],
+    "packing": ["Comfortable shoes", "Swimwear", "Sun protection", "Camera"],
+    "tags": ["city", "art", "beach", "food", "europe"],
+    "coords": { "lat": 41.3902, "lng": 2.154 }
+  },
+  {
+    "id": "prague-czech",
+    "title": "Prague Fairytale Break",
+    "country": "Czech Republic",
+    "description": "Castles, Charles Bridge, gothic spires, and hearty beer halls in Europe's fairytale capital.",
+    "budget": "1800",
+    "season": "April-October",
+    "image": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Old Town", "activities": ["Old Town Square", "Astronomical Clock", "Wenceslas Square"] },
+      { "day": 2, "title": "Prague Castle", "activities": ["St Vitus Cathedral", "Golden Lane", "Strahov Monastery views"] },
+      { "day": 3, "title": "Lesser Quarter", "activities": ["Charles Bridge at dawn", "Mala Strana lanes", "Petrin hill lookout"] },
+      { "day": 4, "title": "River & Breweries", "activities": ["Vltava river cruise", "Beer spa experience", "Czech craft beer tasting"] },
+      { "day": 5, "title": "Departure", "activities": ["Last goulash", "Souvenir hunting", "Departure"] }
+    ],
+    "highlights": ["Prague Castle", "Charles Bridge", "Old Town Square", "Petrin Hill", "St Vitus Cathedral"],
+    "packing": ["Comfortable shoes", "Layered clothing", "Camera", "Adaptor"],
+    "tags": ["city", "culture", "history", "europe"],
+    "coords": { "lat": 50.0755, "lng": 14.4378 }
+  },
+  {
+    "id": "amsterdam-netherlands",
+    "title": "Amsterdam Canals & Culture",
+    "country": "Netherlands",
+    "description": "Bike along golden canals, visit world-famous museums, and wander tulip markets in laid-back Amsterdam.",
+    "budget": "2000",
+    "season": "April-May",
+    "image": "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Canal District", "activities": ["Canal ring walk", "Anne Frank House", "Jordaan dinner"] },
+      { "day": 2, "title": "Museum Quarter", "activities": ["Rijksmuseum", "Van Gogh Museum", "Vondelpark picnic"] },
+      { "day": 3, "title": "Bike the City", "activities": ["Bike rentals", "De Pijp neighborhood", "Albert Cuyp market"] },
+      { "day": 4, "title": "Day Trip to Zaanse Schans", "activities": ["Windmills of Zaanse Schans", "Clog making demo", "Edam cheese tasting"] },
+      { "day": 5, "title": "Departure", "activities": ["Last stroopwafels", "Canal boat farewell", "Departure"] }
+    ],
+    "highlights": ["Rijksmuseum", "Anne Frank House", "Van Gogh Museum", "Canal ring", "Zaanse Schans windmills"],
+    "packing": ["Comfortable shoes", "Rain jacket", "Bike gloves", "Camera"],
+    "tags": ["city", "culture", "art", "europe"],
+    "coords": { "lat": 52.3676, "lng": 4.9041 }
+  },
+  {
+    "id": "rio-brazil",
+    "title": "Rio de Janeiro Carnival Dream",
+    "country": "Brazil",
+    "description": "Sugarloaf, Christ the Redeemer, samba nights, and golden beaches in the Marvelous City.",
+    "budget": "2600",
     "season": "December-March",
-    "image": "https://images.unsplash.com/photo-1551288044-be4eaf4730e1?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Christchurch Arrival", "activities": ["Punting on Avon River", "Christchurch Botanic Gardens", "New Regent Street dinner"] },
-      { "day": 2, "title": "Tekapo & Mt Cook", "activities": ["Lake Tekapo & Church of the Good Shepherd", "Hooker Valley Track", "Dark Sky Reserve stargazing"] },
-      { "day": 3, "title": "Wanaka", "activities": ["Roys Peak hike", "That Wanaka Tree", "Puzzling World"] },
-      { "day": 4, "title": "Queenstown Adventures", "activities": ["Milford Sound cruise", "Bungee jumping at Kawarau Bridge", "Fergburger dinner"] },
-      { "day": 5, "title": "Queenstown Thrills", "activities": ["Shotover Jet", "Glenorchy LOTR tour", "Skyline Gondola & luge"] },
-      { "day": 6, "title": "West Coast Glaciers", "activities": ["Drive via Haast Pass", "Franz Josef glacier walk", "Glacier hot pools"] },
-      { "day": 7, "title": "Fox Glacier & Hokitika", "activities": ["Lake Matheson Mirror Lake", "Hokitika Gorge", "Pounamu greenstone shopping"] },
-      { "day": 8, "title": "Abel Tasman", "activities": ["Kayaking in Abel Tasman", "Marahau beach walk", "Seal colony viewing"] },
-      { "day": 9, "title": "Marlborough Wines", "activities": ["Marlborough wine tour", "Cloudy Bay vineyard", "Omaka Aviation Museum"] },
-      { "day": 10, "title": "Return to Christchurch", "activities": ["Whale watching in Kaikoura", "Return to Christchurch", "Departure"] }
+      { "day": 1, "title": "Christ the Redeemer", "activities": ["Corcovado train up", "Christ the Redeemer", "Copacabana sunset"] },
+      { "day": 2, "title": "Sugarloaf Mountain", "activities": ["Sugarloaf cable car", "Santa Teresa tram", "Lapa samba night"] },
+      { "day": 3, "title": "Ipanema & Leblon", "activities": ["Ipanema beach", "Rodrigo de Freitas lagoon", "Kiosk acai"] },
+      { "day": 4, "title": "Favela Tour & Art", "activities": ["Guided favela tour", "Selaron Steps", "Botanical Garden"] },
+      { "day": 5, "title": "Departure", "activities": ["Last caipirinha", "Handicraft market", "Departure"] }
     ],
-    "highlights": ["Milford Sound cruise", "Queenstown bungee", "Hooker Valley Track", "Abel Tasman kayaking", "Marlborough wine"],
-    "packing": ["Camera", "Hiking boots", "Rain jacket", "Swimwear", "Sunscreen"],
-    "tags": ["roadtrip", "nature", "adventure", "scenic"],
-    "coords": { "lat": -45.0312, "lng": 168.6626 }
+    "highlights": ["Christ the Redeemer", "Sugarloaf Mountain", "Copacabana Beach", "Samba", "Selaron Steps"],
+    "packing": ["Swimwear", "Sunscreen", "Light clothes", "Comfortable sandals"],
+    "tags": ["beach", "city", "culture", "party", "south america"],
+    "coords": { "lat": -22.9068, "lng": -43.1729 }
   },
   {
-    "id": "costa-rica",
-    "title": "Costa Rica Rainforest Escape",
-    "country": "Costa Rica",
-    "description": "Rainforests, zip lines, volcano hikes, and stunning beaches — pure pura vida.",
-    "budget": "2500",
-    "season": "December-April",
-    "image": "https://images.unsplash.com/photo-1574649420617-3fec4ca5774a?auto=format&fit=crop&w=1200&q=80",
+    "id": "cape-town-south-africa",
+    "title": "Cape Town Coast & Vineyards",
+    "country": "South Africa",
+    "description": "Table Mountain views, penguin beaches, dramatic coastal drives, and world-class wine country.",
+    "budget": "2700",
+    "season": "November-March",
+    "image": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
     "days": [
-      { "day": 1, "title": "Arrive San José", "activities": ["La Sabana Park", "National Museum", "Dinner in Barrio Escalante"] },
-      { "day": 2, "title": "Arenal Volcano", "activities": ["Transfer to La Fortuna", "Arenal Volcano hike", "Tabacón Hot Springs"] },
-      { "day": 3, "title": "Arenal Adventures", "activities": ["Zip lining canopy tour", "Hanging bridges walk", "Sloth sanctuary visit"] },
-      { "day": 4, "title": "Monteverde Cloud Forest", "activities": ["Boat & bus to Monteverde", "Night walk wildlife tour", "Reserva Santa Elena hike"] },
-      { "day": 5, "title": "Monteverde Adventure", "activities": ["Selvatura park zip line", "Hummingbird garden", "Coffee & chocolate tour"] },
-      { "day": 6, "title": "Manuel Antonio", "activities": ["Transfer to Pacific coast", "Manuel Antonio beach", "Sunset catamaran cruise"] },
-      { "day": 7, "title": "Manuel Antonio Park", "activities": ["National Park guided tour", "Monkey & sloth spotting", "Quepos market"] },
-      { "day": 8, "title": "Departure", "activities": ["Last beach time", "Transfer to San José", "Departure"] }
+      { "day": 1, "title": "Table Mountain", "activities": ["Cable car to Table Mountain", "Bo-Kaap colorful houses", "Waterfront dinner"] },
+      { "day": 2, "title": "Cape Peninsula", "activities": ["Chapman's Peak Drive", "Cape of Good Hope", "Boulders Beach penguins"] },
+      { "day": 3, "title": "Stellenbosch Wines", "activities": ["Stellenbosch wine tour", "Franschhoek food trail", "Vineyard lunch"] },
+      { "day": 4, "title": "Kirstenbosch & Beaches", "activities": ["Kirstenbosch Gardens", "Muizenberg surf", "Camps Bay sunset"] },
+      { "day": 5, "title": "Robben Island & Departure", "activities": ["Robben Island tour", "Last waterfront walk", "Departure"] }
     ],
-    "highlights": ["Arenal Volcano", "Monteverde zip lining", "Sloth sanctuary", "Manuel Antonio wildlife", "Hot springs"],
-    "packing": ["Insect repellent", "Light rain jacket", "Hiking sandals", "Binoculars", "Swimwear"],
-    "tags": ["nature", "adventure", "rainforest", "wildlife", "central america"],
-    "coords": { "lat": 9.7489, "lng": -83.7534 }
+    "highlights": ["Table Mountain", "Cape of Good Hope", "Boulders Beach penguins", "Stellenbosch wines", "Kirstenbosch Gardens"],
+    "packing": ["Comfortable shoes", "Sunscreen", "Layered clothing", "Camera"],
+    "tags": ["coast", "nature", "food", "wine", "africa"],
+    "coords": { "lat": -33.9249, "lng": 18.4241 }
+  },
+  {
+    "id": "rajasthan-india",
+    "title": "Rajasthan Royal Fortresses",
+    "country": "India",
+    "description": "Palaces, desert forts, camel safaris, and vibrant markets through the royal state of Rajasthan.",
+    "budget": "1500",
+    "season": "October-March",
+    "image": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Jaipur Arrival", "activities": ["Amber Fort", "City Palace", "Chowki Dhani village dinner"] },
+      { "day": 2, "title": "Jaipur Pink City", "activities": ["Hawa Mahal", "Jantar Mantar", "Bapu Bazaar shopping"] },
+      { "day": 3, "title": "Jodhpur Blue City", "activities": ["Mehrangarh Fort", "Jaswant Thada", "Old city walk"] },
+      { "day": 4, "title": "Jaisalmer Desert", "activities": ["Jaisalmer Fort", "Camel safari", "Desert camp stargazing"] },
+      { "day": 5, "title": "Udaipur & Departure", "activities": ["Udaipur City Palace", "Lake Pichola boat", "Departure"] }
+    ],
+    "highlights": ["Amber Fort", "Hawa Mahal", "Mehrangarh Fort", "Camel safari", "Udaipur City Palace"],
+    "packing": ["Light cotton clothes", "Scarf for temples", "Comfortable shoes", "Sunscreen"],
+    "tags": ["culture", "history", "desert", "asia"],
+    "coords": { "lat": 26.9124, "lng": 75.7873 }
+  },
+  {
+    "id": "luang-prabang-laos",
+    "title": "Luang Prabang Temples & Mekong",
+    "country": "Laos",
+    "description": "Golden temples, morning alms ceremonies, waterfalls, and slow Mekong sunsets in UNESCO-listed Laos.",
+    "budget": "1200",
+    "season": "November-February",
+    "image": "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Arrival & Night Market", "activities": ["Settle into Luang Prabang", "Royal Palace Museum", "Night market walk"] },
+      { "day": 2, "title": "Kuang Si Falls", "activities": ["Kuang Si Waterfall", "Bear rescue center", "Local village visit"] },
+      { "day": 3, "title": "Temples of Dawn", "activities": ["Alms giving ceremony", "Wat Xieng Thong", "Phousi Hill sunset"] },
+      { "day": 4, "title": "Mekong River Day", "activities": ["Mekong boat cruise", "Pak Ou Caves", "River sunset dinner"] },
+      { "day": 5, "title": "Departure", "activities": ["Last noodle soup", "Handicraft shopping", "Departure"] }
+    ],
+    "highlights": ["Kuang Si Falls", "Wat Xieng Thong", "Alms ceremony", "Pak Ou Caves", "Phousi Hill"],
+    "packing": ["Comfortable shoes", "Modest temple clothes", "Insect repellent", "Sunscreen"],
+    "tags": ["culture", "nature", "waterfalls", "asia"],
+    "coords": { "lat": 19.8834, "lng": 102.1354 }
+  },
+  {
+    "id": "scotland-highlands",
+    "title": "Scottish Highlands Road Trip",
+    "country": "United Kingdom",
+    "description": "Castles, lochs, misty glens, whisky distilleries, and dramatic mountain passes across the Highlands.",
+    "budget": "2200",
+    "season": "May-September",
+    "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Edinburgh Arrival", "activities": ["Edinburgh Castle", "Royal Mile", "Arthur's Seat viewpoint"] },
+      { "day": 2, "title": "Glencoe Valley", "activities": ["Drive to Glencoe", "Three Sisters hike", "Glen Etive scenery"] },
+      { "day": 3, "title": "Isle of Skye", "activities": ["Old Man of Storr", "Fairy Pools", "Neist Point lighthouse"] },
+      { "day": 4, "title": "Loch Ness & Inverness", "activities": ["Loch Ness cruise", "Urquhart Castle ruins", "Inverness old town"] },
+      { "day": 5, "title": "Whisky & Departure", "activities": ["Highlands whisky distillery tour", "Cairngorms views", "Return to Edinburgh"] }
+    ],
+    "highlights": ["Edinburgh Castle", "Glencoe", "Old Man of Storr", "Fairy Pools", "Loch Ness"],
+    "packing": ["Rain jacket", "Hiking boots", "Warm layers", "Camera"],
+    "tags": ["roadtrip", "nature", "history", "scenic", "europe"],
+    "coords": { "lat": 57.4778, "lng": -4.2247 }
+  },
+  {
+    "id": "budapest-hungary",
+    "title": "Budapest Thermal & Danube",
+    "country": "Hungary",
+    "description": "Spa baths, grand boulevards, ruin bars, and stunning parliament views on the banks of the Danube.",
+    "budget": "1600",
+    "season": "April-October",
+    "image": "https://images.unsplash.com/photo-1565426873118-a17ed65d74b9?auto=format&fit=crop&w=1200&q=80",
+    "days": [
+      { "day": 1, "title": "Buda Castle", "activities": ["Buda Castle & Hill", "Fisherman's Bastion", "Chain Bridge walk"] },
+      { "day": 2, "title": "Parliament & Thermal Baths", "activities": ["Hungarian Parliament tour", "Szechenyi Spa", "Andrassy Avenue stroll"] },
+      { "day": 3, "title": "Great Market Hall", "activities": ["Great Market Hall", "Heroes Square", "City Park"] },
+      { "day": 4, "title": "Danube Evening & Ruin Bars", "activities": ["Danube river cruise", "Szimpla ruin bar", "Goulash dinner"] },
+      { "day": 5, "title": "Departure", "activities": ["Last thermal bath", "Kurtoskalacs snack", "Departure"] }
+    ],
+    "highlights": ["Buda Castle", "Fisherman's Bastion", "Szechenyi Spa", "Parliament", "Danube cruise"],
+    "packing": ["Comfortable shoes", "Swimwear for baths", "Light layers", "Camera"],
+    "tags": ["city", "culture", "spa", "history", "europe"],
+    "coords": { "lat": 47.4979, "lng": 19.0402 }
   }
 ]

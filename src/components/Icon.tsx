@@ -34,7 +34,7 @@ const materialMap: Record<string, keyof typeof MaterialIcons.glyphMap> = {
   theme: 'brightness-6',
   demo: 'play-circle-outline',
   logout: 'logout',
-  google: 'g-translate',
+  google: 'g-mobiledata',
   mic: 'mic-none',
   time: 'access-time',
   map: 'map',
@@ -50,6 +50,7 @@ const materialMap: Record<string, keyof typeof MaterialIcons.glyphMap> = {
   compass: 'explore',
   globe: 'public',
   heart: 'favorite-border',
+  heartFilled: 'favorite',
   swap: 'swap-horiz',
   refresh: 'refresh',
   trash: 'delete',
@@ -59,6 +60,7 @@ const materialMap: Record<string, keyof typeof MaterialIcons.glyphMap> = {
   person: 'person',
   users: 'group',
   star: 'star',
+  crown: 'workspace-premium',
   share: 'share',
   filter: 'filter-list',
   sort: 'sort',
@@ -116,6 +118,8 @@ const materialMap: Record<string, keyof typeof MaterialIcons.glyphMap> = {
   grocery: 'local-grocery-store',
   store: 'store',
   fastfood: 'fastfood',
+  arrowUp: 'arrow-upward',
+  chat: 'chat-bubble-outline',
 };
 
 export const Icon: React.FC<IconProps> = ({ name, size = 22, color = colors.primary }) => {

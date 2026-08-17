@@ -16,6 +16,9 @@ import { AuthContext } from '../context/AuthContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Icon } from '../components/Icon';
+import storageService from '../services/storageService';
+import { validateEmail } from '../utils/validation';
+import { sanitizeDisplayName } from '../utils/displayName';
 import { colors, radius, shadows, spacing } from '../theme/theme';
 
 const SignUpScreen: React.FC = () => {
@@ -26,8 +29,59 @@ const SignUpScreen: React.FC = () => {
   const [name, setName] = useState('');
   const insets = useSafeAreaInsets();
 
+  const [error, setError] = useState('');
+
   const handle = async () => {
-    await signUp(email, password, name);
+    setError('');
+    if (!name.trim()) {
+      setError('Please enter a display name.');
+      return;
+    }
+    // Filter offensive / leetspeak names by swapping in a safe generated one.
+    const safe = sanitizeDisplayName(name);
+    const finalName = safe.value;
+    if (safe.changed) {
+      setName(finalName); // show the generated name in the field
+      setError('');
+    }
+    if (!email.trim()) {
+      setError('Please enter your email.');
+      return;
+    }
+    // Validate email format
+    const emailValidation = validateEmail(email);
+    if (!emailValidation.valid) {
+      setError(emailValidation.error || 'Please enter a valid email address.');
+      return;
+    }
+    if (!password.trim()) {
+      setError('Please create a password.');
+      return;
+    }
+
+    // Check if display name is taken in community
+    try {
+      const { communityService } = require('../services/communityService');
+      const users = await communityService.getUsers();
+      if (users.some((u: any) => u.name?.toLowerCase() === finalName.toLowerCase())) {
+        setError('This display name is already taken. Please choose another.');
+        return;
+      }
+    } catch {}
+
+    try {
+      await signUp(email, password, finalName);
+      // Queue the intro paywall so it appears right after the first-run
+      // onboarding tour instead of interrupting sign-up.
+      try {
+        await storageService.save('WB_INTRO_PAYWALL_PENDING', true);
+      } catch (e) {
+        console.warn('[SignUp] Failed to queue intro paywall:', e);
+      }
+    } catch (e: any) {
+      const msg = e?.message || String(e);
+      setError(msg || 'Sign up failed. Please try again.');
+    }
   };
 
   return (
@@ -47,9 +101,7 @@ const SignUpScreen: React.FC = () => {
           </TouchableOpacity>
 
            <View style={styles.hero}>
-             <LinearGradient colors={[colors.primary, '#7985FF']} style={styles.logoBadge}>
-               <Image source={require('../../assets/icon.png')} style={styles.logoImage} resizeMode="contain" />
-             </LinearGradient>
+             <Image source={require('../../assets/logo.png')} style={styles.logoImage} resizeMode="contain" />
             <Text style={styles.kicker}>JOIN US</Text>
             <Text style={styles.title}>Create account</Text>
             <Text style={styles.subtitle}>
@@ -99,6 +151,13 @@ const SignUpScreen: React.FC = () => {
               />
             </View>
 
+            {error ? (
+              <View style={styles.errorBox}>
+                <Icon name="warning" size={16} color="#DC2626" />
+                <Text style={styles.errorText}>{error}</Text>
+              </View>
+            ) : null}
+
             <TouchableOpacity style={styles.button} onPress={handle} activeOpacity={0.9}>
               <LinearGradient
                 colors={[colors.primary, '#7985FF']}
@@ -144,18 +203,11 @@ const styles = StyleSheet.create({
     marginTop: spacing.xxl,
     marginBottom: spacing.xxl,
   },
-  logoBadge: {
-    width: 52,
-    height: 52,
-    borderRadius: radius.lg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: spacing.lg,
-    ...shadows.fab,
-  },
   logoImage: {
-    width: 32,
-    height: 32,
+    width: 64,
+    height: 64,
+    borderRadius: 16,
+    marginBottom: spacing.lg,
   },
   kicker: {
     color: colors.primary,
@@ -236,6 +288,21 @@ const styles = StyleSheet.create({
   linkAccent: {
     color: colors.primary,
     fontWeight: '700',
+  },
+  errorBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: '#FEF2F2',
+    borderRadius: radius.md,
+    padding: 12,
+    marginBottom: spacing.md,
+  },
+  errorText: {
+    color: '#DC2626',
+    fontSize: 13,
+    fontWeight: '600',
+    flex: 1,
   },
 });
 

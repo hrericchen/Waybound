@@ -39,7 +39,8 @@ const DemoScreen: React.FC = () => {
       ],
     };
     await tripService.saveTrip(itinerary);
-    nav.navigate('Main' as any, { screen: 'Library' });
+    (nav as any).navigate('Main', { screen: 'Library' });
+
   };
 
   return (

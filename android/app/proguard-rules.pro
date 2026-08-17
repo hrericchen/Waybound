@@ -12,3 +12,18 @@
 -keep class com.facebook.react.turbomodule.** { *; }
 
 # Add any project specific keep options here:
+
+# AdMob (Google Mobile Ads)
+-keep class com.google.android.gms.ads.** { *; }
+-keep class com.google.android.gms.ads.identifier.** { *; }
+-dontwarn com.google.android.gms.ads.**
+
+# RevenueCat (Purchases SDK)
+-keep class com.revenuecat.purchases.** { *; }
+-dontwarn com.revenuecat.purchases.**
+-keep class com.android.billingclient.** { *; }
+-dontwarn com.android.billingclient.**
+
+# PostHog
+-keep class com.posthog.** { *; }
+-dontwarn com.posthog.**
