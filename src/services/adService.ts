@@ -7,7 +7,10 @@ import mobileAds, {
   AdEventType,
   RewardedAdEventType,
   MaxAdContentRating,
+  AdsConsent,
+  AdsConsentStatus,
 } from 'react-native-google-mobile-ads';
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
 import storageService from './storageService';
 import { revenueCatService } from './revenueCatService';
 
@@ -44,6 +47,31 @@ const INTERSTITIAL_COUNT_KEY = 'INTERSTITIAL_TRIP_VIEW_COUNT';
 export const adService = {
   async init(): Promise<void> {
     try {
+      // iOS: request App Tracking Transparency authorization BEFORE initializing
+      // the ads SDK so it knows whether personalized ads are allowed. No-op on
+      // Android (returns 'unavailable'). Requires NSUserTrackingUsageDescription
+      // in Info.plist (already set in app.json).
+      if (Platform.OS === 'ios') {
+        try {
+          await requestTrackingPermission();
+        } catch (e) {
+          console.warn('[AdMob] ATT request failed:', e);
+        }
+      }
+
+      // GDPR / EEA + regulated US states: check consent via Google UMP. The GMA
+      // SDK reads the stored consent automatically and serves personalized or
+      // non-personalized ads accordingly. Requires consent forms configured in
+      // the AdMob dashboard (Privacy & messaging -> GDPR / US states).
+      try {
+        const consentInfo = await AdsConsent.requestInfoUpdate();
+        if (consentInfo.status === AdsConsentStatus.REQUIRED) {
+          await AdsConsent.showForm();
+        }
+      } catch (e) {
+        console.warn('[AdMob] Consent flow failed:', e);
+      }
+
       await mobileAds().initialize();
       await mobileAds().setRequestConfiguration({
         maxAdContentRating: MaxAdContentRating.MA,

@@ -43,10 +43,31 @@ npx eas submit --platform all                        # uploads to both stores
 ## Rules to remember
 
 - EAS Update **cannot change native code** — native changes always need Track 2.
+- **Runtime version**: `app.json` uses a static `"runtimeVersion": "1.0.0"` (required —
+  this project is the "bare workflow" because of its committed `android/` folder, so
+  runtime-version policies aren't supported). **Bump this string whenever you ship a
+  native release** (keep it equal to the app version so old binaries never receive
+  incompatible OTA updates). For JS-only updates, leave it unchanged.
 - Apple allows OTA updates for bug fixes/improvements; significant new features
   should go through a store review.
 - The current installed binary does **not** have `expo-updates` yet (it was disabled
   in previous builds) — the first rebuild after this change is the one that enables it.
+
+## Granting Pro / Mini (RevenueCat)
+
+The app calls `Purchases.logIn(fbUser.uid)`, so **RevenueCat subscriber ID = Firebase UID**.
+
+1. **RevenueCat dashboard** (easiest): revenuecat.com → **Customers** → search the
+   user's Firebase UID → **Entitlements → Grant** → **"Waybound Pro"** or
+   **"Waybound Mini"** → lifetime or a duration.
+   - Entitlement identifiers are hardcoded in the app as `Waybound Pro` / `Waybound Mini`
+     — create these in RevenueCat → Entitlements if they don't exist.
+2. **Firestore gift flag** (the app's own system, no RevenueCat needed): Firebase
+   console → Firestore → `users/{firebaseUID}` → set `grantedPro: true` (or
+   `grantedMini: true`). Revoke by setting to `false` / deleting the field.
+3. **Backend (RevenueCat API)**: `POST /api/admin/entitlements` with an admin Firebase
+   ID token and body `{ uid, entitlement: "pro"|"mini", action: "grant"|"revoke",
+   duration: "lifetime" }`. Requires `REVENUECAT_SECRET_API_KEY` set in Render.
 
 ## Environment summary
 

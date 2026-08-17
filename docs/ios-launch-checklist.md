@@ -62,12 +62,31 @@ Google Sign-In plugin (`iosUrlScheme`) and `src/services/googleSignIn.ts`
 
 ## Phase 4 — Ads / tracking (iOS 14.5+)
 
-- [ ] Add `NSUserTrackingUsageDescription` (in Phase 1's `infoPlist`) — required for
-      the App Tracking Transparency prompt before AdMob can use the IDFA.
-- [ ] Test that `react-native-google-mobile-ads` shows ads on iOS (the plugin
-      requests tracking authorization on first load).
-- [ ] Add `SKAdNetworkItems` entries if you need SKAdNetwork attribution reporting
-      (AdMob's published list).
+**Already wired in code** (verified against `src/services/adService.ts` + app.json):
+- **AdMob App ID** — `iosAppId` is set in the `react-native-google-mobile-ads` plugin
+  config; the config plugin injects `GADApplicationIdentifier` into Info.plist.
+- **ATT prompt** — `NSUserTrackingUsageDescription` is set in `app.json`, and
+  `adService.init()` calls `requestTrackingPermission()` on iOS **before** the ads SDK
+  initializes. (No-op on Android.)
+- **GDPR / US-state consent (UMP)** — `adService.init()` runs Google's consent flow
+  (`AdsConsent.requestInfoUpdate()` + `AdsConsent.showForm()` when required) on both
+  platforms; the SDK then serves personalized/non-personalized ads automatically.
+
+**Still to do (your accounts/dashboards):**
+- [ ] **AdMob iOS app**: AdMob dashboard → Apps → **Add app → iOS** → use the same App ID
+      (`ca-app-pub-7167949082841776~7336120994`) and add the App Store URL once live.
+- [ ] **Consent forms**: AdMob → **Privacy & messaging** → create a **GDPR message**
+      (EEA/UK) and a **US states message** — required for the UMP flow to show a form.
+- [ ] **SKAdNetwork** (optional, for install-attribution of ad campaigns): add Google's
+      published `SKAdNetworkItems` identifiers to the `react-native-google-mobile-ads`
+      plugin config (`skAdNetworkItems`) — see Google's list at
+      https://developers.google.com/admob/ios/ios14#skadnetwork. Ads still serve without it.
+- [ ] **App Store privacy labels** (App Store Connect → App Privacy): declare
+      **Advertising** (Third-party advertising), **Identifiers** (Advertising/IDFA), and
+      **Usage Data** (Analytics via PostHog).
+- [ ] **Test**: build to a device with **test ad unit IDs** in dev (`__DEV__` uses
+      `TestIds.*`), verify banner/interstitial/rewarded, then confirm real ads fill in a
+      release build (low fill in TestFlight is normal).
 
 ## Phase 5 — TestFlight & submission
 
