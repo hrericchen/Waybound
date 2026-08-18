@@ -304,23 +304,43 @@ const CreateItineraryScreen: React.FC = () => {
         const itinerary = await tripService.getTripById(editId);
         if (itinerary) {
           setDraftId(itinerary.id);
-          setTitle(itinerary.title);
-          setDestinations(itinerary.destinations?.join(', ') || '');
-          const dests = (itinerary.destinations || []).map((n: string) => ({ id: n, name: n, address: '', lat: 0, lng: 0, types: [] }));
+          setTitle(itinerary.title || '');
+          setDestinations(
+            (Array.isArray(itinerary.destinations) ? itinerary.destinations : [])
+              .map((n: any) => (typeof n === 'string' ? n : n?.name || n?.city || String(n || '')))
+              .filter(Boolean)
+              .join(', ')
+          );
+          const dests = (Array.isArray(itinerary.destinations) ? itinerary.destinations : [])
+            .map((n: any) => ({ id: n, name: n, address: '', lat: 0, lng: 0, types: [] }))
+            .filter((d: any) => d.name);
           setCities(dests);
           enrichCityPhotos(dests);
           setSeason(itinerary.season || '');
           setBudget(itinerary.budget || '');
           setCoverImageUrl(itinerary.coverImage || '');
           setCoverImageBase64('');
-          setActivities(itinerary.activities || []);
-          const dayNumbers = [...new Set((itinerary.activities || []).map((a: any) => a.day))].sort((a: number, b: number) => a - b);
+          // Prefer itinerary activities; otherwise convert the official/guide
+          // "days" format into activities so every saved trip is editable.
+          const rawActivities = Array.isArray(itinerary.activities) && itinerary.activities.length
+            ? itinerary.activities
+            : (Array.isArray(itinerary.days) ? itinerary.days.map((d: any, i: number) => ({
+                id: `${itinerary.id}-day-${d.day || i + 1}`,
+                day: d.day || i + 1,
+                title: d.title || '',
+                notes: Array.isArray(d.activities) ? d.activities.join(' · ') : '',
+                links: [],
+                photos: [],
+                completed: false,
+              })) : []);
+          setActivities(rawActivities);
+          const dayNumbers = [...new Set(rawActivities.map((a: any) => a.day).filter(Boolean))].sort((a: number, b: number) => a - b);
           setDays(dayNumbers.length > 0 ? dayNumbers as number[] : [1]);
           setSelectedDay((dayNumbers[0] as number) || 1);
           setDayNotes(itinerary.dayNotes || {});
           setExpenses(itinerary.expenses || []);
           setBudgetCurrency(itinerary.budgetCurrency || 'USD');
-          setOverview(itinerary.overview || []);
+          setOverview(itinerary.overview || itinerary.guide?.overview || []);
           // Load existing collaborators
           const collabs = await communityService.getCollaborators(itinerary.id);
           setCollaborators(collabs);

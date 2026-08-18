@@ -128,11 +128,15 @@ const TripDetailScreen: React.FC<any> = ({ route, navigation }) => {
     );
   }
 
-  const isGuide = trip.kind === 'guide';
+  const isGuide = trip.kind === 'guide' && !Array.isArray(trip.activities);
   // User-created itineraries (they always have userId) are treated as
   // itineraries even if they have no activities yet — never as template trips.
+  // A saved copy that inherited `kind: "guide"` from the source still renders as
+  // an itinerary when it carries `activities` (see saveTripAsCustomizable).
   const isItinerary = !isGuide && (Array.isArray(trip.activities) || !!trip.userId);
-  const dayCount = isItinerary ? ((trip.activities || []).length ? new Set(trip.activities.map((a: any) => a.day).filter(Boolean)).size : 0) : trip.days?.length || 0;
+  const dayCount = isItinerary
+    ? (new Set((trip.activities || []).map((a: any) => a.day).filter(Boolean)).size || (trip.userId ? 1 : 0))
+    : trip.days?.length || 0;
   const spotCount = isItinerary ? trip.destinations?.length || 0 : trip.highlights?.length || 0;
   const highlightCount = isItinerary ? trip.activities?.length || 0 : trip.highlights?.length || 0;
   const mapPins = isGuide

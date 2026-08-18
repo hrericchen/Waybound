@@ -217,8 +217,28 @@ const tripService = {
 
     // Create a deep copy WITHOUT the large cover image
     const { coverImage, coverImageBase64: _cb64, ...rest } = trip;
-    const customTrip = {
-      ...JSON.parse(JSON.stringify(rest)), // Deep copy without cover
+
+    // Build the activities array: prefer the itinerary format (activities),
+    // otherwise convert the official/guide "days" format into activities.
+    const activities = Array.isArray(rest.activities) && rest.activities.length
+      ? rest.activities
+      : (Array.isArray(rest.days) ? rest.days.map((d: any, i: number) => ({
+          id: `${trip.id}-day-${d.day || i + 1}`,
+          day: d.day || i + 1,
+          title: d.title || '',
+          notes: Array.isArray(d.activities) ? d.activities.join(' · ') : '',
+          links: [],
+          photos: [],
+          completed: false,
+        })) : []);
+
+    // Destinations as a plain string list (older data may store objects).
+    const destinations = Array.isArray(rest.destinations)
+      ? rest.destinations.map((d: any) => (typeof d === 'string' ? d : d?.name || d?.city || String(d || ''))).filter(Boolean)
+      : (rest.country ? [rest.country] : []);
+
+    const customTrip: any = {
+      ...JSON.parse(JSON.stringify(rest)), // deep copy without cover
       id: `custom-${trip.id}-${Date.now()}`,
       originalId: trip.id,
       userId: userId,
@@ -226,23 +246,28 @@ const tripService = {
       isCustomCopy: true,
       savedAt: Date.now(),
       createdAt: trip.createdAt || Date.now(),
-      // Convert official trip format to itinerary format if needed
-      activities: rest.activities || (rest.days || []).map((d: any, i: number) => ({
-        id: `${trip.id}-day-${d.day || i + 1}`,
-        day: d.day || i + 1,
-        title: d.title || '',
-        notes: Array.isArray(d.activities) ? d.activities.join(' · ') : '',
-        links: [],
-        photos: [],
-        completed: false,
-      })),
-      // Keep original fields for reference
-      destinations: rest.destinations || (rest.country ? [rest.country] : []),
+      // Explicit itinerary fields — never inherit guide/template-only shapes.
+      title: rest.title || '',
+      description: rest.description || '',
+      destinations,
+      activities,
+      dayNotes: rest.dayNotes || {},
+      expenses: rest.expenses || [],
+      overview: rest.overview || rest.guide?.overview || [],
+      season: rest.season || '',
+      budget: rest.budget || '',
+      budgetCurrency: rest.budgetCurrency || 'USD',
       tags: rest.tags || [],
-      season: rest.season,
-      budget: rest.budget,
+      // Convert official trip format to itinerary format if needed
       category: rest.category,
     };
+
+    // Drop guide/template-only keys so the copy ALWAYS renders as a user
+    // itinerary (its timeline reads `activities`/`overview`, not `days`).
+    delete customTrip.kind;
+    delete customTrip.guide;
+    delete customTrip.days;
+    delete customTrip.highlights;
 
     // Import the source trip's budget into the expenses section so it shows
     // up in the Expenses tab once saved.
